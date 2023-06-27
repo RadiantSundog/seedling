@@ -1,0 +1,83 @@
+.home-button {
+  padding-top: 20px;
+  background: linear-gradient(45deg, #f7dbf0, #f9f9f9);
+}
+
+.home-button:hover {
+  background: linear-gradient(45deg, #f9f9f9, #f7dbf0);
+  color: #723881;
+}
+
+.button-look {
+  font-family: "Nunito", sans-serif;
+  font-size: 15;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #d6e5fa;
+  text-decoration: none;
+  color: #907fa4;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.button-look:hover {
+  color: #723881;
+}
+
+.direction-title {
+  font-family: "Monofett", cursive;
+  text-align: center;
+  font-size: 45px;
+  padding-bottom: 30px;
+  color: #f7f1e5;
+  position: relative;
+}
+
+.direction-title:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 35%;
+  width: 300px;
+  height: 2px;
+  background-color: #f7f1e5;
+}
+
+.direction-title:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 35%;
+  width: 300px;
+  height: 2px;
+  background-color: #f7f1e5;
+}
+
+.direction-title::before {
+  left: 0;
+}
+
+.direction-title::after {
+  right: 0;
+}
+
+.card-img-top {
+  display: block;
+  margin: 15px auto 0px auto;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 55px;
+  height: 55px;
+}
+
+.home-card-title {
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+
+.home-card-text {
+  font-size: 25px;
+  padding-top: 10px;
+  line-height: 22px;
+}
