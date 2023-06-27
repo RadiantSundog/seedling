@@ -1,8 +1,14 @@
 # volumes:
+volumes:
+  mongo-data:
+    external: true
+
 services:
   fastapi:
     environment:
       CORS_HOST: http://localhost:3000
+      DATABASE_URL: mongodb://PTB:seedling@mongo
+      DB_NAME: db-seedling-db
     build:
       context: api
       dockerfile: Dockerfile.dev
@@ -25,3 +31,11 @@ services:
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
       REACT_APP_API_HOST: ${REACT_APP_API_HOST}
+
+  mongo:
+    image: mongo:5
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: PTB
+      MONGO_INITDB_ROOT_PASSWORD: seedling
