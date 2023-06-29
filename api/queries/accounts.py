@@ -1,5 +1,22 @@
+from bson.objectid import ObjectId
 from pydantic import BaseModel
+from .client import Queries
 from pymongo.errors import DuplicateKeyError
+
+
+class PydanticObjectId(ObjectId):
+    @classmethod
+    def __get_validators__(cls):
+        yield cls.validate
+
+    @classmethod
+    def validate(cls, value: ObjectId | str) -> ObjectId:
+        if value:
+            try:
+                ObjectId(value)
+            except:
+                raise ValueError(f"Not a valid object id: {value}")
+        return value
 
 
 class DuplicateAccountError(ValueError):
@@ -10,6 +27,11 @@ class AccountIn(BaseModel):
     email: str
     password: str
     full_name: str
+
+
+class Account(AccountIn):
+    id: PydanticObjectId
+    hashed_password: str
 
 
 class AccountOut(BaseModel):
@@ -38,7 +60,6 @@ class AccountQueries(Queries):
     ) -> AccountOutWithPassword:
         props = info.dict()
         props["password"] = hashed_password
-        props["roles"] = roles
         try:
             self.collection.insert_one(props)
         except DuplicateKeyError:

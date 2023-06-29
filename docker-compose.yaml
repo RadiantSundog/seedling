@@ -17,8 +17,9 @@ services:
 
   fastapi:
     environment:
+      SIGNING_KEY: 33ac8d0fd56acf48694be359dfdfb29cd0d31ec0ff22f4f491548440eba29d22f9e01110e8e7781b287b9d36849f49d4ecf83c83ba498c8fb9b6480b76f82ceb
       CORS_HOST: http://localhost:3000
-      DATABASE_URL: mongodb://PTB:seedling@mongo
+      DATABASE_URL: mongodb://PTB:seedling@mongo:27017/
       DB_NAME: db-seedling-db
     build:
       context: api
