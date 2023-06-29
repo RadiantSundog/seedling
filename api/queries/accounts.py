@@ -26,18 +26,17 @@ class DuplicateAccountError(ValueError):
 class AccountIn(BaseModel):
     email: str
     password: str
-    full_name: str
+    username: str
 
 
 class Account(AccountIn):
     id: PydanticObjectId
-    hashed_password: str
 
 
 class AccountOut(BaseModel):
     id: str
     email: str
-    full_name: str
+    username: str
 
 
 class AccountOutWithPassword(AccountOut):
@@ -45,7 +44,7 @@ class AccountOutWithPassword(AccountOut):
 
 
 class AccountQueries(Queries):
-    DB_NAME = "library"
+    DB_NAME = "db-seedling-db"
     COLLECTION = "accounts"
 
     def get(self, email: str) -> AccountOutWithPassword:
@@ -53,13 +52,14 @@ class AccountQueries(Queries):
         if not props:
             return None
         props["id"] = str(props["_id"])
-        return Account(**props)
+        return AccountOutWithPassword(**props)
 
     def create(
-        self, info: AccountIn, hashed_password: str
+        self, info: AccountIn, hashed_password: str, roles=["patron"]
     ) -> AccountOutWithPassword:
         props = info.dict()
-        props["password"] = hashed_password
+        props["hashed_password"] = hashed_password
+        props["roles"] = roles
         try:
             self.collection.insert_one(props)
         except DuplicateKeyError:
