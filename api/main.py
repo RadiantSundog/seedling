@@ -1,14 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
-from routers import accounts
+from routers import accounts, gardens
 import os
-from queries.accounts import AccountIn
-import pymongo
+
 
 app = FastAPI()
 app.include_router(authenticator.router)
 app.include_router(accounts.router)
+app.include_router(gardens.router)
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -45,6 +46,8 @@ async def signup(user_data: AccountIn):
         "username": user_data.username,
         "password": user_data.password,
     }
-    users_collection.insert_one(user)
 
-    return{"message": "User created successfully"}
+
+@app.post("/api/account")
+async def delete_account():
+    pass
