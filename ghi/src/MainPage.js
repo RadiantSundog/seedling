@@ -20,7 +20,7 @@ function MainPage() {
           </div>
           <div className="col">
             <img
-              src="https://i.etsystatic.com/24366546/r/il/4d0991/3902292814/il_1588xN.3902292814_s2fn.jpg"
+              src="https://img.freepik.com/premium-vector/cute-plant-pot-kawaii-character_24877-6342.jpg"
               alt="math-pic"
               className="title-pic"
             />
