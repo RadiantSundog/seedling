@@ -20,7 +20,7 @@ function MainPage() {
           </div>
           <div className="col">
             <img
-              src="https://www.shutterstock.com/image-vector/cute-happy-funny-succulents-plantscactiflower-260nw-1833438970.jpg"
+              src="https://i.etsystatic.com/24366546/r/il/4d0991/3902292814/il_1588xN.3902292814_s2fn.jpg"
               alt="math-pic"
               className="title-pic"
             />
@@ -48,8 +48,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Problem 1</h5>
                 <p className="card-text home-card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Difficulty in managing watering schedules in a busy lifestyle.
                 </p>
               </div>
             </div>
@@ -60,8 +59,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Problem 2</h5>
                 <p className="card-text home-card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Finding and identifying plants for purchase or planting.
                 </p>
               </div>
             </div>
@@ -72,8 +70,8 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Problem 3</h5>
                 <p className="card-text home-card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content. Put more more more information here.
+                  Lack of knowledge regarding which plants are suitable for individual use cases.
+
                 </p>
               </div>
             </div>
@@ -90,8 +88,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Solution 1</h5>
                 <p className="card-text home-card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Implement a scheduling feature that allows users to set up automated watering schedules for their plants. This feature can be customizable to accommodate different plant types and watering requirements.
                 </p>
               </div>
             </div>
@@ -102,8 +99,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Solution 2</h5>
                 <p className="card-text home-card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Integrate a plant identification feature that enables users to take pictures of plants they come across or have in mind. The application can then provide information about the plant, including its name, care instructions, and where to purchase it.
                 </p>
               </div>
             </div>
@@ -114,8 +110,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Solution 3</h5>
                 <p className="card-text home-card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content. Put more more more information here.
+              Develop a personalized plant recommendation system based on user preferences, environmental conditions, and lifestyle factors. The system can suggest plants that are well-suited to the user's specific needs and provide relevant information about each recommended plant.
                 </p>
               </div>
             </div>
