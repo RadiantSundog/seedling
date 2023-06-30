@@ -19,11 +19,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MONGO_URL = os.environ["DATABASE_URL"]
-client = pymongo.MongoClient(MONGO_URL)
-db = client["db-seedling-db"]
-users_collection = db["accounts"]
-
 # @app.get("/api/launch-details")
 # def launch_details():
 #     return {
@@ -35,19 +30,3 @@ users_collection = db["accounts"]
 #             "min": "00",
 #         }
 #     }
-
-@app.post("/accounts/signup")
-async def signup(user_data: AccountIn):
-    if users_collection.find_one({"email": user_data.email}):
-        return {"message": "User already exists"}
-
-    user={
-        "email": user_data.email,
-        "username": user_data.username,
-        "password": user_data.password,
-    }
-
-
-@app.post("/api/account")
-async def delete_account():
-    pass
