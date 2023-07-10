@@ -28,14 +28,6 @@ def get_all(
     return repo.get_all()
 
 
-@router.delete("/gardens/{garden_id}", response_model=bool)
-def delete_garden(
-    garden_id: str,
-    repo: GardenRepository = Depends(),
-) -> bool:
-    return repo.delete(garden_id)
-
-
 @router.get("/gardens/{garden_id}", response_model=Optional[GardenOut])
 def get_one_garden(
     garden_id: str,
@@ -46,3 +38,11 @@ def get_one_garden(
     if vacation is None:
         response.status_code = 404
     return vacation
+
+
+@router.delete("/gardens/{garden_id}", response_model=bool)
+def delete_garden(
+    garden_id: str,
+    repo: GardenRepository = Depends(),
+) -> bool:
+    return repo.delete(garden_id)
