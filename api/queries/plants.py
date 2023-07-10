@@ -24,8 +24,7 @@ class PlantRepository:
 
     def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
         try:
-            result = self.plants_collection.insert_one
-            (plant.dict())
+            result = self.plants_collection.insert_one(plant.dict())
             inserted_id = str(result.inserted_id)
             return PlantOut(
                 id=inserted_id, name=plant.name, location=plant.location

@@ -22,7 +22,7 @@ def create_garden(
 
 
 @router.get("/gardens", response_model=Union[List[GardenOut], Error])
-def get_all(
+def get_all_gardens(
     repo: GardenRepository = Depends(),
 ):
     return repo.get_all()
@@ -34,10 +34,10 @@ def get_one_garden(
     response: Response,
     repo: GardenRepository = Depends(),
 ) -> GardenOut:
-    vacation = repo.get_one(garden_id)
-    if vacation is None:
+    garden = repo.get_one(garden_id)
+    if garden is None:
         response.status_code = 404
-    return vacation
+    return garden
 
 
 @router.delete("/gardens/{garden_id}", response_model=bool)
