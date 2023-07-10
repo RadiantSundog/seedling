@@ -6,7 +6,7 @@ Today, I worked on:
 ## 29 JUN 2023
 Today, I worked on:
 
-* queries/plants.py
+Backend/plants.py
 * routers/plants.py
 
 I started the backend for some of the plant stuff.
@@ -14,6 +14,9 @@ I started the backend for some of the plant stuff.
 ## 10 JUL 2023
 Today, I worked on:
 
+Backend
 * queries/plants.py
 * routers/plants.py
-
+* main.py
+Frontend
+* main.py
