@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from typing import List, Optional, Union
 from pymongo.collection import Collection
-from queries.database import db
+from .database import db
+from bson import ObjectId
 
 
 class Error(BaseModel):
@@ -24,7 +25,9 @@ class GardenRepository:
 
     def get_one(self, garden_id: str) -> Optional[GardenOut]:
         try:
-            garden = self.gardens_collection.find_one({"_id": garden_id})
+            garden = self.gardens_collection.find_one(
+                {"_id": ObjectId(garden_id)}
+            )
             if garden is None:
                 return None
             return GardenOut(
@@ -38,7 +41,9 @@ class GardenRepository:
 
     def delete(self, garden_id: str) -> bool:
         try:
-            result = self.gardens_collection.delete_one({"_id": garden_id})
+            result = self.gardens_collection.delete_one(
+                {"_id": ObjectId(garden_id)}
+            )
             return result.deleted_count == 1
         except Exception as e:
             error_message = str(e)

@@ -1,6 +1,8 @@
 import os
-from pymongo import MongoClient
+import pymongo
 
-client = MongoClient(os.environ["DATABASE_URL"])
+
+MONGO_URL = os.environ["DATABASE_URL"]
+client = pymongo.MongoClient(MONGO_URL)
 db = client.get_database("DB_NAME")
 gardens_collection = db.get_collection("gardens")

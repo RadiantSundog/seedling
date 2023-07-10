@@ -21,7 +21,7 @@ function Signup() {
   };
 
   const handleSubmit = async (event) => {
-    event.prevemtDefault();
+    event.preventDefault();
 
     const formData = {
       email: email,
