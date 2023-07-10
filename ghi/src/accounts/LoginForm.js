@@ -4,6 +4,7 @@ import { useLogInMutation } from "../app/authApi";
 import { eventTargetSelector as target, preventDefault } from "../app/utils";
 import { showModal, updateField, LOG_IN_MODAL } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
+import "./AccountsForm.css";
 
 function LogIn() {
   const dispatch = useDispatch();
@@ -75,6 +76,9 @@ function LogIn() {
               </div>
             </div>
           </form>
+        </div>
+        <div className="picture">
+          <img src="" alt="login-pic" />
         </div>
       </div>
     </div>

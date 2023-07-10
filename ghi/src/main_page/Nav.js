@@ -1,11 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./main-page.css";
+import { useLogOutMutation } from "../app/authApi";
+import { useEffect } from "react";
 
 function Nav() {
+  const isLoggedIn = true;
+  const navigate = useNavigate();
+  const [logout, { data }] = useLogOutMutation();
+  useEffect(() => {
+    if (data) {
+      navigate("/");
+    }
+  }, [data, navigate]);
+
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" href="#">
+        <NavLink className="navbar-brand" to="/">
           SEEDLING
         </NavLink>
         <button
@@ -34,6 +45,11 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/accounts/signup">
                 Sign Up
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" onClick={logout}>
+                Log Out
               </NavLink>
             </li>
             <li className="nav-item dropdown">

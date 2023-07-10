@@ -4,7 +4,7 @@ import MainPage from "./main_page/MainPage";
 import Nav from "./main_page/Nav";
 import SignUp from "./accounts/SignupForm";
 import LogIn from "./accounts/LoginForm";
-
+import JournalLists from "./journals/JournalLists";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +16,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<LogIn />} />
           </Route>
+          <Route path="journals" element={<JournalLists />} />
         </Routes>
       </div>
     </BrowserRouter>
