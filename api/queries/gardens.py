@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from typing import List, Optional, Union
-from pymongo.collection import Collection
 from .database import db
 from bson import ObjectId
 
@@ -21,7 +20,33 @@ class GardenOut(BaseModel):
 
 
 class GardenRepository:
-    gardens_collection: Collection = db.gardens
+    gardens_collection = db.gardens
+
+    def create(self, garden: GardenIn) -> Union[GardenOut, Error]:
+        try:
+            result = self.gardens_collection.insert_one(garden.dict())
+            inserted_id = str(result.inserted_id)
+            return GardenOut(
+                id=inserted_id, name=garden.name, location=garden.location
+            )
+        except Exception as e:
+            error_message = str(e)
+            return Error(message=error_message)
+
+    def get_all(self) -> Union[Error, List[GardenOut]]:
+        try:
+            gardens = [
+                GardenOut(
+                    id=str(garden["_id"]),
+                    name=garden["name"],
+                    location=garden["location"],
+                )
+                for garden in self.gardens_collection.find().sort("name")
+            ]
+            return gardens
+        except Exception as e:
+            error_message = str(e)
+            return Error(message=error_message)
 
     def get_one(self, garden_id: str) -> Optional[GardenOut]:
         try:
@@ -45,32 +70,6 @@ class GardenRepository:
                 {"_id": ObjectId(garden_id)}
             )
             return result.deleted_count == 1
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
-
-    def get_all(self) -> Union[Error, List[GardenOut]]:
-        try:
-            gardens = [
-                GardenOut(
-                    id=str(garden["_id"]),
-                    name=garden["name"],
-                    location=garden["location"],
-                )
-                for garden in self.gardens_collection.find().sort("name")
-            ]
-            return gardens
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
-
-    def create(self, garden: GardenIn) -> Union[GardenOut, Error]:
-        try:
-            result = self.gardens_collection.insert_one(garden.dict())
-            inserted_id = str(result.inserted_id)
-            return GardenOut(
-                id=inserted_id, name=garden.name, location=garden.location
-            )
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
