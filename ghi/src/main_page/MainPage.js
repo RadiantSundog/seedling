@@ -153,14 +153,14 @@ function MainPage() {
         </div>
       </div>
 
-      <div id="carouselExampleIndicators" class="carousel slide">
+      <div id="carouselExampleIndicators" className="carousel slide">
         <p className="direction-title">MEET OUR TEAM</p>
-        <div class="carousel-indicators">
+        <div className="carousel-indicators">
           <button
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide-to="0"
-            class="active"
+            className="active"
             aria-current="true"
             aria-label="Slide 1"
           ></button>
@@ -183,78 +183,77 @@ function MainPage() {
             aria-label="Slide 4"
           ></button>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
             <img
               src="https://st4.depositphotos.com/9998432/23741/v/600/depositphotos_237418842-stock-illustration-person-gray-photo-placeholder-woman.jpg"
-              class="d-block w-100 team-pic"
+              className="d-block team-pic mx-auto"
               alt="Linda"
             />
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <img
               src="https://st4.depositphotos.com/9998432/22597/v/450/depositphotos_225976914-stock-illustration-person-gray-photo-placeholder-man.jpg"
-              class="d-block w-100 team-pic"
+              className="d-block team-pic mx-auto"
               alt="Jonny"
             />
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <img
               src="https://st4.depositphotos.com/9998432/23741/v/600/depositphotos_237418842-stock-illustration-person-gray-photo-placeholder-woman.jpg"
-              class="d-block w-100 team-pic"
+              className="d-block team-pic mx-auto"
               alt="Krystin"
             />
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <img
               src="https://st4.depositphotos.com/9998432/22597/v/450/depositphotos_225976914-stock-illustration-person-gray-photo-placeholder-man.jpg"
-              class="d-block w-100 team-pic"
+              className="d-block team-pic mx-auto"
               alt="Alex"
             />
           </div>
         </div>
         <button
-          class="carousel-control-prev"
+          className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="prev"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
 
-      {/* <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="..." class="img-fluid rounded-start" alt="..." />
+      <div className="container text-left">
+        <div className="row row-cols-3">
+          <div className="col">About Us</div>
+          <div className="col">Contacts</div>
+          <div className="col">Useful Links</div>
+          <div className="col">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-body-secondary">
-                  Last updated 3 mins ago
-                </small>
-              </p>
-            </div>
-          </div>
+          <div className="col">Contacts</div>
+          <div className="col">Useful Links</div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

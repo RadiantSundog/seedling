@@ -11,8 +11,13 @@ a {
   color: #285430;
 }
 
+.nav-link:hover {
+  color: black;
+}
+
 .page-info {
   background-color: #f6ffde;
+  margin: 0px;
 }
 
 .page-title {
@@ -20,8 +25,12 @@ a {
   padding-bottom: 10px;
 }
 
+.title-pic {
+  margin-top: 100px;
+}
+
 .main-page-button {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 150px;
 }
 
@@ -115,6 +124,6 @@ a {
 }
 
 .team-pic {
-  height: 50px;
-  width: 50px;
+  height: 150px;
+  width: 150px;
 }
