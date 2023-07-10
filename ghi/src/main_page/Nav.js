@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./main-page.css";
 
 function Nav() {
   return (
@@ -19,7 +20,7 @@ function Nav() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav nav justify-content-center">
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" href="#">
                 Home
