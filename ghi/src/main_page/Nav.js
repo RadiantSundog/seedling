@@ -22,17 +22,17 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav nav justify-content-center">
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" href="#">
+              <NavLink className="nav-link active" aria-current="page" to="/">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" href="#">
+              <NavLink className="nav-link" to="/accounts/login">
                 Login
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" href="#">
+              <NavLink className="nav-link" to="/accounts/signup">
                 Sign Up
               </NavLink>
             </li>

@@ -2,6 +2,7 @@ from bson.objectid import ObjectId
 from pydantic import BaseModel
 from .client import Queries
 from pymongo.errors import DuplicateKeyError
+from pymongo import ASCENDING
 
 
 class PydanticObjectId(ObjectId):
@@ -55,14 +56,15 @@ class AccountQueries(Queries):
         return AccountOutWithPassword(**props)
 
     def create(
-        self, info: AccountIn, hashed_password: str, roles=["patron"]
+        self, info: AccountIn, hashed_password: str
     ) -> AccountOutWithPassword:
         props = info.dict()
         props["hashed_password"] = hashed_password
-        props["roles"] = roles
+        del props["password"]
         try:
             self.collection.insert_one(props)
         except DuplicateKeyError:
             raise DuplicateAccountError()
         props["id"] = str(props["_id"])
-        return Account(**props)
+        del props["_id"]
+        return AccountOutWithPassword(**props)

@@ -14,11 +14,11 @@ export const authApiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Account", "Books", "Token"],
+  tagTypes: ["Account", "Garden", "Plant", "Token"],
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (data) => ({
-        url: "/api/accounts",
+        url: "/queries/accounts",
         method: "post",
         body: data,
         credentials: "include",
@@ -41,8 +41,9 @@ export const authApiSlice = createApi({
           formData = new FormData(info);
         } else {
           formData = new FormData();
-          formData.append("username", info.email);
+          formData.append("username", info.username);
           formData.append("password", info.password);
+          formData.append("email", info.email);
         }
         return {
           url: "/token",
