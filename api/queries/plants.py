@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional, Union
-from pymongo.collection import Collection
 from queries.database import db
+from bson import ObjectId
 
 
 class Error(BaseModel):
@@ -20,26 +20,16 @@ class PlantOut(BaseModel):
 
 
 class PlantRepository:
-    plants_collection: Collection = db.plants
+    plants_collection = db.plants
 
-    def get_one(self, plant_id: str) -> Optional[PlantOut]:
+    def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
         try:
-            plant = self.plants_collection.find_one({"_id": plant_id})
-            if plant is None:
-                return None
+            result = self.plants_collection.insert_one
+            (plant.dict())
+            inserted_id = str(result.inserted_id)
             return PlantOut(
-                id=str(plant["_id"]),
-                name=plant["name"],
-                location=plant["location"],
+                id=inserted_id, name=plant.name, location=plant.location
             )
-        except Exception as e:
-            print(f"Error retrieving plant: {e}")
-            return None
-
-    def delete(self, plant_id: str) -> bool:
-        try:
-            result = self.plants_collection.delete_one({"_id": plant_id})
-            return result.deleted_count == 1
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
@@ -59,13 +49,28 @@ class PlantRepository:
             error_message = str(e)
             return Error(message=error_message)
 
-    def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
+    def get_one(self, plant_id: str) -> Optional[PlantOut]:
         try:
-            result = self.plants_collection.insert_one(plant.dict())
-            inserted_id = str(result.inserted_id)
-            return PlantOut(
-                id=inserted_id, name=plant.name, location=plant.location
+            plant = self.plants_collection.find_one(
+                {"_id": ObjectId(plant_id)}
             )
+            if plant is None:
+                return None
+            return PlantOut(
+                id=str(plant["_id"]),
+                name=plant["name"],
+                location=plant["location"],
+            )
+        except Exception as e:
+            print(f"Error retrieving plant: {e}")
+            return None
+
+    def delete(self, plant_id: str) -> bool:
+        try:
+            result = self.plants_collection.delete_one(
+                {"_id": ObjectId(plant_id)}
+            )
+            return result.deleted_count == 1
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
