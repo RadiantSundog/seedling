@@ -5,6 +5,9 @@ import Nav from "./main_page/Nav";
 import SignUp from "./accounts/SignupForm";
 import LogIn from "./accounts/LoginForm";
 import JournalLists from "./journals/JournalLists";
+import JournalDetails from "./journals/JournalDetails";
+import JournalForm from "./journals/JournalForm";
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +19,11 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<LogIn />} />
           </Route>
-          <Route path="journals" element={<JournalLists />} />
+          <Route path="journals">
+            <Route path="" element={<JournalLists />} />
+            <Route path=":journal_id" element={<JournalDetails />} />
+            <Route path="create" element={<JournalForm />} />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>

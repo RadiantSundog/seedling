@@ -16,4 +16,6 @@ Today, I worked on:
 
 July 10, 2023
 Today, I worked on:
-Frontend Sign Up form working successfully
+
+- Frontend Sign Up form working successfully
+- Frontend Garden Journal lists working successfully

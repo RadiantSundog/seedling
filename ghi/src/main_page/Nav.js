@@ -99,7 +99,11 @@ function Nav() {
               </ul>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" href="#">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="journals"
+              >
                 Garden Journals
               </NavLink>
             </li>
