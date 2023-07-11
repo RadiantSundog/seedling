@@ -78,6 +78,9 @@ export const authApiSlice = createApi({
       }),
       providesTags: ["Token"],
     }),
+    getJournals: builder.query({
+      query: () => "/journals",
+    }),
   }),
 });
 
@@ -86,4 +89,5 @@ export const {
   useLogInMutation,
   useLogOutMutation,
   useSignUpMutation,
+  useGetJournalsQuery,
 } = authApiSlice;
