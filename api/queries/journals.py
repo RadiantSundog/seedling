@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List, Optional, Union
 from .database import db
 from bson import ObjectId
@@ -7,14 +7,14 @@ from .gardens import Error
 
 
 class JournalIn(BaseModel):
-    created_on: datetime = Field(default_factory=datetime.utcnow)
+    created_on: datetime
     title: str
     description: str
 
 
 class JournalOut(BaseModel):
     id: str
-    created_on: Optional[datetime] = Field(default_factory=datetime.utcnow)
+    created_on: datetime
     title: str
     description: str
 

@@ -15,7 +15,6 @@ journal_repo = JournalRepository()
 @router.post("/journals", response_model=Union[JournalOut, Error])
 def create_journal(
     journal: JournalIn,
-    response: Response,
     repo: JournalRepository = Depends(),
 ):
     return repo.create(journal)
