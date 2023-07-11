@@ -1,5 +1,6 @@
 import ErrorNotification from "../ErrorNotification";
 import { useGetJournalsQuery } from "../app/authApi";
+import { Link } from "react-router-dom";
 
 function JournalLists() {
   const { data, error, isLoading } = useGetJournalsQuery();
@@ -9,23 +10,35 @@ function JournalLists() {
     return <progress className="progress is-primary" max="100"></progress>;
   }
 
+  const sortedData = data.slice().sort((a, b) => {
+    return new Date(b.created_on) - new Date(a.created_on);
+  });
+
   return (
     <div className="column is-centered">
       <div className="column is-narrow">
         <ErrorNotification error={error} />
         <h1>Garden Journals</h1>
-        <div className="card">
-          <h5 className="card-header">Journals</h5>
-          {data.map((journal) => (
-            <div className="card-body" key={journal.id}>
+        <Link to="create" className="btn btn-primary">
+          Create Journals
+        </Link>
+        {sortedData.map((journal) => (
+          <div className="card" key={journal.id}>
+            <h5 className="card-header">Journals</h5>
+            <div className="card-body">
               <h5 className="card-title">{journal.title}</h5>
               <p className="card-text">{journal.description}</p>
-              <a href="#" className="btn btn-primary">
-                Journals Detial
-              </a>
+              <Link to={`/journals/${journal.id}`} className="btn btn-primary">
+                Journal Detail
+              </Link>
             </div>
-          ))}
-        </div>
+            <div className="card-footer text-body-secondary">
+              <p className="card-text">
+                {new Date(journal.created_on).toLocaleDateString()}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

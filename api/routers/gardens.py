@@ -15,7 +15,6 @@ garden_repo = GardenRepository()
 @router.post("/gardens", response_model=Union[GardenOut, Error])
 def create_garden(
     garden: GardenIn,
-    response: Response,
     repo: GardenRepository = Depends(),
 ):
     return repo.create(garden)

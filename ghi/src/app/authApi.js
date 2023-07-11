@@ -14,7 +14,7 @@ export const authApiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Account", "Garden", "Plant", "Token"],
+  tagTypes: ["Account", "Garden", "Plant", "Token", "Journals"],
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (data) => ({
@@ -80,6 +80,22 @@ export const authApiSlice = createApi({
     }),
     getJournals: builder.query({
       query: () => "/journals",
+      providesTags: ["Journals"],
+    }),
+    createJournals: builder.mutation({
+      query: (data) => ({
+        url: "/journals",
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["Journals"],
+    }),
+    deleteJournal: builder.mutation({
+      query: (journalId) => ({
+        url: `/journals/${journalId}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["Journals"],
     }),
   }),
 });
@@ -90,4 +106,6 @@ export const {
   useLogOutMutation,
   useSignUpMutation,
   useGetJournalsQuery,
+  useCreateJournalsMutation,
+  useDeleteJournalMutation,
 } = authApiSlice;
