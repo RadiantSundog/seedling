@@ -80,13 +80,20 @@ export const authApiSlice = createApi({
     }),
     getJournals: builder.query({
       query: () => "/journals",
-      providesTags: ["journals"],
+      providesTags: ["Journals"],
     }),
     createJournals: builder.mutation({
       query: (data) => ({
         url: "/journals",
         body: data,
         method: "post",
+      }),
+      invalidatesTags: ["Journals"],
+    }),
+    deleteJournal: builder.mutation({
+      query: (journalId) => ({
+        url: `/journals/${journalId}`,
+        method: "delete",
       }),
       invalidatesTags: ["Journals"],
     }),
@@ -100,4 +107,5 @@ export const {
   useSignUpMutation,
   useGetJournalsQuery,
   useCreateJournalsMutation,
+  useDeleteJournalMutation,
 } = authApiSlice;

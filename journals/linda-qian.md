@@ -19,3 +19,9 @@ Today, I worked on:
 
 - Frontend Sign Up form working successfully
 - Frontend Garden Journal lists working successfully
+
+July 11, 2023
+Today, I worked on:
+
+- Frontend Garden Journal detail page
+- Frontend Garden Journal delete
