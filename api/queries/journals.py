@@ -68,8 +68,8 @@ class JournalRepository:
                 description=journal["description"],
             )
         except Exception as e:
-            print(f"Error retrieving garden: {e}")
-            return None
+            error_message = str(e)
+            return Error(message=error_message)
 
     def delete(self, journal_id: str) -> bool:
         try:

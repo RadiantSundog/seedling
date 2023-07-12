@@ -28,13 +28,13 @@ class PlantRepository:
                 {"_id": ObjectId(plant.garden_id)}
             )
             if garden:
-                garden_out = GardenOut(
+                garden_info = GardenOut(
                     id=str(garden["_id"]),
                     name=garden["name"],
                     location=garden["location"],
                 )
                 return PlantOut(
-                    id=inserted_id, name=plant.name, garden=garden_out
+                    id=inserted_id, name=plant.name, garden=garden_info
                 )
             else:
                 return Error(message="Invalid Garden ID")
@@ -51,17 +51,17 @@ class PlantRepository:
                     {"_id": ObjectId(garden_id)}
                 )
                 if garden:
-                    garden_out = GardenOut(
+                    garden_info = GardenOut(
                         id=str(garden["_id"]),
                         name=garden["name"],
                         location=garden["location"],
                     )
-                    plant_out = PlantOut(
+                    plant_info = PlantOut(
                         id=str(plant["_id"]),
                         name=plant["name"],
-                        garden=garden_out,
+                        garden=garden_info,
                     )
-                    plants.append(plant_out)
+                    plants.append(plant_info)
             return plants
         except Exception as e:
             error_message = str(e)
@@ -80,17 +80,17 @@ class PlantRepository:
             )
             if garden is None:
                 return None
-            garden_out = GardenOut(
+            garden_info = GardenOut(
                 id=str(garden["_id"]),
                 name=garden["name"],
                 location=garden["location"],
             )
             return PlantOut(
-                id=str(plant["_id"]), name=plant["name"], garden=garden_out
+                id=str(plant["_id"]), name=plant["name"], garden=garden_info
             )
         except Exception as e:
-            print(f"Error retrieving plant: {e}")
-            return None
+            error_message = str(e)
+            return Error(message=error_message)
 
     def delete(self, plant_id: str) -> bool:
         try:
