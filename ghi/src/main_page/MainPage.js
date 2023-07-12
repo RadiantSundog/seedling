@@ -258,7 +258,7 @@ function MainPage() {
         <a href="https://en.wikipedia.org/wiki/List_of_professional_gardeners" target="_blank" rel="noopener noreferrer">List of professional gardeners</a><br></br>
         <a href="https://en.wikipedia.org/wiki/Master_gardener_program" target="_blank" rel="noopener noreferrer">Master gardener program</a><br></br>
         <a href="https://en.wikipedia.org/wiki/No-dig_gardening" target="_blank" rel="noopener noreferrer">No-dig gardening</a><br></br>
-    </div>
+k    </div>
   </div>
 </div>
     </div>
