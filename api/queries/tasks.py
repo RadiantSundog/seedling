@@ -59,8 +59,8 @@ class TasksRepository:
                 due_date=task["due_date"],
             )
         except Exception as e:
-            print(f"Error retrieving task: {e}")
-            return None
+            error_message = str(e)
+            return Error(message=error_message)
 
     def delete(self, task_id: str) -> bool:
         try:

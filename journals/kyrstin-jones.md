@@ -46,3 +46,9 @@ I completed all CRUD operations for plant care schedule.
 I made some small changes to the code for journals.
 I researched and made note of our API choices for implementation later.
 I also researched how we will implement authentication on the backend and will start tomorrow.
+
+## July 11, 2023
+Today, I worked on:
+-queries/plants.py
+
+I updated the code so you can assign a plant to a specific garden by id.

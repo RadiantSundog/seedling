@@ -21,6 +21,7 @@ class GardenOut(BaseModel):
 
 class GardenRepository:
     gardens_collection = db.gardens
+    plants_collection = db.plants
 
     def create(self, garden: GardenIn) -> Union[GardenOut, Error]:
         try:
@@ -61,8 +62,8 @@ class GardenRepository:
                 location=garden["location"],
             )
         except Exception as e:
-            print(f"Error retrieving garden: {e}")
-            return None
+            error_message = str(e)
+            return Error(message=error_message)
 
     def delete(self, garden_id: str) -> bool:
         try:
