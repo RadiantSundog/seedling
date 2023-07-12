@@ -2,47 +2,66 @@ from pydantic import BaseModel
 from typing import List, Optional, Union
 from queries.database import db
 from bson import ObjectId
-
-
-class Error(BaseModel):
-    message: str
+from .gardens import GardenOut, Error
 
 
 class PlantIn(BaseModel):
     name: str
-    location: str
+    garden_id: str
 
 
 class PlantOut(BaseModel):
     id: str
     name: str
-    location: str
+    garden: GardenOut
 
 
 class PlantRepository:
     plants_collection = db.plants
+    gardens_collection = db.gardens
 
     def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
         try:
             result = self.plants_collection.insert_one(plant.dict())
             inserted_id = str(result.inserted_id)
-            return PlantOut(
-                id=inserted_id, name=plant.name, location=plant.location
+            garden = self.gardens_collection.find_one(
+                {"_id": ObjectId(plant.garden_id)}
             )
+            if garden:
+                garden_out = GardenOut(
+                    id=str(garden["_id"]),
+                    name=garden["name"],
+                    location=garden["location"],
+                )
+                return PlantOut(
+                    id=inserted_id, name=plant.name, garden=garden_out
+                )
+            else:
+                return Error(message="Invalid Garden ID")
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
     def get_all(self) -> Union[Error, List[PlantOut]]:
         try:
-            plants = [
-                PlantOut(
-                    id=str(plant["_id"]),
-                    name=plant["name"],
-                    location=plant["location"],
+            plants = []
+            for plant in self.plants_collection.find().sort("name"):
+                garden_id = plant["garden_id"]
+                garden = self.gardens_collection.find_one(
+                    {"_id": ObjectId(garden_id)}
                 )
-                for plant in self.plants_collection.find().sort("name")
-            ]
+                if garden:
+                    garden_out = GardenOut(
+                        id=str(garden["_id"]),
+                        name=garden["name"],
+                        location=garden["location"],
+                    )
+                    plant_out = PlantOut(
+                        id=str(plant["_id"]),
+                        name=plant["name"],
+                        garden=garden_out,
+                    )
+                    plants.append(plant_out)
             return plants
         except Exception as e:
             error_message = str(e)
@@ -55,10 +74,19 @@ class PlantRepository:
             )
             if plant is None:
                 return None
+            garden_id = plant["garden_id"]
+            garden = self.gardens_collection.find_one(
+                {"_id": ObjectId(garden_id)}
+            )
+            if garden is None:
+                return None
+            garden_out = GardenOut(
+                id=str(garden["_id"]),
+                name=garden["name"],
+                location=garden["location"],
+            )
             return PlantOut(
-                id=str(plant["_id"]),
-                name=plant["name"],
-                location=plant["location"],
+                id=str(plant["_id"]), name=plant["name"], garden=garden_out
             )
         except Exception as e:
             print(f"Error retrieving plant: {e}")
