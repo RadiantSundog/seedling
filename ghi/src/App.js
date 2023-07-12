@@ -28,6 +28,11 @@ function App() {
             <Route path=":journal_id" element={<JournalDetails />} />
             <Route path="create" element={<JournalForm />} />
           </Route>
+          <Route path="gardens">
+            <Route path="" element={<GardenLists />} />
+            <Route path=":garden_id" element={<GardenDetails />} />
+            <Route path="create" element={<GardenForm />} />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
