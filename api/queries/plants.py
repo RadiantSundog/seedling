@@ -22,8 +22,6 @@ class PlantRepository:
 
     def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
         try:
-            result = self.plants_collection.insert_one(plant.dict())
-            inserted_id = str(result.inserted_id)
             garden = self.gardens_collection.find_one(
                 {"_id": ObjectId(plant.garden_id)}
             )
@@ -33,11 +31,15 @@ class PlantRepository:
                     name=garden["name"],
                     location=garden["location"],
                 )
+                result = self.plants_collection.insert_one(
+                    {**plant.dict(), "garden_id": garden_info.id}
+                )
+                inserted_id = str(result.inserted_id)
                 return PlantOut(
                     id=inserted_id, name=plant.name, garden=garden_info
                 )
             else:
-                return Error(message="Invalid Garden ID")
+                return Error(message="Invalid Garden Name")
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
