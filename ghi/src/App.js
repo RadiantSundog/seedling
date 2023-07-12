@@ -7,6 +7,9 @@ import LogIn from "./accounts/LoginForm";
 import JournalLists from "./journals/JournalLists";
 import JournalDetails from "./journals/JournalDetails";
 import JournalForm from "./journals/JournalForm";
+import GardenLists from "./gardens/GardenLists";
+import GardenDetails from "./gardens/GardenDetails";
+import GardenForm from "./gardens/GardenForm";
 
 function App() {
   return (
@@ -23,6 +26,11 @@ function App() {
             <Route path="" element={<JournalLists />} />
             <Route path=":journal_id" element={<JournalDetails />} />
             <Route path="create" element={<JournalForm />} />
+          </Route>
+          <Route path="gardens">
+            <Route path="" element={<GardenLists />} />
+            <Route path=":garden_id" element={<GardenDetails />} />
+            <Route path="create" element={<GardenForm />} />
           </Route>
         </Routes>
       </div>

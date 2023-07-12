@@ -7,7 +7,6 @@ const JournalDetails = () => {
   const { journal_id } = useParams();
 
   const { data: journals } = useGetJournalsQuery();
-  console.log(journals);
   const journal = useSelector((state) =>
     journals ? journals.find((journal) => journal.id === journal_id) : null
   );

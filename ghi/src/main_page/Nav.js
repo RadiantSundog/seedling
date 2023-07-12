@@ -64,12 +64,12 @@ function Nav() {
               </NavLink>
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink className="dropdown-item" href="#">
+                  <NavLink className="dropdown-item" to="gardens">
                     My Gardens
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" href="#">
+                  <NavLink className="dropdown-item" to="gardens/create">
                     Start a Garden
                   </NavLink>
                 </li>
