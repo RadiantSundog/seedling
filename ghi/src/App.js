@@ -19,30 +19,28 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="accounts">
-            <Route path="signup" element={<SignUp />} />
-            <Route path="login" element={<LogIn />} />
-          </Route>
-          <Route path="journals">
-            <Route path="" element={<JournalLists />} />
-            <Route path=":journal_id" element={<JournalDetails />} />
-            <Route path="create" element={<JournalForm />} />
-          </Route>
-          <Route path="gardens">
-            <Route path="" element={<GardenLists />} />
-            <Route path=":garden_id" element={<GardenDetails />} />
-            <Route path="create" element={<GardenForm />} />
-          </Route>
-          <Route path="plants">
-            <Route path="" element={<PlantLists />} />
-            <Route path=":plant_id" element={<PlantDetails />} />
-            <Route path="create" element={<PlantForm />} />
-          </Route>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="accounts">
+          <Route path="signup" element={<SignUp />} />
+          <Route path="login" element={<LogIn />} />
+        </Route>
+        <Route path="journals">
+          <Route path="" element={<JournalLists />} />
+          <Route path=":journal_id" element={<JournalDetails />} />
+          <Route path="create" element={<JournalForm />} />
+        </Route>
+        <Route path="gardens">
+          <Route path="" element={<GardenLists />} />
+          <Route path=":garden_id" element={<GardenDetails />} />
+          <Route path="create" element={<GardenForm />} />
+        </Route>
+        <Route path="plants">
+          <Route path="" element={<PlantLists />} />
+          <Route path=":plant_id" element={<PlantDetails />} />
+          <Route path="create" element={<PlantForm />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
