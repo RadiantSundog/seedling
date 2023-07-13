@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 from typing import List, Optional, Union
 from queries.database import db
 from bson import ObjectId
@@ -7,12 +7,14 @@ from .gardens import GardenOut, Error
 
 class PlantIn(BaseModel):
     name: str
+    plant_picture: HttpUrl
     garden_id: str
 
 
 class PlantOut(BaseModel):
     id: str
     name: str
+    plant_picture: HttpUrl
     garden: GardenOut
 
 
@@ -36,7 +38,10 @@ class PlantRepository:
                 )
                 inserted_id = str(result.inserted_id)
                 return PlantOut(
-                    id=inserted_id, name=plant.name, garden=garden_info
+                    id=inserted_id,
+                    name=plant.name,
+                    garden=garden_info,
+                    plant_picture=plant.plant_picture,
                 )
             else:
                 return Error(message="Invalid Garden Name")
@@ -62,6 +67,7 @@ class PlantRepository:
                         id=str(plant["_id"]),
                         name=plant["name"],
                         garden=garden_info,
+                        plant_picture=plant["plant_picture"],
                     )
                     plants.append(plant_info)
             return plants
@@ -88,7 +94,10 @@ class PlantRepository:
                 location=garden["location"],
             )
             return PlantOut(
-                id=str(plant["_id"]), name=plant["name"], garden=garden_info
+                id=str(plant["_id"]),
+                name=plant["name"],
+                garden=garden_info,
+                plant_picture=plant["plant_picture"],
             )
         except Exception as e:
             error_message = str(e)
