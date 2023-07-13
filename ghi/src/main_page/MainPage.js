@@ -9,11 +9,17 @@ function MainPage() {
           <div className="col">
             <h1 className="page-title">Welcome to Seedling</h1>
             <h4 className="page-description">
-         Whether you're tending to a small balcony garden or transforming acres of land, Seedling is your go-to resource for all things gardening, planting, and planning. Join our community of passionate gardeners and embark on a rewarding journey of cultivating beauty and tranquility in your indoor or outdoor spaces.
+              Whether you're tending to a small balcony garden or transforming
+              acres of land, Seedling is your go-to resource for all things
+              gardening, planting, and planning. Join our community of
+              passionate gardeners and embark on a rewarding journey of
+              cultivating beauty and tranquility in your indoor or outdoor
+              spaces.
             </h4>
-          <h6>
-            Start exploring today and let your gardening aspirations bloom with GreenThumb Gardening!
-          </h6>
+            <h6>
+              Start exploring today and let your gardening aspirations bloom
+              with GreenThumb Gardening!
+            </h6>
           </div>
           <div className="col">
             <img
@@ -23,7 +29,6 @@ function MainPage() {
             />
           </div>
         </div>
-
 
         <div className="row main-page-button">
           <div className="col-6">
@@ -49,7 +54,9 @@ function MainPage() {
               />
               <div className="card-body">
                 <h5 className="card-title home-card-title">Busy Schedule?</h5>
-                <p className="card-text home-card-text">Forgetting to water plants happens. <br></br>Over watering them happens, too.
+                <p className="card-text home-card-text">
+                  Forgetting to water plants happens. <br></br>Over watering
+                  them happens, too.
                 </p>
               </div>
             </div>
@@ -64,7 +71,8 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Shady Apartment?</h5>
                 <p className="card-text home-card-text">
-                  Some plants require direct sunlight and others little to no sunlight. What do your plants need?
+                  Some plants require direct sunlight and others little to no
+                  sunlight. What do your plants need?
                 </p>
               </div>
             </div>
@@ -79,7 +87,9 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Plant Newbie?</h5>
                 <p className="card-text home-card-text">
-                  Maybe it's time to stop asking your co-worker or that next door neighbor about what kind of plants you have. Let's do some research.
+                  Maybe it's time to stop asking your co-worker or that next
+                  door neighbor about what kind of plants you have. Let's do
+                  some research.
                 </p>
               </div>
             </div>
@@ -137,8 +147,8 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Solution 3</h5>
                 <p className="card-text home-card-text">
-                  Learn which plants are best suitable for
-                  your lifestyle and grow your botanical knowledge.
+                  Learn which plants are best suitable for your lifestyle and
+                  grow your botanical knowledge.
                 </p>
               </div>
             </div>
@@ -232,36 +242,130 @@ function MainPage() {
         </button>
       </div>
 
-<div className="container text-left">
-  <div className="row row-cols-3">
-    <div className="col text-center direction-subtitle">About Us</div>
-    <div className="col text-center direction-subtitle">Contacts</div>
-    <div className="col text-center direction-subtitle">Useful Links</div>
-    <div className="col text-center">
-      At Seedling, our mission is to empower and inspire plant enthusiasts like you to create thriving gardens that bring joy, beauty, and a connection to nature. We believe that with the right knowledge and tools, anyone can develop their gardening skills and create stunning landscapes that flourish in any environment.
-    </div>
-    <div className="col text-center">
-      Telephone: 1(800) SEE-DLIN <br></br>
-      Email: <a href="mailto:info@seedling.com">info@seedling.com</a>
-    </div>
-    <div className="col text-center">
-        <a href="https://en.wikipedia.org/wiki/Arboretum" target="_blank" rel="noopener noreferrer">Arboretum</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Bonsai" target="_blank" rel="noopener noreferrer">Bonsai</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Cultigen" target="_blank" rel="noopener noreferrer">Cultigen</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Eyecatchers" target="_blank" rel="noopener noreferrer">Eyecatchers</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Garden_writing" target="_blank" rel="noopener noreferrer">Garden writing</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Grow_bag" target="_blank" rel="noopener noreferrer">Growbag</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Introduced_species" target="_blank" rel="noopener noreferrer">Introduced species</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Impact_gardening" target="_blank" rel="noopener noreferrer">Impact gardening</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/List_of_gardening_topics" target="_blank" rel="noopener noreferrer">List of gardening topics</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/List_of_horticulture_and_gardening_books" target="_blank" rel="noopener noreferrer">List of horticulture and gardening books</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/List_of_professional_gardeners" target="_blank" rel="noopener noreferrer">List of professional gardeners</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/Master_gardener_program" target="_blank" rel="noopener noreferrer">Master gardener program</a><br></br>
-        <a href="https://en.wikipedia.org/wiki/No-dig_gardening" target="_blank" rel="noopener noreferrer">No-dig gardening</a><br></br>
-    <br></br>
+      <div className="container text-left">
+        <div className="row row-cols-3">
+          <div className="col text-center direction-subtitle">About Us</div>
+          <div className="col text-center direction-subtitle">Contacts</div>
+          <div className="col text-center direction-subtitle">Useful Links</div>
+          <div className="col text-center">
+            At Seedling, our mission is to empower and inspire plant enthusiasts
+            like you to create thriving gardens that bring joy, beauty, and a
+            connection to nature. We believe that with the right knowledge and
+            tools, anyone can develop their gardening skills and create stunning
+            landscapes that flourish in any environment.
+          </div>
+          <div className="col text-center">
+            Telephone: 1(800) SEE-DLIN <br></br>
+            Email: <a href="mailto:info@seedling.com">info@seedling.com</a>
+          </div>
+          <div className="col text-center">
+            <a
+              href="https://en.wikipedia.org/wiki/Arboretum"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Arboretum
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Bonsai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bonsai
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Cultigen"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cultigen
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Eyecatchers"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Eyecatchers
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Garden_writing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Garden writing
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Grow_bag"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Growbag
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Introduced_species"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Introduced species
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Impact_gardening"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Impact gardening
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/List_of_gardening_topics"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              List of gardening topics
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/List_of_horticulture_and_gardening_books"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              List of horticulture and gardening books
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/List_of_professional_gardeners"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              List of professional gardeners
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/Master_gardener_program"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Master gardener program
+            </a>
+            <br></br>
+            <a
+              href="https://en.wikipedia.org/wiki/No-dig_gardening"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              No-dig gardening
+            </a>
+            <br></br>k{" "}
+          </div>
+        </div>
       </div>
-  </div>
-</div>
     </div>
   );
 }

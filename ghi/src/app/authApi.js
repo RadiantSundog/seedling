@@ -14,7 +14,7 @@ export const authApiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Account", "Garden", "Plant", "Token", "Journals"],
+  tagTypes: ["Account", "Garden", "Plant", "Token", "Journals", "Task"],
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (data) => ({
@@ -116,6 +116,44 @@ export const authApiSlice = createApi({
       }),
       invalidatesTags: ["Garden"],
     }),
+    getPlants: builder.query({
+      query: () => "/plants",
+      providesTags: ["Plant"],
+    }),
+    createPlants: builder.mutation({
+      query: (data) => ({
+        url: "/plants",
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["Plant"],
+    }),
+    deletePlant: builder.mutation({
+      query: (plantId) => ({
+        url: `/plants/${plantId}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["Plant"],
+    }),
+    getTasks: builder.query({
+      query: () => "/tasks",
+      providesTags: ["Task"],
+    }),
+    createTasks: builder.mutation({
+      query: (data) => ({
+        url: "/tasks",
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["Task"],
+    }),
+    deleteTask: builder.mutation({
+      query: (taskId) => ({
+        url: `/tasks/${taskId}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["Task"],
+    }),
   }),
 });
 
@@ -130,4 +168,10 @@ export const {
   useGetGardensQuery,
   useCreateGardensMutation,
   useDeleteGardenMutation,
+  useGetPlantsQuery,
+  useCreatePlantsMutation,
+  useDeletePlantMutation,
+  useGetTasksQuery,
+  useCreateTasksMutation,
+  useDeleteTaskMutation,
 } = authApiSlice;

@@ -22,45 +22,36 @@ class TasksRepository:
 
     def create(self, task: TaskIn) -> Union[TaskOut, Error]:
         try:
-            result = self.tasks_collection.insert_one(task.dict())
-            inserted_id = str(result.inserted_id)
-            return TaskOut(
-                id=inserted_id,
-                description=task.description,
-                due_date=task.due_date,
-            )
+            props = task.dict()
+            self.tasks_collection.insert_one(props)
+            props["id"] = str(props["_id"])
+            return TaskOut(**props)
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
     def get_all(self) -> Union[Error, List[TaskOut]]:
         try:
-            tasks = [
-                TaskOut(
-                    id=str(task["_id"]),
-                    description=task["description"],
-                    due_date=task["due_date"],
-                )
-                for task in self.tasks_collection.find().sort("due_date")
-            ]
-            return tasks
+            task = self.tasks_collection.aggregate(
+                [
+                    {"$match": {"_id": {"$exists": True}}},
+                    {"$sort": {"due_date": 1}},
+                ]
+            )
+            tasksPropsList = list(task)
+            for tasksProps in tasksPropsList:
+                tasksProps["id"] = str(tasksProps["_id"])
+            return [TaskOut(**task) for task in tasksPropsList]
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
-    def get_one(self, task_id: str) -> Optional[TaskOut]:
-        try:
-            task = self.tasks_collection.find_one({"_id": ObjectId(task_id)})
-            if task is None:
-                return None
-            return TaskOut(
-                id=str(task["_id"]),
-                description=task["description"],
-                due_date=task["due_date"],
-            )
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
+    def get_one(self, task_id: str) -> TaskOut:
+        props = self.tasks_collection.find_one({"_id": ObjectId(task_id)})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return TaskOut(**props)
 
     def delete(self, task_id: str) -> bool:
         try:

@@ -4,10 +4,12 @@ import { useLogInMutation } from "../app/authApi";
 import { eventTargetSelector as target, preventDefault } from "../app/utils";
 import { showModal, updateField, LOG_IN_MODAL } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
+import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
 
 function LogIn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { show, username, password } = useSelector((state) => state.account);
   const modalClass = `my-modal ${show === LOG_IN_MODAL ? "is-active" : ""}`;
   const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
@@ -16,6 +18,17 @@ function LogIn() {
       dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch]
   );
+
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   const response = await logIn({ username, password });
+  //   if (response.error) {
+  //     console.log(response.error);
+  //   } else {
+  //     console.log(response.data);
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <div className={modalClass} key="login-modal">

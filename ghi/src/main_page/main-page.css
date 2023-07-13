@@ -1,9 +1,9 @@
 .navbar {
-  background-color: #f6ffde;
+  background-color: #f0ebce;
 }
 
 a {
-  color: #285430;
+  color: #4e6c50;
   font-weight: bold;
 }
 
@@ -12,10 +12,17 @@ a {
 }
 
 .nav-link:hover {
-  color: black;
+  color: #000000;
+}
+
+.main-page {
+  background-color: #395144;
+  margin: 0px;
+  padding: 0px;
 }
 
 .page-info {
+  background-color: #f0ebce;
   margin: 0px;
 }
 
@@ -44,17 +51,17 @@ a {
 
 .home-button:hover {
   background: linear-gradient(45deg, #4e6c50, #395144);
-  color: #f7eddb;
+  color: #f0ebce;
 }
 
 .button-look {
   font-family: "Nunito", sans-serif;
-  font-size: 15;
+  font-size: 15px;
   padding: 10px;
   border-radius: 12px;
-  background-color: #d6e5fa;
+  background-color: #f0ebce;
   text-decoration: none;
-  color: #f7eddb;
+  color: #f0ebce;
   font-weight: bold;
   margin-right: 50px;
   float: left;
@@ -62,7 +69,7 @@ a {
 }
 
 .button-look:hover {
-  color: #f7eddb;
+  color: #f0ebce;
 }
 
 .direction-title {

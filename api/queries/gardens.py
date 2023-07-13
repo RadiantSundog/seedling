@@ -25,45 +25,36 @@ class GardenRepository:
 
     def create(self, garden: GardenIn) -> Union[GardenOut, Error]:
         try:
-            result = self.gardens_collection.insert_one(garden.dict())
-            inserted_id = str(result.inserted_id)
-            return GardenOut(
-                id=inserted_id, name=garden.name, location=garden.location
-            )
+            props = garden.dict()
+            self.gardens_collection.insert_one(props)
+            props["id"] = str(props["_id"])
+            return GardenOut(**props)
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
     def get_all(self) -> Union[Error, List[GardenOut]]:
         try:
-            gardens = [
-                GardenOut(
-                    id=str(garden["_id"]),
-                    name=garden["name"],
-                    location=garden["location"],
-                )
-                for garden in self.gardens_collection.find().sort("name")
-            ]
-            return gardens
+            garden = self.gardens_collection.aggregate(
+                [
+                    {"$match": {"_id": {"$exists": True}}},
+                    {"$sort": {"name": 1}},
+                ]
+            )
+            gardensPropsList = list(garden)
+            for gardensProps in gardensPropsList:
+                gardensProps["id"] = str(gardensProps["_id"])
+            return [GardenOut(**garden) for garden in gardensPropsList]
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
-    def get_one(self, garden_id: str) -> Optional[GardenOut]:
-        try:
-            garden = self.gardens_collection.find_one(
-                {"_id": ObjectId(garden_id)}
-            )
-            if garden is None:
-                return None
-            return GardenOut(
-                id=str(garden["_id"]),
-                name=garden["name"],
-                location=garden["location"],
-            )
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
+    def get_one(self, garden_id: str) -> GardenOut:
+        props = self.gardens_collection.find_one({"_id": ObjectId(garden_id)})
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return GardenOut(**props)
 
     def delete(self, garden_id: str) -> bool:
         try:
