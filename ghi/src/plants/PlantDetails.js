@@ -7,7 +7,7 @@ const PlantDetails = () => {
   const { plant_id } = useParams();
 
   const { data: plants } = useGetPlantsQuery();
-  console.log(plants);
+
   const plant = useSelector((state) =>
     plants ? plants.find((plant) => plant.id === plant_id) : null
   );
@@ -34,6 +34,10 @@ const PlantDetails = () => {
         <div>
           <h3>{plant.name}</h3>
           <p>{plant.garden.location}</p>
+          <img
+            src={plant.plant_picture}
+            style={{ width: "120px", height: "100px" }}
+          />
           <button onClick={handleDelete} disabled={isLoading}>
             Delete
           </button>
