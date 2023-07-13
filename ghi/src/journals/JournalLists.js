@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function JournalLists() {
   const { data, error, isLoading } = useGetJournalsQuery();
-  console.log(data);
 
   if (isLoading) {
     return <progress className="progress is-primary" max="100"></progress>;

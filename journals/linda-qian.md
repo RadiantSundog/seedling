@@ -25,3 +25,10 @@ Today, I worked on:
 
 - Frontend Garden Journal detail page
 - Frontend Garden Journal delete
+
+July 12, 2023
+Today, I worked on:
+
+- Frontend Garden List, Garden Detail page, and Garden form created and worked successfully
+- Frontend Plant List, Plant Detail page, and Plant form created and worked successfully
+- Backend Create Plant updated.

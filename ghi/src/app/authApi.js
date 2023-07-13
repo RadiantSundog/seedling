@@ -97,6 +97,44 @@ export const authApiSlice = createApi({
       }),
       invalidatesTags: ["Journals"],
     }),
+    getGardens: builder.query({
+      query: () => "/gardens",
+      providesTags: ["Garden"],
+    }),
+    createGardens: builder.mutation({
+      query: (data) => ({
+        url: "/gardens",
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["Garden"],
+    }),
+    deleteGarden: builder.mutation({
+      query: (gardenId) => ({
+        url: `/gardens/${gardenId}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["Garden"],
+    }),
+    getPlants: builder.query({
+      query: () => "/plants",
+      providesTags: ["Plant"],
+    }),
+    createPlants: builder.mutation({
+      query: (data) => ({
+        url: "/plants",
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["Plant"],
+    }),
+    deletePlant: builder.mutation({
+      query: (plantId) => ({
+        url: `/plants/${plantId}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["Plant"],
+    }),
   }),
 });
 
@@ -108,4 +146,10 @@ export const {
   useGetJournalsQuery,
   useCreateJournalsMutation,
   useDeleteJournalMutation,
+  useGetGardensQuery,
+  useCreateGardensMutation,
+  useDeleteGardenMutation,
+  useGetPlantsQuery,
+  useCreatePlantsMutation,
+  useDeletePlantMutation,
 } = authApiSlice;
