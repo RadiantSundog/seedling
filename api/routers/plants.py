@@ -22,7 +22,7 @@ def create_plant(
 
 
 @router.get("/plants", response_model=Union[List[PlantOut], Error])
-def get_all(
+def get_all_plants(
     repo: PlantRepository = Depends(),
 ):
     return repo.get_all()
@@ -46,3 +46,10 @@ def delete_plant(
     repo: PlantRepository = Depends(),
 ) -> bool:
     return repo.delete(plant_id)
+
+
+# @router.update_plant("/plants/{plant_id}", response_model=TaskOut)
+# def update_plant(
+#     plant_id: str,
+#     repo: PlantsRepository = Depends(),
+# ):

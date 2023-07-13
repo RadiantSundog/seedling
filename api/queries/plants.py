@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 from typing import List, Optional, Union
 from queries.database import db
 from bson import ObjectId
@@ -7,12 +7,14 @@ from .gardens import GardenOut, Error
 
 class PlantIn(BaseModel):
     name: str
+    plant_picture: HttpUrl
     garden_id: str
 
 
 class PlantOut(BaseModel):
     id: str
     name: str
+    plant_picture: HttpUrl
     garden: GardenOut
 
 
@@ -22,8 +24,6 @@ class PlantRepository:
 
     def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
         try:
-            result = self.plants_collection.insert_one(plant.dict())
-            inserted_id = str(result.inserted_id)
             garden = self.gardens_collection.find_one(
                 {"_id": ObjectId(plant.garden_id)}
             )
@@ -33,11 +33,18 @@ class PlantRepository:
                     name=garden["name"],
                     location=garden["location"],
                 )
+                result = self.plants_collection.insert_one(
+                    {**plant.dict(), "garden_id": garden_info.id}
+                )
+                inserted_id = str(result.inserted_id)
                 return PlantOut(
-                    id=inserted_id, name=plant.name, garden=garden_info
+                    id=inserted_id,
+                    name=plant.name,
+                    garden=garden_info,
+                    plant_picture=plant.plant_picture,
                 )
             else:
-                return Error(message="Invalid Garden ID")
+                return Error(message="Invalid Garden Name")
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
@@ -60,6 +67,7 @@ class PlantRepository:
                         id=str(plant["_id"]),
                         name=plant["name"],
                         garden=garden_info,
+                        plant_picture=plant["plant_picture"],
                     )
                     plants.append(plant_info)
             return plants
@@ -86,7 +94,10 @@ class PlantRepository:
                 location=garden["location"],
             )
             return PlantOut(
-                id=str(plant["_id"]), name=plant["name"], garden=garden_info
+                id=str(plant["_id"]),
+                name=plant["name"],
+                garden=garden_info,
+                plant_picture=plant["plant_picture"],
             )
         except Exception as e:
             error_message = str(e)

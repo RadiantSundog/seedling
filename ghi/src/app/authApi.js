@@ -116,6 +116,25 @@ export const authApiSlice = createApi({
       }),
       invalidatesTags: ["Garden"],
     }),
+    getPlants: builder.query({
+      query: () => "/plants",
+      providesTags: ["Plant"],
+    }),
+    createPlants: builder.mutation({
+      query: (data) => ({
+        url: "/plants",
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["Plant"],
+    }),
+    deletePlant: builder.mutation({
+      query: (plantId) => ({
+        url: `/plants/${plantId}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["Plant"],
+    }),
   }),
 });
 
@@ -130,4 +149,7 @@ export const {
   useGetGardensQuery,
   useCreateGardensMutation,
   useDeleteGardenMutation,
+  useGetPlantsQuery,
+  useCreatePlantsMutation,
+  useDeletePlantMutation,
 } = authApiSlice;

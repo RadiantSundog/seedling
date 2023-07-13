@@ -24,52 +24,38 @@ class JournalRepository:
 
     def create(self, journal: JournalIn) -> Union[JournalOut, Error]:
         try:
-            result = self.journals_collection.insert_one(journal.dict())
-            inserted_id = str(result.inserted_id)
-            return JournalOut(
-                id=inserted_id,
-                created_on=journal.created_on,
-                title=journal.title,
-                description=journal.description,
-            )
+            props = journal.dict()
+            self.journals_collection.insert_one(props)
+            props["id"] = str(props["_id"])
+            return JournalOut(**props)
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
     def get_all(self) -> Union[Error, List[JournalOut]]:
         try:
-            journals = [
-                JournalOut(
-                    id=str(journal["_id"]),
-                    created_on=journal["created_on"],
-                    title=journal["title"],
-                    description=journal["description"],
-                )
-                for journal in self.journals_collection.find().sort(
-                    "created_on"
-                )
-            ]
-            return journals
+            journal = self.journals_collection.aggregate(
+                [
+                    {"$match": {"_id": {"$exists": True}}},
+                    {"$sort": {"created_on": 1}},
+                ]
+            )
+            journalsPropsList = list(journal)
+            for journalsProps in journalsPropsList:
+                journalsProps["id"] = str(journalsProps["_id"])
+            return [JournalOut(**journal) for journal in journalsPropsList]
         except Exception as e:
             error_message = str(e)
             return Error(message=error_message)
 
-    def get_one(self, journal_id: str) -> Optional[JournalOut]:
-        try:
-            journal = self.journals_collection.find_one(
-                {"_id": ObjectId(journal_id)}
-            )
-            if journal is None:
-                return None
-            return JournalOut(
-                id=str(journal["_id"]),
-                created_on=journal["created_on"],
-                title=journal["title"],
-                description=journal["description"],
-            )
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
+    def get_one(self, journal_id: str) -> JournalOut:
+        props = self.journals_collection.find_one(
+            {"_id": ObjectId(journal_id)}
+        )
+        if not props:
+            return None
+        props["id"] = str(props["_id"])
+        return JournalOut(**props)
 
     def delete(self, journal_id: str) -> bool:
         try:

@@ -11,6 +11,9 @@ import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 import GardenLists from "./gardens/GardenLists";
 import GardenDetails from "./gardens/GardenDetails";
 import GardenForm from "./gardens/GardenForm";
+import PlantLists from "./plants/PlantLists";
+import PlantForm from "./plants/PlantForm";
+import PlantDetails from "./plants/PlantDetails";
 
 function App() {
   return (
@@ -32,6 +35,11 @@ function App() {
             <Route path="" element={<GardenLists />} />
             <Route path=":garden_id" element={<GardenDetails />} />
             <Route path="create" element={<GardenForm />} />
+          </Route>
+          <Route path="plants">
+            <Route path="" element={<PlantLists />} />
+            <Route path=":plant_id" element={<PlantDetails />} />
+            <Route path="create" element={<PlantForm />} />
           </Route>
         </Routes>
       </div>

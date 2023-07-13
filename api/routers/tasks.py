@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Response
-from typing import List, Optional, Union
+from typing import List, Union
 from queries.tasks import (
     Error,
     TaskIn,
@@ -27,7 +27,7 @@ def get_all_tasks(
     return repo.get_all()
 
 
-@router.get("/tasks/{task_id}", response_model=Optional[TaskOut])
+@router.get("/tasks/{task_id}", response_model=TaskOut)
 def get_one_task(
     task_id: str,
     response: Response,
@@ -39,9 +39,16 @@ def get_one_task(
     return task
 
 
-@router.delete("/task/{task_id}", response_model=bool)
+@router.delete("/tasks/{task_id}", response_model=bool)
 def delete_task(
     task_id: str,
     repo: TasksRepository = Depends(),
 ) -> bool:
     return repo.delete(task_id)
+
+
+# @router.update_task("/tasks/{task_id}", response_model=TaskOut)
+# def update_task(
+#     task_id: str,
+#     repo: TasksRepository = Depends(),
+# ):
