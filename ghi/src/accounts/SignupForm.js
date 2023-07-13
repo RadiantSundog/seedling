@@ -1,12 +1,15 @@
+// SignUpForm.js
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSignUpMutation } from "../app/authApi";
-import { preventDefault } from "../app/utils";
-import { showModal, updateField, SIGN_UP_MODAL } from "../app/accountSlice";
+import { updateField, SIGN_UP_MODAL } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
+import { useNavigate } from "react-router-dom";
+import "./AccountsForm.css";
 
 function SignUp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { show, username, password, email } = useSelector(
     (state) => state.account
   );
@@ -17,11 +20,17 @@ function SignUp() {
       dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch]
   );
-  const handleSubmit = preventDefault(signUp, () => ({
-    username,
-    password,
-    email,
-  }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await signUp({ username, password, email });
+    if (response.error) {
+      console.log(response.error);
+    } else {
+      console.log(response.data);
+      navigate("/");
+    }
+  };
 
   return (
     <section>
@@ -35,71 +44,53 @@ function SignUp() {
                 {error.data.detail}
               </ErrorNotification>
             )}
-            <form method="POST" onSubmit={handleSubmit}>
-              <div className="field">
-                <label className="label" htmlFor="email">
-                  Username
-                </label>
-                <div className="control">
-                  <input
-                    required
-                    onChange={field}
-                    value={username}
-                    name="username"
-                    className="input"
-                    type="text"
-                    placeholder="username"
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="form-group">
+              <div className="row">
+                <input
+                  required
+                  onChange={field}
+                  value={username}
+                  name="username"
+                  id="username"
+                  className="form__input"
+                  type="text"
+                  placeholder="Username"
+                />
               </div>
-              <div className="field">
-                <label className="label">Password</label>
-                <div className="control">
-                  <input
-                    required
-                    onChange={field}
-                    value={password}
-                    name="password"
-                    className="input"
-                    type="password"
-                    placeholder="secret..."
-                  />
-                </div>
+              <div className="row">
+                <input
+                  required
+                  onChange={field}
+                  value={password}
+                  name="password"
+                  id="password"
+                  className="form__input"
+                  type="password"
+                  placeholder="Password"
+                />
               </div>
-              <div className="field">
-                <label className="label">Email</label>
-                <div className="control">
-                  <input
-                    required
-                    onChange={field}
-                    value={email}
-                    name="email"
-                    className="input"
-                    type="email"
-                    placeholder="YourEmail@email.com"
-                  />
-                </div>
+              <div className="row">
+                <input
+                  required
+                  onChange={field}
+                  value={email}
+                  name="email"
+                  id="email"
+                  className="form__input"
+                  type="email"
+                  placeholder="YourEmail@email.com"
+                />
               </div>
-              <div className="field is-grouped">
-                <div className="control">
-                  <button
-                    disabled={signUpLoading}
-                    className="button is-primary"
-                  >
-                    Submit
-                  </button>
-                </div>
-                <div className="control">
-                  <button
-                    type="button"
-                    onClick={() => dispatch(showModal(null))}
-                    className="button"
-                  >
-                    Cancel
-                  </button>
-                </div>
+              <div className="row">
+                <input type="submit" value="Submit" className="btn" />
               </div>
             </form>
+            <div className="row">
+            <p>
+              Already have an account? <br></br>
+              <a href="#" onClick={() => navigate("/accounts/login/")}>Log In Here</a>
+            </p>
+            </div>
           </div>
         </div>
       </div>

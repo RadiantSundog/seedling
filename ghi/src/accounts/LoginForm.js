@@ -1,8 +1,8 @@
+// LoginForm.js
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogInMutation } from "../app/authApi";
-import { eventTargetSelector as target, preventDefault } from "../app/utils";
-import { showModal, updateField, LOG_IN_MODAL } from "../app/accountSlice";
+import { updateField, LOG_IN_MODAL } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
@@ -19,16 +19,16 @@ function LogIn() {
     [dispatch]
   );
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   const response = await logIn({ username, password });
-  //   if (response.error) {
-  //     console.log(response.error);
-  //   } else {
-  //     console.log(response.data);
-  //     navigate("/");
-  //   }
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await logIn({ username, password });
+    if (response.error) {
+      console.log(response.error);
+    } else {
+      console.log(response.data);
+      navigate("/");
+    }
+  };
 
   return (
     <div className={modalClass} key="login-modal">
@@ -41,57 +41,50 @@ function LogIn() {
               {error.data.detail}
             </ErrorNotification>
           ) : null}
-          <form method="POST" onSubmit={preventDefault(logIn, target)}>
-            <div className="field">
-              <label className="label" htmlFor="email">
-                Username
-              </label>
-              <div className="control">
-                <input
-                  required
-                  onChange={field}
-                  value={username}
-                  name="username"
-                  className="input"
-                  type="text"
-                  placeholder="username"
-                />
-              </div>
+          <form onSubmit={handleSubmit} className="form-group">
+            <div className="row">
+              <input
+                required
+                onChange={field}
+                value={username}
+                name="username"
+                id="username"
+                className="form__input"
+                type="text"
+                placeholder="Username"
+              />
             </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  required
-                  onChange={field}
-                  value={password}
-                  name="password"
-                  className="input"
-                  type="password"
-                  placeholder="secret..."
-                />
-              </div>
+            <div className="row">
+              <input
+                required
+                onChange={field}
+                value={password}
+                name="password"
+                id="password"
+                className="form__input"
+                type="password"
+                placeholder="Password"
+              />
             </div>
-            <div className="field is-grouped">
-              <div className="control">
-                <button disabled={logInLoading} className="button is-primary">
-                  Submit
-                </button>
-              </div>
-              <div className="control">
-                <button
-                  type="button"
-                  onClick={() => dispatch(showModal(null))}
-                  className="button"
-                >
-                  Cancel
-                </button>
-              </div>
+            <div className="row">
+              <input
+                type="checkbox"
+                name="remember_me"
+                id="remember_me"
+                className=""
+              />
+              <label htmlFor="remember_me">Remember Me!</label>
+            </div>
+            <div className="row">
+              <input type="submit" value="Submit" className="btn" />
             </div>
           </form>
-        </div>
-        <div className="picture">
-          {/* <img src="" alt="login-pic" /> */}
+          <div className="row">
+            <p>
+              Don't have an account? <br></br>
+              <a href="#" onClick={() => navigate("/accounts/signup/")}>Register Here</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
