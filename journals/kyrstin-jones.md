@@ -49,6 +49,9 @@ I also researched how we will implement authentication on the backend and will s
 
 ## July 11, 2023
 Today, I worked on:
--queries/plants.py
+-all queries
 
 I updated the code so you can assign a plant to a specific garden by id.
+I updated formatting to match what was used in class rather than my try and see
+what happens format.
+I also started the update routers for plants and tasks.
