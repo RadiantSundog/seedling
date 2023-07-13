@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./main-page.css";
+import OrangePot from "./OrangePot.svg";
 
 function MainPage() {
   return (
     <div className="main-page">
-      <div className="text-left page-info">
+      <div className="text-center page-info">
         <div className="row row-cols-2">
           <div className="col">
             <h1 className="page-title">Welcome to Seedling</h1>
@@ -23,8 +24,10 @@ function MainPage() {
           </div>
           <div className="col">
             <img
-              src="https://i.pinimg.com/474x/c2/df/2e/c2df2eb58d9cabc03ee2d2156e36b479.jpg"
-              alt="plant-pic"
+              src={OrangePot}
+              alt="seedling-logo"
+              height="500"
+              width="500"
               className="title-pic"
             />
           </div>
