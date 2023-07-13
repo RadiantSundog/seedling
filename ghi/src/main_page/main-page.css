@@ -16,7 +16,6 @@ a {
 }
 
 .page-info {
-  background-color: #f6ffde;
   margin: 0px;
 }
 
@@ -27,6 +26,10 @@ a {
 
 .title-pic {
   margin-top: 100px;
+}
+
+.main-page {
+  background-color: #F0EBCE;
 }
 
 .main-page-button {
@@ -54,6 +57,8 @@ a {
   color: #f7eddb;
   font-weight: bold;
   margin-right: 50px;
+  float: left;
+  border: 2px solid #AA8B56;
 }
 
 .button-look:hover {
@@ -116,7 +121,7 @@ a {
 }
 
 .home-card-title {
-  font-size: 20px;
+  font-size: px;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
 }
