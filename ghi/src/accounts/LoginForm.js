@@ -34,7 +34,7 @@ function LogIn() {
     <div className={modalClass} key="login-modal">
       <div className="modal-background"></div>
       <div className="modal-content">
-        <div className="box content">
+        <div className="box content floating-rectangle">
           <h3>Log In</h3>
           {error ? (
             <ErrorNotification type="danger">
@@ -91,7 +91,7 @@ function LogIn() {
           </form>
         </div>
         <div className="picture">
-          <img src="" alt="login-pic" />
+          {/* <img src="" alt="login-pic" /> */}
         </div>
       </div>
     </div>

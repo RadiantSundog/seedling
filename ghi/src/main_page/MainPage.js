@@ -39,7 +39,7 @@ function MainPage() {
               Sign Up
             </NavLink>
             <NavLink className="button-look home-button" href="#">
-              Sign In
+              Login
             </NavLink>
           </div>
         </div>

@@ -1,29 +1,27 @@
 import ErrorNotification from "../ErrorNotification";
-import { useGetPlantsQuery, useDeletePlantMutation } from "../app/authApi";
+import { useGetTasksQuery, useDeleteTaskMutation } from "../app/authApi";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function PlantLists() {
-  const { data, error, isLoading } = useGetPlantsQuery();
+function TaskLists() {
+  const { data: tasks, error, isLoading } = useGetTasksQuery();
 
-  const { plant_id } = useParams();
+  const { task_id } = useParams();
 
-  const { data: plants } = useGetPlantsQuery();
-  console.log(plants);
-  const plant = useSelector((state) =>
-    plants ? plants.find((plant) => plant.id === plant_id) : null
+  const task = useSelector((state) =>
+    tasks ? tasks.find((task) => task.id === task_id) : null
   );
 
-  const [deletePlant, { isError }] = useDeletePlantMutation();
+  const [deleteTask, { isError }] = useDeleteTaskMutation();
   const navigate = useNavigate();
-  const handleDelete = async (plantId) => {
+  const handleDelete = async (taskId) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete your garden?"
     );
     if (confirmed) {
-      deletePlant(plantId)
+      deleteTask(taskId)
         .then(() => {
-          navigate("/plants");
+          navigate("/tasks");
         })
         .catch((error) => {});
     }
@@ -35,36 +33,29 @@ function PlantLists() {
 
   return (
     <div>
-      <h1>My Plants</h1>
+      <h1>Tasks</h1>
       <ErrorNotification error={error} />
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Location</th>
+            <th>Description</th>
+            <th>Due Date</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((plant) => {
+          {tasks.map((task) => {
             return (
-              <tr key={plant.id}>
+              <tr key={task.id}>
                 <td>
-                  <img
-                    src={plant.plant_picture}
-                    style={{ width: "80px", height: "60px" }}
-                  />
-                </td>
-                <td>
-                  <Link to={`/plants/${plant.id}`} className="btn btn-primary">
-                    {plant.name}
+                  <Link to={`/tasks/${task.id}`} className="btn btn-primary">
+                    {task.description}
                   </Link>
                 </td>
-                <td>{plant.garden.name}</td>
+                <td>{task.due_date}</td>
                 <td>
                   <button
-                    onClick={() => handleDelete(plant.id)}
+                    onClick={() => handleDelete(task.id)}
                     disabled={isLoading}
                   >
                     Delete
@@ -78,14 +69,14 @@ function PlantLists() {
       </table>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <Link
-          to="/plants/create"
+          to="/tasks/create"
           className="btn btn-secondary btn-lg px-4 gap-3"
         >
-          Plant A Plant
+          Add a task
         </Link>
       </div>
     </div>
   );
 }
 
-export default PlantLists;
+export default TaskLists;

@@ -18,3 +18,22 @@ form {
 .picture img {
   max-width: 100%;
 }
+
+.floating-rectangle {
+  background-color: #395144;
+  color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  animation: animate__backInDown 1s;
+}
+
+@keyframes animate__backInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
