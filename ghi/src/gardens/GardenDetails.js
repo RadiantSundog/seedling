@@ -7,7 +7,7 @@ const GardenDetails = () => {
   const { garden_id } = useParams();
 
   const { data: gardens } = useGetGardensQuery();
-  console.log(gardens);
+
   const garden = useSelector((state) =>
     gardens ? gardens.find((garden) => garden.id === garden_id) : null
   );
