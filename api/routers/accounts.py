@@ -11,12 +11,8 @@ from authenticator import authenticator
 
 from pydantic import BaseModel
 
-from queries.accounts import (
-    AccountIn,
-    AccountOut,
-    AccountQueries,
-    DuplicateAccountError,
-)
+from queries.accounts import AccountQueries
+from models import AccountIn, AccountOut, DuplicateAccountError
 
 
 class AccountForm(BaseModel):

@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, Response
-from typing import List, Optional, Union
+from typing import List
 from queries.plants import (
-    Error,
     PlantIn,
     PlantRepository,
     PlantOut,
@@ -9,31 +8,39 @@ from queries.plants import (
 
 
 router = APIRouter()
-plant_repo = PlantRepository()
+
+# not_authorized = HTTPException(
+#     status_code=status.HTTP_401_UNAUTHORIZED,
+#     detail="Invalid authentication credentials",
+#     headers={"WWW-Authenticate": "Bearer"},
+# )
 
 
-@router.post("/plants", response_model=Union[PlantOut, Error])
+@router.post("/plants", response_model=PlantOut)
 def create_plant(
     plant: PlantIn,
-    response: Response,
+    # response: Response,
     repo: PlantRepository = Depends(),
+    # account: dict = Depends(get_current_user),
 ):
     return repo.create(plant)
 
 
-@router.get("/plants", response_model=Union[List[PlantOut], Error])
+@router.get("/plants", response_model=List[PlantOut])
 def get_all_plants(
     repo: PlantRepository = Depends(),
+    # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
 
 
-@router.get("/plants/{plant_id}", response_model=Optional[PlantOut])
+@router.get("/plants/{plant_id}", response_model=PlantOut)
 def get_one_plant(
     plant_id: str,
     response: Response,
     repo: PlantRepository = Depends(),
-) -> PlantOut:
+    # account: dict = Depends(get_current_user),
+):
     vacation = repo.get_one(plant_id)
     if vacation is None:
         response.status_code = 404
@@ -44,7 +51,8 @@ def get_one_plant(
 def delete_plant(
     plant_id: str,
     repo: PlantRepository = Depends(),
-) -> bool:
+    # account: dict = Depends(get_current_user),
+):
     return repo.delete(plant_id)
 
 

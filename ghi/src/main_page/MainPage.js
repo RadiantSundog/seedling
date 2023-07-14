@@ -58,8 +58,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Busy Schedule?</h5>
                 <p className="card-text home-card-text">
-                  Forgetting to water plants happens. <br></br>Over watering
-                  them happens, too.
+                  Forgetting to water your plants happens. Over watering your plants happens, too. Don't turn your house into a desert or a swamp.
                 </p>
               </div>
             </div>
@@ -74,8 +73,7 @@ function MainPage() {
               <div className="card-body">
                 <h5 className="card-title home-card-title">Shady Apartment?</h5>
                 <p className="card-text home-card-text">
-                  Some plants require direct sunlight and others little to no
-                  sunlight. What do your plants need?
+                  Indoor plants need plenty of sunlight and healthy air circulation to thrive. Don't let a cool room ruin the vibe.
                 </p>
               </div>
             </div>
@@ -88,11 +86,9 @@ function MainPage() {
                 alt="solution-icon"
               />
               <div className="card-body">
-                <h5 className="card-title home-card-title">Plant Newbie?</h5>
+                <h5 className="card-title home-card-title">Need an Extra Hand?</h5>
                 <p className="card-text home-card-text">
-                  Maybe it's time to stop asking your co-worker or that next
-                  door neighbor about what kind of plants you have. Let's do
-                  some research.
+                  Or, maybe another thumb. Quit asking your co-worker or neighbor about plants, pots, and soil. Let's do some research to get your own green thumb growing.
                 </p>
               </div>
             </div>
@@ -111,12 +107,10 @@ function MainPage() {
                 alt="solution-icon"
               />
               <div className="card-body">
-                <h5 className="card-title home-card-title">Solution 1</h5>
+                <h5 className="card-title home-card-title">HydroHarmony: <br></br>
+                Smart Plant Care for Busy Beings</h5>
                 <p className="card-text home-card-text">
-                  Implement a scheduling feature that allows users to set up
-                  automated watering schedules for their plants. This feature
-                  can be customizable to accommodate different plant types and
-                  watering requirements.
+                  HydroHarmony is our innovative smart plant care system that takes the stress out of watering your plants. With its intelligent technology, it ensures your plants receive optimal hydration, leaving you free to focus on your busy schedule while still maintaining a thriving green oasis.
                 </p>
               </div>
             </div>
@@ -129,13 +123,9 @@ function MainPage() {
                 alt="ask icon"
               />
               <div className="card-body">
-                <h5 className="card-title home-card-title">Solution 2</h5>
+                <h5 className="card-title home-card-title">ShadeScape: <br></br> Transforming Shadows into Lush Delights</h5>
                 <p className="card-text home-card-text">
-                  Integrate a plant identification feature that enables users to
-                  take pictures of plants they come across or have in mind. The
-                  application can then provide information about the plant,
-                  including its name, care instructions, and where to purchase
-                  it.
+                  Step into the enchanting world of ShadeScape, where we offer a selection of captivating low-light indoor plants that will flourish even in the shadiest corners of your apartment. Combined with our expert tips on enhancing air circulation, you can create an ambiance that exudes tranquility and natural beauty.
                 </p>
               </div>
             </div>
@@ -148,10 +138,10 @@ function MainPage() {
                 alt="solution-icon"
               />
               <div className="card-body">
-                <h5 className="card-title home-card-title">Solution 3</h5>
+                <h5 className="card-title home-card-title">LeafWhisper: <br></br>
+                Empowering You to Unleash Your Inner Green Thumb</h5>
                 <p className="card-text home-card-text">
-                  Learn which plants are best suitable for your lifestyle and
-                  grow your botanical knowledge.
+                  Say farewell to relying on others for plant advice with LeafWhisper, your trusty companion in the world of plants. From comprehensive plant care guides to personalized recommendations, LeafWhisper equips you with the knowledge and confidence to nurture your plants, choose the perfect pots, and create thriving soil compositions—all on your own terms.
                 </p>
               </div>
             </div>
@@ -252,7 +242,7 @@ function MainPage() {
           <div className="col text-center direction-subtitle">Useful Links</div>
           <div className="col text-center">
             At Seedling, our mission is to empower and inspire plant enthusiasts
-            like you to create thriving gardens that bring joy, beauty, and a
+            like you to create thriving gardens that bring joy, beauty, and
             connection to nature. We believe that with the right knowledge and
             tools, anyone can develop their gardening skills and create stunning
             landscapes that flourish in any environment.
@@ -365,7 +355,7 @@ function MainPage() {
             >
               No-dig gardening
             </a>
-            <br></br>k{" "}
+            <br></br>
           </div>
         </div>
       </div>

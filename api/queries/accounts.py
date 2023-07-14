@@ -1,47 +1,14 @@
-from bson.objectid import ObjectId
-from pydantic import BaseModel
 from .client import Queries
 from pymongo.errors import DuplicateKeyError
 from pymongo import ASCENDING
-
-
-class PydanticObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, value: ObjectId | str) -> ObjectId:
-        if value:
-            try:
-                ObjectId(value)
-            except:
-                raise ValueError(f"Not a valid object id: {value}")
-        return value
-
-
-class DuplicateAccountError(ValueError):
-    pass
-
-
-class AccountIn(BaseModel):
-    email: str
-    password: str
-    username: str
-
-
-class Account(AccountIn):
-    id: PydanticObjectId
-
-
-class AccountOut(BaseModel):
-    id: str
-    email: str
-    username: str
-
-
-class AccountOutWithPassword(AccountOut):
-    hashed_password: str
+from models import (
+    PydanticObjectId,
+    DuplicateAccountError,
+    AccountIn,
+    AccountOut,
+    Account,
+    AccountOutWithPassword,
+)
 
 
 class AccountQueries(Queries):
