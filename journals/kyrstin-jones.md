@@ -47,7 +47,7 @@ I made some small changes to the code for journals.
 I researched and made note of our API choices for implementation later.
 I also researched how we will implement authentication on the backend and will start tomorrow.
 
-## July 11, 2023
+## July 12, 2023
 Today, I worked on:
 -all queries
 -token_auth.py
@@ -57,3 +57,14 @@ I updated formatting to match what was used in class rather than my try and see
 what happens format.
 I also started the update routers for plants and tasks.
 I also started the last part of backend authentication.
+
+## July 13, 2023
+Today, I worked on:
+-all queries
+-all router
+-model.py
+
+
+I updated queries functions to be more concise.
+I added all models to model.py
+I added commented out code for auth to be checked later.

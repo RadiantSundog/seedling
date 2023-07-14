@@ -1,8 +1,8 @@
 from pydantic import BaseModel, HttpUrl
-from typing import List, Optional, Union
+from typing import List
 from queries.database import db
 from bson import ObjectId
-from .gardens import GardenOut, Error
+from models import Error, GardenOut
 
 
 class PlantIn(BaseModel):
@@ -22,7 +22,7 @@ class PlantRepository:
     plants_collection = db.plants
     gardens_collection = db.gardens
 
-    def create(self, plant: PlantIn) -> Union[PlantOut, Error]:
+    def create(self, plant: PlantIn) -> PlantOut:
         try:
             garden = self.gardens_collection.find_one(
                 {"_id": ObjectId(plant.garden_id)}
@@ -49,7 +49,7 @@ class PlantRepository:
             error_message = str(e)
             return Error(message=error_message)
 
-    def get_all(self) -> Union[Error, List[PlantOut]]:
+    def get_all(self) -> List[PlantOut]:
         try:
             plants = []
             for plant in self.plants_collection.find().sort("name"):
@@ -75,7 +75,7 @@ class PlantRepository:
             error_message = str(e)
             return Error(message=error_message)
 
-    def get_one(self, plant_id: str) -> Optional[PlantOut]:
+    def get_one(self, plant_id: str) -> PlantOut:
         try:
             plant = self.plants_collection.find_one(
                 {"_id": ObjectId(plant_id)}
