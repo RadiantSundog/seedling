@@ -61,9 +61,8 @@ I also started the last part of backend authentication.
 ## July 13, 2023
 Today, I worked on:
 -all queries
--all router
+-all routers
 -model.py
-
 
 I updated queries functions to be more concise.
 I added all models to model.py

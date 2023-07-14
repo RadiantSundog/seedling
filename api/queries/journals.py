@@ -27,8 +27,5 @@ class JournalRepository(Queries):
         return JournalOut(**journal)
 
     def delete(self, journal_id: str) -> bool:
-        self.collection.delete_one(
-            {
-                "_id": ObjectId(journal_id),
-            }
-        )
+        journal = self.collection.delete_one({"_id": ObjectId(journal_id)})
+        return journal.deleted_count == 1
