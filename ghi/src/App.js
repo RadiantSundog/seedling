@@ -17,6 +17,7 @@ import PlantDetails from "./plants/PlantDetails";
 import TaskLists from "./gardens/TaskLists";
 import TaskForm from "./gardens/TaskForm";
 import TaskDetails from "./gardens/TaskDetails";
+import IdenfityPlants from "./identify/IdentifyPlants";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path=":task_id" element={<TaskDetails />} />
           <Route path="create" element={<TaskForm />} />
         </Route>
+        <Route path="identify" element={<IdenfityPlants />} />
       </Routes>
     </BrowserRouter>
   );
