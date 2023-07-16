@@ -1,8 +1,13 @@
 // LoginForm.js
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogInMutation } from "../app/authApi";
-import { updateField, LOG_IN_MODAL } from "../app/accountSlice";
+import {
+  updateField,
+  LOG_IN_MODAL,
+  updateToken,
+  showModal,
+} from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
@@ -12,23 +17,26 @@ function LogIn() {
   const navigate = useNavigate();
   const { show, username, password } = useSelector((state) => state.account);
   const modalClass = `my-modal ${show === LOG_IN_MODAL ? "is-active" : ""}`;
-  const [logIn, { error, isLoading: logInLoading }] = useLogInMutation();
+  const [logIn, { isLoading: logInLoading }] = useLogInMutation();
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { data, error } = await logIn({ username, password });
+    if (error) {
+      setError("Incorrect username or password");
+    } else {
+      dispatch(showModal(null));
+      dispatch(updateToken(data.token));
+      navigate("/");
+    }
+  };
+
   const field = useCallback(
     (e) =>
       dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch]
   );
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await logIn({ username, password });
-    if (response.error) {
-      console.log(response.error);
-    } else {
-      console.log(response.data);
-      navigate("/");
-    }
-  };
 
   return (
     <div className={modalClass} key="login-modal">
@@ -76,13 +84,20 @@ function LogIn() {
               <label htmlFor="remember_me">Remember Me!</label>
             </div>
             <div className="row">
-              <input type="submit" value="Submit" className="btn" />
+              <input
+                disabled={logInLoading}
+                type="submit"
+                value="Submit"
+                className="btn"
+              />
             </div>
           </form>
           <div className="row">
             <p>
               Don't have an account? <br></br>
-              <a href="#" onClick={() => navigate("/accounts/signup/")}>Register Here</a>
+              <button href="#" onClick={() => navigate("/accounts/signup/")}>
+                Register Here
+              </button>
             </p>
           </div>
         </div>
