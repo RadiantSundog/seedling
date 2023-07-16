@@ -4,7 +4,7 @@ from models import GardenIn, GardenOut
 from queries.client import Queries
 
 
-class GardenRepository(Queries):
+class GardenQueries(Queries):
     DB_NAME = "db-seedling-db"
     COLLECTION = "gardens"
     PLANT_COLLECTION = "plants"

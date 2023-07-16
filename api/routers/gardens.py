@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Response, HTTPException, status
 from typing import List
 from token_auth import get_current_user
-from queries.gardens import GardenRepository
+from queries.gardens import GardenQueries
 from models import GardenIn, GardenOut
 
 
@@ -17,7 +17,7 @@ router = APIRouter()
 @router.post("/gardens", response_model=GardenOut)
 def create_garden(
     garden: GardenIn,
-    repo: GardenRepository = Depends(),
+    repo: GardenQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.create(garden)
@@ -25,7 +25,7 @@ def create_garden(
 
 @router.get("/gardens", response_model=List[GardenOut])
 def get_all_gardens(
-    repo: GardenRepository = Depends(),
+    repo: GardenQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
@@ -35,7 +35,7 @@ def get_all_gardens(
 def get_one_garden(
     garden_id: str,
     response: Response,
-    repo: GardenRepository = Depends(),
+    repo: GardenQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     garden = repo.get_one(garden_id)
@@ -47,7 +47,7 @@ def get_one_garden(
 @router.delete("/gardens/{garden_id}", response_model=bool)
 def delete_garden(
     garden_id: str,
-    repo: GardenRepository = Depends(),
+    repo: GardenQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.delete(garden_id)

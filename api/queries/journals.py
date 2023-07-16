@@ -4,7 +4,7 @@ from models import JournalIn, JournalOut
 from queries.client import Queries
 
 
-class JournalRepository(Queries):
+class JournalQueries(Queries):
     DB_NAME = "db-seedling-db"
     COLLECTION = "journals"
 

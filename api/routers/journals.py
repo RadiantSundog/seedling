@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Response
 from typing import List
-from queries.journals import JournalRepository
+from queries.journals import JournalQueries
 from models import JournalIn, JournalOut
 
 
@@ -16,7 +16,7 @@ router = APIRouter()
 @router.post("/journals", response_model=JournalOut)
 def create_journal(
     journal: JournalIn,
-    repo: JournalRepository = Depends(),
+    repo: JournalQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.create(journal)
@@ -24,7 +24,7 @@ def create_journal(
 
 @router.get("/journals", response_model=List[JournalOut])
 def get_all_journals(
-    repo: JournalRepository = Depends(),
+    repo: JournalQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
@@ -34,7 +34,7 @@ def get_all_journals(
 def get_one_journal(
     journal_id: str,
     response: Response,
-    repo: JournalRepository = Depends(),
+    repo: JournalQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     journal = repo.get_one(journal_id)
@@ -46,7 +46,7 @@ def get_one_journal(
 @router.delete("/journals/{journal_id}", response_model=bool)
 def delete_journal(
     journal_id: str,
-    repo: JournalRepository = Depends(),
+    repo: JournalQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.delete(journal_id)

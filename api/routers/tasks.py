@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Response
 from typing import List
-from queries.tasks import TasksRepository
+from queries.tasks import TasksQueries
 from models import TaskIn, TaskOut
 
 
@@ -15,7 +15,7 @@ router = APIRouter()
 @router.post("/tasks", response_model=TaskOut)
 def create_task(
     task: TaskIn,
-    repo: TasksRepository = Depends(),
+    repo: TasksQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.create(task)
@@ -23,7 +23,7 @@ def create_task(
 
 @router.get("/tasks", response_model=List[TaskOut])
 def get_all_tasks(
-    repo: TasksRepository = Depends(),
+    repo: TasksQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
@@ -33,7 +33,7 @@ def get_all_tasks(
 def get_one_task(
     task_id: str,
     response: Response,
-    repo: TasksRepository = Depends(),
+    repo: TasksQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     task = repo.get_one(task_id)
@@ -45,14 +45,18 @@ def get_one_task(
 @router.delete("/tasks/{task_id}", response_model=bool)
 def delete_task(
     task_id: str,
-    repo: TasksRepository = Depends(),
+    repo: TasksQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.delete(task_id)
 
 
-# @router.update_task("/tasks/{task_id}", response_model=TaskOut)
+# @router.put("/tasks/{task_id}", response_model=TaskOut)
 # def update_task(
 #     task_id: str,
-#     repo: TasksRepository = Depends(),
+#     task: TaskIn,
+#     repo: TasksQueries = Depends(),
+#     # account: dict = Depends(get_current_user),
 # ):
+#     task_update = repo.update_one(task_id, task)
+#     return task_update

@@ -1,6 +1,7 @@
 from bson.objectid import ObjectId
 from pydantic import BaseModel, HttpUrl
 from datetime import datetime
+from typing import Optional
 
 
 class PydanticObjectId(ObjectId):
@@ -49,12 +50,16 @@ class Error(BaseModel):
 class GardenIn(BaseModel):
     name: str
     location: str
+    inside: Optional[bool]
+    outside: Optional[bool]
 
 
 class GardenOut(BaseModel):
     id: str
     name: str
     location: str
+    inside: Optional[bool]
+    outside: Optional[bool]
 
 
 # class PlantIn(BaseModel):
@@ -71,12 +76,14 @@ class GardenOut(BaseModel):
 
 
 class TaskIn(BaseModel):
+    title: Optional[str]
     description: str
     due_date: datetime
 
 
 class TaskOut(BaseModel):
     id: str
+    title: Optional[str]
     description: str
     due_date: datetime
 
@@ -85,6 +92,7 @@ class JournalIn(BaseModel):
     created_on: datetime
     title: str
     description: str
+    picture: Optional[str]
 
 
 class JournalOut(BaseModel):
@@ -92,3 +100,4 @@ class JournalOut(BaseModel):
     created_on: datetime
     title: str
     description: str
+    picture: Optional[str]
