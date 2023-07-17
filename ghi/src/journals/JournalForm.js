@@ -7,13 +7,14 @@ function JournalForm() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [picture, setPicture] = useState("");
   const [error, setError] = useState("");
   const [createJournal, result] = useCreateJournalsMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createJournal({ title, description });
+      await createJournal({ title, description, picture });
       navigate("/journals");
     } catch (error) {
       setError(error.message);
@@ -52,6 +53,19 @@ function JournalForm() {
                 className="form-control"
               ></textarea>
               <label htmlFor="description">Description</label>
+            </div>
+            <div className="form-floating mb-3">
+              <input
+                placeholder="Picture"
+                required
+                type="text"
+                name="picture"
+                id="picture"
+                value={picture || ""}
+                onChange={(e) => setPicture(e.target.value)}
+                className="form-control"
+              />
+              <label htmlFor="description">Picture</label>
             </div>
             <button className="btn btn-success">Create</button>
           </form>

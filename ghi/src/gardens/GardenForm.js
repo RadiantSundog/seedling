@@ -7,13 +7,14 @@ function GardenForm() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
+  const [type, setType] = useState("");
   const [error, setError] = useState("");
   const [createGarden, result] = useCreateGardensMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createGarden({ name, location });
+      await createGarden({ name, location, type });
       navigate("/gardens");
     } catch (error) {
       setError(error.message);
@@ -42,7 +43,7 @@ function GardenForm() {
             </div>
             <div className="form-floating mb-3">
               <textarea
-                placeholder="Garden Location"
+                placeholder="Garden Location Zipcode"
                 required
                 type="text"
                 name="location"
@@ -51,7 +52,37 @@ function GardenForm() {
                 onChange={(e) => setLocation(e.target.value)}
                 className="form-control"
               ></textarea>
-              <label htmlFor="location">Location</label>
+              <label htmlFor="location">Location Zipcode</label>
+            </div>
+            <div className="form-floating mb-3">
+              <ul className="list-unstyled">
+                <li>
+                  <input
+                    type="radio"
+                    name="type"
+                    id="indoor"
+                    value="indoor"
+                    checked={type === "indoor"}
+                    onChange={(e) => setType(e.target.value)}
+                  />
+                  <label htmlFor="indoor" className="ms-2">
+                    Indoor
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="type"
+                    id="outdoor"
+                    value="outdoor"
+                    checked={type === "outdoor"}
+                    onChange={(e) => setType(e.target.value)}
+                  />
+                  <label htmlFor="outdoor" className="ms-2">
+                    Outdoor
+                  </label>
+                </li>
+              </ul>
             </div>
             <button className="btn btn-success">Create</button>
           </form>

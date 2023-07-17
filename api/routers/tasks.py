@@ -1,28 +1,31 @@
 from fastapi import APIRouter, Depends, Response
-from typing import List, Union
-from queries.tasks import (
-    Error,
-    TaskIn,
-    TasksRepository,
-    TaskOut,
-)
+from typing import List
+from queries.tasks import TasksQueries
+from models import TaskIn, TaskOut
+
 
 
 router = APIRouter()
-task_repo = TasksRepository()
+# not_authorized = HTTPException(
+#     status_code=status.HTTP_401_UNAUTHORIZED,
+#     detail="Invalid authentication credentials",
+#     headers={"WWW-Authenticate": "Bearer"},
+# )
 
 
-@router.post("/tasks", response_model=Union[TaskOut, Error])
+@router.post("/tasks", response_model=TaskOut)
 def create_task(
     task: TaskIn,
-    repo: TasksRepository = Depends(),
+    repo: TasksQueries = Depends(),
+    # account: dict = Depends(get_current_user),
 ):
     return repo.create(task)
 
 
-@router.get("/tasks", response_model=Union[List[TaskOut], Error])
+@router.get("/tasks", response_model=List[TaskOut])
 def get_all_tasks(
-    repo: TasksRepository = Depends(),
+    repo: TasksQueries = Depends(),
+    # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
 
@@ -31,8 +34,9 @@ def get_all_tasks(
 def get_one_task(
     task_id: str,
     response: Response,
-    repo: TasksRepository = Depends(),
-) -> TaskOut:
+    repo: TasksQueries = Depends(),
+    # account: dict = Depends(get_current_user),
+):
     task = repo.get_one(task_id)
     if task is None:
         response.status_code = 404
@@ -42,13 +46,18 @@ def get_one_task(
 @router.delete("/tasks/{task_id}", response_model=bool)
 def delete_task(
     task_id: str,
-    repo: TasksRepository = Depends(),
-) -> bool:
+    repo: TasksQueries = Depends(),
+    # account: dict = Depends(get_current_user),
+):
     return repo.delete(task_id)
 
 
-# @router.update_task("/tasks/{task_id}", response_model=TaskOut)
+# @router.put("/tasks/{task_id}", response_model=TaskOut)
 # def update_task(
 #     task_id: str,
-#     repo: TasksRepository = Depends(),
+#     task: TaskIn,
+#     repo: TasksQueries = Depends(),
+#     # account: dict = Depends(get_current_user),
 # ):
+#     task_update = repo.update_one(task_id, task)
+#     return task_update

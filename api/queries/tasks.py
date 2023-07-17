@@ -1,64 +1,35 @@
-from pydantic import BaseModel
-from typing import List, Optional, Union
-from .database import db
+from typing import List
 from bson import ObjectId
-from .gardens import Error
-from datetime import datetime
+from models import TaskIn, TaskOut
+from queries.client import Queries
 
 
-class TaskIn(BaseModel):
-    description: str
-    due_date: datetime
+class TasksQueries(Queries):
+    DB_NAME = "db-seedling-db"
+    COLLECTION = "tasks"
 
+    def create(self, task: TaskIn) -> TaskOut:
+        tasks = task.dict()
+        self.collection.insert_one(tasks)
+        tasks["id"] = str(tasks["_id"])
+        return TaskOut(**tasks)
 
-class TaskOut(BaseModel):
-    id: str
-    description: str
-    due_date: datetime
-
-
-class TasksRepository:
-    tasks_collection = db.tasks
-
-    def create(self, task: TaskIn) -> Union[TaskOut, Error]:
-        try:
-            props = task.dict()
-            self.tasks_collection.insert_one(props)
-            props["id"] = str(props["_id"])
-            return TaskOut(**props)
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
-
-    def get_all(self) -> Union[Error, List[TaskOut]]:
-        try:
-            task = self.tasks_collection.aggregate(
-                [
-                    {"$match": {"_id": {"$exists": True}}},
-                    {"$sort": {"due_date": 1}},
-                ]
-            )
-            tasksPropsList = list(task)
-            for tasksProps in tasksPropsList:
-                tasksProps["id"] = str(tasksProps["_id"])
-            return [TaskOut(**task) for task in tasksPropsList]
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
+    def get_all(self) -> List[TaskOut]:
+        tasks = self.collection.find()
+        tasksPropsList = list(tasks)
+        for tasksProps in tasksPropsList:
+            tasksProps["id"] = str(tasksProps["_id"])
+        return [TaskOut(**task) for task in tasksPropsList]
 
     def get_one(self, task_id: str) -> TaskOut:
-        props = self.tasks_collection.find_one({"_id": ObjectId(task_id)})
-        if not props:
-            return None
-        props["id"] = str(props["_id"])
-        return TaskOut(**props)
+        tasks = self.collection.find_one({"_id": ObjectId(task_id)})
+        tasks["id"] = str(tasks["_id"])
+        return TaskOut(**tasks)
 
-    def delete(self, task_id: str) -> bool:
-        try:
-            result = self.tasks_collection.delete_one(
-                {"_id": ObjectId(task_id)}
-            )
-            return result.deleted_count == 1
-        except Exception as e:
-            error_message = str(e)
-            return Error(message=error_message)
+    def delete(self, tasks_id: str) -> bool:
+        tasks = self.collection.delete_one({"_id": ObjectId(tasks_id)})
+        return tasks.deleted_count == 1
+
+    # def update_one(self, task_id: str, task: TaskIn) -> TaskOut:
+    #     task = self.collection.update_one({"_id": ObjectId(task_id)})
+    #     return task

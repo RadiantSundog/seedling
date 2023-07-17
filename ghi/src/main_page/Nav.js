@@ -4,12 +4,15 @@ import { useLogOutMutation, useGetTokenQuery } from "../app/authApi";
 import { useEffect } from "react";
 
 function Nav() {
-  const { token } = useGetTokenQuery;
-  const navigate = useNavigate();
   const [logout, { data }] = useLogOutMutation();
+  const { data: currentUser } = useGetTokenQuery();
+  console.log(currentUser);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (data) {
       navigate("/");
+      window.location.reload();
     }
   }, [data, navigate]);
 
@@ -37,21 +40,13 @@ function Nav() {
                 Home
               </NavLink>
             </li>
-            {!token ? (
+            {currentUser ? (
               <>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/accounts/login">
-                    Login
+                  <NavLink className="nav-link" to="/identify">
+                    Identify a Plant
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/accounts/signup">
-                    Sign Up
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <>
                 <li className="nav-item">
                   <NavLink className="nav-link" onClick={logout}>
                     Log Out
@@ -115,6 +110,19 @@ function Nav() {
                     to="journals"
                   >
                     Garden Journals
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/accounts/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/accounts/signup">
+                    Sign Up
                   </NavLink>
                 </li>
               </>

@@ -11,12 +11,8 @@ from authenticator import authenticator
 
 from pydantic import BaseModel
 
-from queries.accounts import (
-    AccountIn,
-    AccountOut,
-    AccountQueries,
-    DuplicateAccountError,
-)
+from queries.accounts import AccountQueries
+from models import AccountIn, AccountOut, DuplicateAccountError
 
 
 class AccountForm(BaseModel):
@@ -70,6 +66,7 @@ async def create_account(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
         )
-    form = AccountForm(username=info.email, password=info.password)
+    form = AccountForm(username=info.username, password=info.password)
+    print(form)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())

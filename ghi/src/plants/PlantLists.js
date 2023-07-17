@@ -4,11 +4,9 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function PlantLists() {
-  const { data, error, isLoading } = useGetPlantsQuery();
+  const { data: plants, error, isLoading } = useGetPlantsQuery();
 
   const { plant_id } = useParams();
-
-  const { data: plants } = useGetPlantsQuery();
   console.log(plants);
   const plant = useSelector((state) =>
     plants ? plants.find((plant) => plant.id === plant_id) : null
@@ -47,7 +45,7 @@ function PlantLists() {
           </tr>
         </thead>
         <tbody>
-          {data.map((plant) => {
+          {plants.map((plant) => {
             return (
               <tr key={plant.id}>
                 <td>

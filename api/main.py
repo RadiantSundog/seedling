@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
-from routers import accounts, gardens, journals, plants, tasks
+from routers import accounts, gardens, journals, plants, tasks, plants_identify
 import os
+from fastapi import FastAPI
 
 
 app = FastAPI()
@@ -12,6 +13,7 @@ app.include_router(gardens.router)
 app.include_router(journals.router)
 app.include_router(plants.router)
 app.include_router(tasks.router)
+app.include_router(plants_identify.router)
 
 
 app.add_middleware(
@@ -21,6 +23,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 # @app.get("/api/launch-details")
 # def launch_details():

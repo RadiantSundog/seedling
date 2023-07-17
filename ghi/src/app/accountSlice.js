@@ -20,10 +20,14 @@ export const accountSlice = createSlice({
     clearForm: () => {
       return initialState;
     },
+    updateToken: (state, action) => {
+      state.token = action.payload;
+    },
   },
 });
 
-export const { clearForm, updateField, showModal } = accountSlice.actions;
+export const { clearForm, updateField, showModal, updateToken } =
+  accountSlice.actions;
 
 export const LOG_IN_MODAL = "LOG_IN_MODAL";
 export const SIGN_UP_MODAL = "SIGN_UP_MODAL";
