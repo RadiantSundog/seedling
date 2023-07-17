@@ -26,14 +26,24 @@ const TaskDetails = () => {
     }
   };
 
+  const formattedDate = task
+    ? new Date(task.due_date).toLocaleDateString()
+    : "";
+  const formattedTime = task
+    ? new Date(task.due_date).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : "";
+
   return (
     <div>
-      <h2>My Tasks</h2>
       {task ? (
         <div>
-          {/* <h3>{task.name}</h3> */}
+          <h2>{task.title}</h2>
           <p>{task.description}</p>
-          <p>{task.due_date}</p>
+          <p>Date: {formattedDate}</p>
+          <p>Time: {formattedTime}</p>
           <button onClick={handleDelete} disabled={isLoading}>
             Delete
           </button>

@@ -1,6 +1,10 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useGetGardensQuery, useDeleteGardenMutation } from "../app/authApi";
+import {
+  useGetGardensQuery,
+  useDeleteGardenMutation,
+  useGetPlantsQuery,
+} from "../app/authApi";
 import { useSelector } from "react-redux";
 
 const GardenDetails = () => {

@@ -34,6 +34,10 @@ const JournalDetails = () => {
         <div>
           <h3>{journal.title}</h3>
           <p>{journal.description}</p>
+          <img
+            src={journal.picture}
+            style={{ width: "120px", height: "100px" }}
+          />
           <button onClick={handleDelete} disabled={isLoading}>
             Delete
           </button>
