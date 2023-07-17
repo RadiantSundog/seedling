@@ -8,6 +8,7 @@ function MainPage() {
       <div className="text-center page-info">
         <div className="row row-cols-2">
           <div className="col">
+
             <h1 className="page-title">Welcome to Seedling</h1>
             <h4 className="page-description">
               Whether you're tending to a small balcony garden or transforming
@@ -35,18 +36,21 @@ function MainPage() {
 
         <div className="row main-page-button">
           <div className="col-6">
-            <NavLink className="button-look home-button" href="#">
+            <NavLink className="button-look home-button" to="/accounts/signup">
               Sign Up
             </NavLink>
-            <NavLink className="button-look home-button" href="#">
+            <NavLink className="button-look home-button" to="/accounts/login">
               Login
             </NavLink>
           </div>
         </div>
+        <br></br>
+        <br></br>
       </div>
 
+
       <div className="page-problem">
-        <p className="direction-title">PROBLEMS</p>
+        <p className="direction-title" style={{ color: '#F0EBCE' }}>PROBLEMS</p>
         <div className="row">
           <div className="col-sm-4 mb-3 mb-sm-0">
             <div className="card text-center h-100">
@@ -97,7 +101,7 @@ function MainPage() {
       </div>
 
       <div className="page-solution">
-        <p className="direction-title">SOLUTIONS</p>
+        <p className="direction-title" style={{ color: '#F0EBCE' }}>SOLUTIONS</p>
         <div className="row">
           <div className="col-sm-4 mb-3 mb-sm-0">
             <div className="card text-center h-100">
@@ -150,7 +154,7 @@ function MainPage() {
       </div>
 
       <div id="carouselExampleIndicators" className="carousel slide">
-        <p className="direction-title">MEET OUR TEAM</p>
+        <p className="direction-title" style={{ color: '#F0EBCE' }}>MEET OUR TEAM</p>
         <div className="carousel-indicators">
           <button
             type="button"
@@ -191,7 +195,7 @@ function MainPage() {
             <img
               src="https://st4.depositphotos.com/9998432/22597/v/450/depositphotos_225976914-stock-illustration-person-gray-photo-placeholder-man.jpg"
               className="d-block team-pic mx-auto"
-              alt="Jonny"
+              alt="Johnny"
             />
           </div>
           <div className="carousel-item">
@@ -237,17 +241,17 @@ function MainPage() {
 
       <div className="container text-left">
         <div className="row row-cols-3">
-          <div className="col text-center direction-subtitle">About Us</div>
-          <div className="col text-center direction-subtitle">Contacts</div>
-          <div className="col text-center direction-subtitle">Useful Links</div>
-          <div className="col text-center">
+          <div className="col text-center direction-subtitle" style={{ color: '#F0EBCE' }}>About Us</div>
+          <div className="col text-center direction-subtitle" style={{ color: '#F0EBCE' }}>Contacts</div>
+          <div className="col text-center direction-subtitle" style={{ color: '#F0EBCE' }}>Useful Links</div>
+          <div className="col text-center" style={{ color: '#F0EBCE' }}>
             At Seedling, our mission is to empower and inspire plant enthusiasts
             like you to create thriving gardens that bring joy, beauty, and
             connection to nature. We believe that with the right knowledge and
             tools, anyone can develop their gardening skills and create stunning
             landscapes that flourish in any environment.
           </div>
-          <div className="col text-center">
+          <div className="col text-center" style={{ color: '#F0EBCE' }}>
             Telephone: 1(800) SEE-DLIN <br></br>
             Email: <a href="mailto:info@seedling.com">info@seedling.com</a>
           </div>
@@ -354,9 +358,11 @@ function MainPage() {
               rel="noopener noreferrer"
             >
               No-dig gardening
-            </a>
-            <br></br>
+            </a><br></br>
+          <br></br>
           </div>
+        <div>
+        </div>
         </div>
       </div>
     </div>
