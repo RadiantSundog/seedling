@@ -3,3 +3,4 @@ jwtdown-fastapi==0.3.0
 uvicorn[standard]==0.17.6
 pymongo==4.3.3
 pytest
+requests>=2.28.1

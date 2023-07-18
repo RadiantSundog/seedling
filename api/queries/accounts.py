@@ -15,8 +15,8 @@ class AccountQueries(Queries):
     DB_NAME = "db-seedling-db"
     COLLECTION = "accounts"
 
-    def get(self, email: str) -> AccountOutWithPassword:
-        props = self.collection.find_one({"email": email})
+    def get(self, username: str) -> AccountOutWithPassword:
+        props = self.collection.find_one({"username": username})
         if not props:
             return None
         props["id"] = str(props["_id"])

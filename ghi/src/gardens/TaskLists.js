@@ -26,7 +26,7 @@ function TaskLists() {
 
   const calendar_tasks = tasks.map((task) => ({
     id: task.id,
-    title: task.description,
+    title: task.title,
     start: moment(task.due_date).toDate(),
     end: moment(task.due_date).toDate(),
   }));

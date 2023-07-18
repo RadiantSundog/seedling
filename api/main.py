@@ -1,12 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
-from routers import accounts, gardens, journals, plants, tasks
+from routers import accounts, gardens, journals, plants, tasks, plants_identify
 import os
-from fastapi import APIRouter, FastAPI, UploadFile, File
-
-# import httpx
-# from identify.config import API_KEY
+from fastapi import FastAPI
 
 
 app = FastAPI()
@@ -16,6 +13,7 @@ app.include_router(gardens.router)
 app.include_router(journals.router)
 app.include_router(plants.router)
 app.include_router(tasks.router)
+app.include_router(plants_identify.router)
 
 
 app.add_middleware(
@@ -27,35 +25,17 @@ app.add_middleware(
 )
 
 
-# @app.post("/identify-plant")
-# async def identify_plant(file: UploadFile = File(...)):
-#     contents = await file.read()
-#     plant_id_response = await send_image_for_identification(contents)
-#     plant_info = process_identification_response(plant_id_response)
-#     return plant_info
-
-
-# async def send_image_for_identification(image_data):
-#     url = "https://plant.id/api/v3/identification"
-#     headers = {
-#         "Content-Type": "multipart/form-data",
-#         "Authorization": API_KEY,
+# @app.get("/api/launch-details")
+# def launch_details():
+#     return {
+#         "launch_details": {
+#             "module": 3,
+#             "week": 17,
+#             "day": 5,
+#             "hour": 19,
+#             "min": "00",
+#         }
 #     }
-#     files = {"image": image_data}
-#     async with httpx.AsyncClient() as client:
-#         response = await client.post(url, headers)
-#     return response.json()
-
-
-# def process_identification_response(response):
-#     plant_info = {
-#         "name": response["common_names"],
-#         "profile_page": response["url"],
-#         "description": response["description"],
-#         "edible_parts": response["edible_parts"],
-#         "watering": response["watering"],
-#     }
-#     return plant_info
 
 
 # @app.get("/api/launch-details")

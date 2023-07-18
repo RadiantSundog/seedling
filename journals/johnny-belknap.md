@@ -29,3 +29,14 @@ Frontend
 * AccountsForms.css
 * LoginForm.js
 * SignUpForm.js
+
+## 17 JUL 2023
+Today, I worked on:
+
+Frontend
+* MainPage.js
+* AccountsForms.css
+* LoginForm.js
+* SignUpForm.js
+
+Changed the form templates again to make them modern and sleek. Added plant vector-based images to both forms. On the Main page, I made sure the SignUp and LogIn links went to the correct forms.
