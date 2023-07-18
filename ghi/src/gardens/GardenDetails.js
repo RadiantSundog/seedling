@@ -11,6 +11,7 @@ const GardenDetails = () => {
   const { garden_id } = useParams();
 
   const { data: gardens } = useGetGardensQuery();
+  const { data: plants } = useGetPlantsQuery();
 
   const garden = useSelector((state) =>
     gardens ? gardens.find((garden) => garden.id === garden_id) : null
@@ -32,6 +33,10 @@ const GardenDetails = () => {
     }
   };
 
+  const filteredPlants = plants
+    ? plants.filter((plant) => plant.garden_id === garden.id)
+    : [];
+
   return (
     <div>
       <h2>My Garden</h2>
@@ -39,6 +44,34 @@ const GardenDetails = () => {
         <div>
           <h3>{garden.name}</h3>
           <p>{garden.location}</p>
+          {filteredPlants.length > 0 ? (
+            <table>
+              <tbody>
+                {filteredPlants.map((plant) => (
+                  <tr key={plant.id}>
+                    <td>
+                      <img
+                        src={plant.plant_picture}
+                        style={{ width: "80px", height: "60px" }}
+                        alt={plant.name}
+                      />
+                    </td>
+                    <td>
+                      <Link
+                        to={`/plants/${plant.id}`}
+                        className="btn btn-primary"
+                      >
+                        {plant.name}
+                      </Link>
+                    </td>
+                    <td>{plant.Garden}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div>No plants found.</div>
+          )}
           <button onClick={handleDelete} disabled={isLoading}>
             Delete
           </button>
