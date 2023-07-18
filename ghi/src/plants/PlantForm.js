@@ -12,7 +12,6 @@ function PlantForm() {
   const [error, setError] = useState("");
   const [createPlant, result] = useCreatePlantsMutation();
   const { data: gardens, isError: gardenError } = useGetGardensQuery();
-  console.log(gardens);
 
   async function handleSubmit(e) {
     e.preventDefault();

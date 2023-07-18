@@ -6,7 +6,6 @@ import { useEffect } from "react";
 function Nav() {
   const [logout, { data }] = useLogOutMutation();
   const { data: currentUser } = useGetTokenQuery();
-  console.log(currentUser);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,13 +68,13 @@ function Nav() {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="dropdown-item" to="tasks">
-                      Tasks
+                    <NavLink className="dropdown-item" to="gardens/create">
+                      Start a Garden
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="dropdown-item" to="gardens/create">
-                      Start a Garden
+                    <NavLink className="dropdown-item" to="tasks">
+                      Tasks
                     </NavLink>
                   </li>
                 </ul>
@@ -97,7 +96,7 @@ function Nav() {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="dropdown-item" href="#">
+                    <NavLink className="dropdown-item" to="plants/create">
                       Plant-a-Plant
                     </NavLink>
                   </li>

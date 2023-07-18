@@ -14,7 +14,7 @@ async def send_image_for_identification(image_data):
 
 # def process_identification_response(response):
 #     plant_info = {
-#         "name": response["result"][classification][suggestions][0]["name"],
+#         "name": response["result"]["classification"]["suggestions"][0]["name"],
 #         "profile_page": response["url"],
 #         "description": response["description"],
 #         "edible_parts": response["edible_parts"],

@@ -9,7 +9,7 @@ class PlantIn(BaseModel):
     plant_picture: HttpUrl
     description: Optional[str]
     garden_id: str
-    Garden: Optional[list]
+    # Garden: Optional[list]
 
 
 class PlantOut(BaseModel):
@@ -18,7 +18,7 @@ class PlantOut(BaseModel):
     description: Optional[str]
     plant_picture: HttpUrl
     garden_id: str
-    Garden: list
+    # Garden: list
 
 
 class PlantRepository:

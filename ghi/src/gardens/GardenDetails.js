@@ -64,7 +64,7 @@ const GardenDetails = () => {
                         {plant.name}
                       </Link>
                     </td>
-                    <td>{plant.Garden}</td>
+                    <td>{garden.name}</td>
                   </tr>
                 ))}
               </tbody>
