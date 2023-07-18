@@ -8,7 +8,6 @@ function MainPage() {
       <div className="text-center page-info">
         <div className="row row-cols-2">
           <div className="col">
-
             <h1 className="page-title">Welcome to Seedling</h1>
             <h4 className="page-description">
               Whether you're tending to a small balcony garden or transforming

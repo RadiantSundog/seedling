@@ -50,16 +50,7 @@ function SignUp() {
     <section className="vh-100">
       <div className="container-fluid h-custom">
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col">
-            <img
-              src={PinkPot}
-              alt="seedling-logo"
-              height={windowWidth > 768 ? "500" : "250"}
-              width={windowWidth > 768 ? "500" : "250"}
-              className="title-pic"
-            />
-          </div>
-          <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <div className="col-lg-4 offset-lg-1">
             <form onSubmit={handleSubmit}>
               <div className="divider d-flex align-items-center my-4">
                 <p className="text-center fw-bold mx-3 mb-0">Sign Up</p>
@@ -113,11 +104,20 @@ function SignUp() {
                     className="link-danger"
                     onClick={() => navigate("/accounts/login/")}
                   >
-                    Log In Here
+                    Log Here
                   </a>
                 </p>
               </div>
             </form>
+          </div>
+          <div className="col-lg-6">
+            <img
+              src={PinkPot}
+              alt="seedling-logo"
+              height={windowWidth > 768 ? "500" : "250"}
+              width={windowWidth > 768 ? "500" : "250"}
+              className="title-pic"
+            />
           </div>
         </div>
       </div>

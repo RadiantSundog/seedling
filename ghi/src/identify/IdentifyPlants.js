@@ -26,20 +26,27 @@ function IdentifyPlants() {
   };
 
   return (
-    <div>
-      <h1>Identify a plant</h1>
-      {error && <div>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          accept="image/*"
-          className="form-control form-control-lg"
-          onChange={handleImageUpload}
-        />
-        <button type="submit" className="btn btn-primary btn-lg btn-block">
-          Identify
-        </button>
-      </form>
+    <div className="container">
+      <div className="card shadow p-4 mt-4">
+        <h1>Identify a plant</h1>
+        {error && <div>{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-floating mb-3">
+            <input
+              type="file"
+              accept="image/*"
+              className="form-control"
+              onChange={handleImageUpload}
+            />
+          </div>
+          <div>
+            <label htmlFor="image">Upload an image</label>
+          </div>
+          <button type="submit" className="btn btn-primary btn-lg btn-block">
+            Identify
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
