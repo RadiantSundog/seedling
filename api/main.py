@@ -4,6 +4,7 @@ from authenticator import authenticator
 from routers import accounts, gardens, journals, plants, tasks
 import os
 from fastapi import APIRouter, FastAPI, UploadFile, File
+
 # import httpx
 # from identify.config import API_KEY
 
@@ -53,7 +54,6 @@ app.add_middleware(
 
 #     }
 #     return plant_info
-
 
 
 # @app.get("/api/launch-details")
