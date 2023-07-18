@@ -1,5 +1,4 @@
 from fastapi import APIRouter, UploadFile, File
-from typing import List
 from queries.plants_identify import send_image_for_identification
 import base64
 
