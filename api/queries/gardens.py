@@ -22,10 +22,35 @@ class GardenQueries(Queries):
             gardenProps["id"] = str(gardenProps["_id"])
         return [GardenOut(**garden) for garden in gardensPropsList]
 
-    def get_one(self, garden_id: str) -> GardenOut:
-        garden = self.collection.find_one({"_id": ObjectId(garden_id)})
-        garden["id"] = str(garden["_id"])
-        return GardenOut(**garden)
+    def get_one(self, garden_id: str) -> List[GardenOut]:
+        plants = [
+            {"$match": {"_id": ObjectId(garden_id)}},
+            {"$unwind": "$plant_ids"},
+            {
+                "$lookup": {
+                    "from": "plants",
+                    "localField": "plant_ids",
+                    "foreignField": "_id",
+                    "as": "plantObjects",
+                }
+            },
+            {"$unwind": "$plantObjects"},
+            {
+                "$group": {
+                    "_id": "$_id",
+                    "name": {"$last": "$name"},
+                    "location": {"$last": "$location"},
+                    "plants": {"$push": "$plantObjects"},
+                }
+            },
+        ]
+        result = self.collection.aggregate(plants)
+        for garden in result:
+            garden["id"] = str(garden["_id"])
+            for plant in garden["plants"]:
+                plant["id"] = str(plant["_id"])
+                del plant["_id"]
+            return GardenOut(**garden)
 
     def delete(self, garden_id: str) -> bool:
         garden = self.collection.delete_one({"_id": ObjectId(garden_id)})

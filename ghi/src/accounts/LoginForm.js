@@ -11,6 +11,7 @@ import {
 import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
+import BluePot from "./BluePot.svg";
 
 function LogIn() {
   const dispatch = useDispatch();
@@ -37,6 +38,17 @@ function LogIn() {
       dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch]
   );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await logIn({ username, password });
+    if (response.error) {
+      console.log(response.error);
+    } else {
+      console.log(response.data);
+      navigate("/");
+    }
+  };
 
   return (
     <div className={modalClass} key="login-modal">
@@ -84,25 +96,18 @@ function LogIn() {
               <label htmlFor="remember_me">Remember Me!</label>
             </div>
             <div className="row">
-              <input
-                disabled={logInLoading}
-                type="submit"
-                value="Submit"
-                className="btn"
-              />
+              <input type="submit" value="Submit" className="btn" />
             </div>
           </form>
           <div className="row">
             <p>
               Don't have an account? <br></br>
-              <button href="#" onClick={() => navigate("/accounts/signup/")}>
-                Register Here
-              </button>
+              <a href="#" onClick={() => navigate("/accounts/signup/")}>Register Here</a>
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

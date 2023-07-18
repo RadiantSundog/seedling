@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIdentifiedPlant, setError, clearError } from "../app/identifySlice";
-import API_KEY from "./config";
 
 function IdenfityPlants() {
   const [image, setImage] = useState(null);
@@ -16,20 +15,9 @@ function IdenfityPlants() {
     event.preventDefault();
     try {
       dispatch(clearError());
-
-      const formData = new FormData();
-      formData.append("image", image);
-
-      const response = await fetch("https://plant.id/api/v3/identification", {
-        method: "post",
-        headers: {
-          Authorization: API_KEY,
-        },
-        body: formData,
-      });
-      const data = await response.json();
-      const identifiedPlant = data;
-      dispatch(setIdentifiedPlant(identifiedPlant));
+      // const data = await response.json();
+      // const identifiedPlant = data;
+      // dispatch(setIdentifiedPlant(identifiedPlant));
     } catch (error) {
       console.error(error);
       dispatch(setError("An error occurred while idtenfiying the plant"));

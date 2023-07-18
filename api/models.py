@@ -52,6 +52,7 @@ class GardenIn(BaseModel):
     location: str
     inside: Optional[bool]
     outside: Optional[bool]
+    plant_ids: Optional[list]
 
 
 class GardenOut(BaseModel):
@@ -60,19 +61,24 @@ class GardenOut(BaseModel):
     location: str
     inside: Optional[bool]
     outside: Optional[bool]
+    plants: Optional[list]
 
 
-# class PlantIn(BaseModel):
-#     name: str
-#     plant_picture: HttpUrl
-#     garden_id: str
+class PlantIn(BaseModel):
+    name: str
+    plant_picture: HttpUrl
+    description: Optional[str]
+    garden_id: str
+    Garden: Optional[list]
 
 
-# class PlantOut(BaseModel):
-#     id: str
-#     name: str
-#     plant_picture: HttpUrl
-#     garden: GardenOut
+class PlantOut(BaseModel):
+    id: str
+    name: str
+    description: Optional[str]
+    plant_picture: HttpUrl
+    garden_id: str
+    Garden: list
 
 
 class TaskIn(BaseModel):
