@@ -4,6 +4,7 @@ from authenticator import authenticator
 from routers import accounts, gardens, journals, plants, tasks
 import os
 from fastapi import APIRouter, FastAPI, UploadFile, File
+
 # import httpx
 # from identify.config import API_KEY
 
@@ -25,6 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # @app.post("/identify-plant")
 # async def identify_plant(file: UploadFile = File(...)):
 #     contents = await file.read()
@@ -32,9 +34,10 @@ app.add_middleware(
 #     plant_info = process_identification_response(plant_id_response)
 #     return plant_info
 
+
 # async def send_image_for_identification(image_data):
-#     url="https://plant.id/api/v3/identification"
-#     headers={
+#     url = "https://plant.id/api/v3/identification"
+#     headers = {
 #         "Content-Type": "multipart/form-data",
 #         "Authorization": API_KEY,
 #     }
@@ -43,6 +46,7 @@ app.add_middleware(
 #         response = await client.post(url, headers)
 #     return response.json()
 
+
 # def process_identification_response(response):
 #     plant_info = {
 #         "name": response["common_names"],
@@ -50,10 +54,8 @@ app.add_middleware(
 #         "description": response["description"],
 #         "edible_parts": response["edible_parts"],
 #         "watering": response["watering"],
-
 #     }
 #     return plant_info
-
 
 
 # @app.get("/api/launch-details")
