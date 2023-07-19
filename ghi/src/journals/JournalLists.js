@@ -14,15 +14,15 @@ function JournalLists() {
   });
 
   return (
-    <div className="column is-centered">
-      <div className="column is-narrow">
-        <ErrorNotification error={error} />
+    <div className="container">
+      <div className="card shadow p-4 mt-4">
         <h1>Garden Journals</h1>
+        <ErrorNotification error={error} />
         <Link to="create" className="btn btn-primary">
           Create Journals
         </Link>
         {sortedData.map((journal) => (
-          <div className="card" key={journal.id}>
+          <div className="card mt-4" key={journal.id}>
             <h5 className="card-header">Journals</h5>
             <div className="card-body">
               <h5 className="card-title">{journal.title}</h5>

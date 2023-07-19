@@ -58,7 +58,7 @@ function PlantLists() {
                     {plant.name}
                   </Link>
                 </td>
-                <td>{plant.Garden}</td>
+                <td>{plant.garden.name}</td>
                 <td>
                   <button
                     onClick={() => handleDelete(plant.id)}
