@@ -15,12 +15,22 @@ function IdenfityPlants() {
     event.preventDefault();
     try {
       dispatch(clearError());
-      // const data = await response.json();
-      // const identifiedPlant = data;
-      // dispatch(setIdentifiedPlant(identifiedPlant));
+      const formData = new FormData();
+      formData.append("file", image);
+
+      const response = await fetch("/identify-plant", {
+        method: "post",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const plantInfo = await response.json();
+        dispatch(setIdentifiedPlant(plantInfo));
+      } else {
+        throw new Error("An error occurred while identifying the plant");
+      }
     } catch (error) {
-      console.error(error);
-      dispatch(setError("An error occurred while idtenfiying the plant"));
+      dispatch(setError("An error occurred while identifying the plant"));
     }
   };
   return (

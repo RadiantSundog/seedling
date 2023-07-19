@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
-from routers import accounts, gardens, journals, plants, tasks, plants_identify
+from routers import accounts, gardens, journals, plants, tasks, identify
 import os
 from fastapi import FastAPI
 
@@ -13,7 +13,7 @@ app.include_router(gardens.router)
 app.include_router(journals.router)
 app.include_router(plants.router)
 app.include_router(tasks.router)
-app.include_router(plants_identify.router)
+app.include_router(identify.router)
 
 
 app.add_middleware(
@@ -23,29 +23,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-# @app.get("/api/launch-details")
-# def launch_details():
-#     return {
-#         "launch_details": {
-#             "module": 3,
-#             "week": 17,
-#             "day": 5,
-#             "hour": 19,
-#             "min": "00",
-#         }
-#     }
-
-
-# @app.get("/api/launch-details")
-# def launch_details():
-#     return {
-#         "launch_details": {
-#             "module": 3,
-#             "week": 17,
-#             "day": 5,
-#             "hour": 19,
-#             "min": "00",
-#         }
-#     }
