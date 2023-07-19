@@ -40,3 +40,13 @@ Frontend
 * SignUpForm.js
 
 Changed the form templates again to make them modern and sleek. Added plant vector-based images to both forms. On the Main page, I made sure the SignUp and LogIn links went to the correct forms.
+
+## 18 JUL 2023
+Today, I worked on:
+
+Re-arranged the form templates and made the forms stay in place but input field expand as needed. I added the same floating box-y layout to each form page in Gardens and Plants sections, too.
+
+## 19 JUL 2023
+Today, I worked on:
+
+Re-arranged the form templates and made the forms stay in place but input field expand as needed. I added the same floating box-y layout to each form page in Gardens and Plants sections, too.

@@ -52,8 +52,8 @@ function LogIn() {
   return (
     <section className="vh-100">
       <div className="container-fluid h-custom">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-4 offset-lg-1">
+        <div className="row d-flex align-items-center h-100">
+          <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form onSubmit={handleSubmit}>
               <div className="divider d-flex align-items-center my-4">
                 <p className="text-center fw-bold mx-3 mb-0">Login</p>
@@ -127,41 +127,10 @@ function LogIn() {
                 className="title-pic"
               />
             </div>
-
-            <div className="row">
-              <input
-                required
-                onChange={field}
-                value={password}
-                name="password"
-                id="password"
-                className="form__input"
-                type="password"
-                placeholder="Password"
-              />
-            </div>
-            <div className="row">
-              <input
-                type="checkbox"
-                name="remember_me"
-                id="remember_me"
-                className=""
-              />
-              <label htmlFor="remember_me">Remember Me!</label>
-            </div>
-            <div className="row">
-              <input type="submit" value="Submit" className="btn" />
-            </div>
-          </form>
-          <div className="row">
-            <p>
-              Don't have an account? <br></br>
-              <a href="#" onClick={() => navigate("/accounts/signup/")}>Register Here</a>
-            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
