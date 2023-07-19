@@ -67,3 +67,44 @@ Today, I worked on:
 I updated queries functions to be more concise.
 I added all models to model.py
 I added commented out code for auth to be checked later.
+
+## July 13, 2023
+Today, I worked on:
+-all queries
+-all routers
+-model.py
+
+I updated queries functions to be more concise.
+I added all models to model.py
+I added commented out code for auth to be checked later.
+
+## July 14, 2023
+Today, I worked on:
+-queries/plants.py
+-queries/gardens.py
+
+I attempted to make the gardens plants connection.
+I also made some other changes to code.
+
+## July 17, 2023
+Today, I worked on:
+-queries/plants.py
+-queries/gardens.py
+
+I updated this code so that when you create a garden it has an empty plants
+list that is populated by the creation of a plant.
+Getting one garden also return the list of plants with all plant information
+
+
+## July 19, 2023
+Today, I worked on:
+-queries/journals.py
+-queries/plants.py
+-model.py
+-queries/database.py
+-queries/client.py
+
+I added an option to update a journal entry.
+I updated plants queries to be cleaner.
+I deleted database.py.
+I added a db variable to client.py for use in other queries.
