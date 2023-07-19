@@ -42,10 +42,10 @@ def get_one_task(
     return task
 
 
-@router.delete("/tasks/{task_id}", response_model=bool)
+@router.delete("/tasks/{tasks_id}", response_model=bool)
 def delete_task(
-    task_id: str,
+    tasks_id: str,
     repo: TasksQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
-    return repo.delete(task_id)
+    repo.delete(tasks_id=tasks_id)
+    return True
