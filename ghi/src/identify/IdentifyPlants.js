@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIdentifiedPlant, setError, clearError } from "../app/identifySlice";
+import "./IdentifyForm.css";
 
-function IdenfityPlants() {
+function IdentifyPlants() {
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const error = useSelector((state) => state.plantIdentification.error);
@@ -30,19 +31,38 @@ function IdenfityPlants() {
         throw new Error("An error occurred while identifying the plant");
       }
     } catch (error) {
+<<<<<<< HEAD
+=======
+      console.error(error);
+>>>>>>> fc209e29ffd0f24592771e4c62d0bf91f584adec
       dispatch(setError("An error occurred while identifying the plant"));
     }
   };
+
   return (
-    <div>
-      <h1>Identify the plant</h1>
-      {error && <div>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-        <button type="submit">Identify</button>
-      </form>
+    <div className="container">
+      <div className="card shadow p-4 mt-4">
+        <h1>Identify a plant</h1>
+        {error && <div>{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-floating mb-3">
+            <input
+              type="file"
+              accept="image/*"
+              className="form-control"
+              onChange={handleImageUpload}
+            />
+          </div>
+          <div>
+            <label htmlFor="image">Upload an image</label>
+          </div>
+          <button type="submit" className="btn btn-primary btn-lg btn-block">
+            Identify
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default IdenfityPlants;
+export default IdentifyPlants;

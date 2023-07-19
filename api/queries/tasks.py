@@ -29,7 +29,3 @@ class TasksQueries(Queries):
     def delete(self, tasks_id: str) -> bool:
         tasks = self.collection.delete_one({"_id": ObjectId(tasks_id)})
         return tasks.deleted_count == 1
-
-    # def update_one(self, task_id: str, task: TaskIn) -> TaskOut:
-    #     task = self.collection.update_one({"_id": ObjectId(task_id)})
-    #     return task

@@ -23,6 +23,7 @@ class GardenQueries(Queries):
         return [GardenOut(**garden) for garden in gardensPropsList]
 
     def get_one(self, garden_id: str) -> List[GardenOut]:
+        garden = self.collection.find_one({"_id": ObjectId(garden_id)})
         plants = [
             {"$match": {"_id": ObjectId(garden_id)}},
             {"$unwind": "$plant_ids"},

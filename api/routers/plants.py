@@ -19,7 +19,6 @@ router = APIRouter()
 @router.post("/plants", response_model=PlantOut)
 def create_plant(
     plant: PlantIn,
-    # response: Response,
     repo: PlantRepository = Depends(),
     # account: dict = Depends(get_current_user),
 ):
@@ -41,10 +40,10 @@ def get_one_plant(
     repo: PlantRepository = Depends(),
     # account: dict = Depends(get_current_user),
 ):
-    vacation = repo.get_one(plant_id)
-    if vacation is None:
+    plant = repo.get_one(plant_id)
+    if plant is None:
         response.status_code = 404
-    return vacation
+    return plant
 
 
 @router.delete("/plants/{plant_id}", response_model=bool)
