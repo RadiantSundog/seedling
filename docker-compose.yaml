@@ -19,7 +19,7 @@ services:
   fastapi:
     environment:
       SIGNING_KEY: ${SIGNING_KEY}
-      CORS_HOST: http://localhost:3000
+      # CORS_HOST: http://localhost:3000
       DATABASE_URL: mongodb://PTB:seedling@mongo:27017/
       DB_NAME: db-seedling-db
       WAIT_HOSTS: mongo:27017

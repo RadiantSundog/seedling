@@ -4,7 +4,6 @@ from queries.tasks import TasksQueries
 from models import TaskIn, TaskOut
 
 
-
 router = APIRouter()
 # not_authorized = HTTPException(
 #     status_code=status.HTTP_401_UNAUTHORIZED,
@@ -50,14 +49,3 @@ def delete_task(
     # account: dict = Depends(get_current_user),
 ):
     return repo.delete(task_id)
-
-
-# @router.put("/tasks/{task_id}", response_model=TaskOut)
-# def update_task(
-#     task_id: str,
-#     task: TaskIn,
-#     repo: TasksQueries = Depends(),
-#     # account: dict = Depends(get_current_user),
-# ):
-#     task_update = repo.update_one(task_id, task)
-#     return task_update

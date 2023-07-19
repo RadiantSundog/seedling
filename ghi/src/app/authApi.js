@@ -117,13 +117,16 @@ export const authApiSlice = createApi({
       invalidatesTags: ["Garden"],
     }),
     getPlants: builder.query({
-      query: () => "/plants",
+      query: () => ({
+        url: "/plants",
+        credentials: "include",
+      }),
       providesTags: ["Plant"],
     }),
     createPlants: builder.mutation({
       query: (data) => ({
         url: "/plants",
-        body: data,
+        body: { ...data },
         method: "post",
       }),
       invalidatesTags: ["Plant"],

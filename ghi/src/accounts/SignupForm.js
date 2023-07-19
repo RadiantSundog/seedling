@@ -41,7 +41,6 @@ function SignUp() {
     if (response.error) {
       console.log(response.error);
     } else {
-      console.log(response.data);
       navigate("/");
     }
   };

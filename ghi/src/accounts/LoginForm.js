@@ -127,10 +127,41 @@ function LogIn() {
                 className="title-pic"
               />
             </div>
+
+            <div className="row">
+              <input
+                required
+                onChange={field}
+                value={password}
+                name="password"
+                id="password"
+                className="form__input"
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <div className="row">
+              <input
+                type="checkbox"
+                name="remember_me"
+                id="remember_me"
+                className=""
+              />
+              <label htmlFor="remember_me">Remember Me!</label>
+            </div>
+            <div className="row">
+              <input type="submit" value="Submit" className="btn" />
+            </div>
+          </form>
+          <div className="row">
+            <p>
+              Don't have an account? <br></br>
+              <a href="#" onClick={() => navigate("/accounts/signup/")}>Register Here</a>
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -6,7 +6,6 @@ import { useEffect } from "react";
 function Nav() {
   const [logout, { data }] = useLogOutMutation();
   const { data: currentUser } = useGetTokenQuery();
-  console.log(currentUser);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,93 +39,93 @@ function Nav() {
                 Home
               </NavLink>
             </li>
-            {currentUser ? (
-              <>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/identify">
-                    Identify a Plant
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" onClick={logout}>
-                    Log Out
-                  </NavLink>
-                </li>
-                <li className="nav-item dropdown">
-                  <NavLink
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Garden
-                  </NavLink>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <NavLink className="dropdown-item" to="gardens">
-                        My Gardens
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink className="dropdown-item" to="tasks">
-                        Tasks
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink className="dropdown-item" to="gardens/create">
-                        Start a Garden
-                      </NavLink>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown">
-                  <NavLink
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Plants
-                  </NavLink>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <NavLink className="dropdown-item" to="plants">
-                        My Plants
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink className="dropdown-item" href="#">
-                        Plant-a-Plant
-                      </NavLink>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link active"
-                    aria-current="page"
-                    to="journals"
-                  >
-                    Garden Journals
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/accounts/login">
-                    Login
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/accounts/signup">
-                    Sign Up
-                  </NavLink>
-                </li>
-              </>
-            )}
+            {/* {currentUser ? ( */}
+            <>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/identify">
+                  Identify a Plant
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" onClick={logout}>
+                  Log Out
+                </NavLink>
+              </li>
+              <li className="nav-item dropdown">
+                <NavLink
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Garden
+                </NavLink>
+                <ul className="dropdown-menu">
+                  <li>
+                    <NavLink className="dropdown-item" to="gardens">
+                      My Gardens
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="dropdown-item" to="gardens/create">
+                      Start a Garden
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="dropdown-item" to="tasks">
+                      Tasks
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-item dropdown">
+                <NavLink
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Plants
+                </NavLink>
+                <ul className="dropdown-menu">
+                  <li>
+                    <NavLink className="dropdown-item" to="plants">
+                      My Plants
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="dropdown-item" to="plants/create">
+                      Plant-a-Plant
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link active"
+                  aria-current="page"
+                  to="journals"
+                >
+                  Garden Journals
+                </NavLink>
+              </li>
+            </>
+            {/* ) : ( */}
+            <>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/accounts/login">
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/accounts/signup">
+                  Sign Up
+                </NavLink>
+              </li>
+            </>
+            {/* )} */}
           </ul>
         </div>
         <form className="d-flex" role="search">

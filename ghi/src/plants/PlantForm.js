@@ -7,16 +7,21 @@ function PlantForm() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [plant_picture, setPicture] = useState("");
+  const [description, setDescription] = useState("");
   const [garden_id, setGardenId] = useState("");
   const [error, setError] = useState("");
   const [createPlant, result] = useCreatePlantsMutation();
   const { data: gardens, isError: gardenError } = useGetGardensQuery();
-  console.log(gardens);
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createPlant({ name, plant_picture, garden_id: garden_id });
+      await createPlant({
+        name,
+        plant_picture,
+        description,
+        garden_id: garden_id,
+      });
       navigate("/plants");
     } catch (error) {
       setError(error.message);
@@ -59,6 +64,19 @@ function PlantForm() {
                 className="form-control"
               />
               <label htmlFor="plant_picture">Picture</label>
+            </div>
+            <div className="form-floating mb-3">
+              <textarea
+                placeholder="Plant's Description"
+                required
+                type="text"
+                name="description"
+                id="description"
+                value={description || ""}
+                onChange={(e) => setDescription(e.target.value)}
+                className="form-control"
+              />
+              <label htmlFor="description">Description</label>
             </div>
             <div className="mb-3">
               <select

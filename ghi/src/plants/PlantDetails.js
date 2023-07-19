@@ -33,11 +33,12 @@ const PlantDetails = () => {
       {plant ? (
         <div>
           <h3>{plant.name}</h3>
-          <p>{plant.garden.location}</p>
+          <p>{plant.Garden}</p>
           <img
             src={plant.plant_picture}
             style={{ width: "120px", height: "100px" }}
           />
+          <p>{plant.description}</p>
           <button onClick={handleDelete} disabled={isLoading}>
             Delete
           </button>

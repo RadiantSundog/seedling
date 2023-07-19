@@ -29,3 +29,14 @@ class JournalQueries(Queries):
     def delete(self, journal_id: str) -> bool:
         journal = self.collection.delete_one({"_id": ObjectId(journal_id)})
         return journal.deleted_count == 1
+
+    def update_one(self, journal_id: str, journal: JournalIn) -> JournalOut:
+        props = journal.dict()
+        self.collection.find_one_and_update(
+            {
+                "_id": ObjectId(journal_id),
+            },
+            {"$set": {**props}},
+        )
+        props["id"] = str(ObjectId(journal_id))
+        return JournalOut(**props)
