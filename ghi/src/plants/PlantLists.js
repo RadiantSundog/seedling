@@ -7,7 +7,6 @@ function PlantLists() {
   const { data: plants, error, isLoading } = useGetPlantsQuery();
 
   const { plant_id } = useParams();
-  console.log(plants);
   const plant = useSelector((state) =>
     plants ? plants.find((plant) => plant.id === plant_id) : null
   );
@@ -59,7 +58,7 @@ function PlantLists() {
                     {plant.name}
                   </Link>
                 </td>
-                <td>{plant.garden.name}</td>
+                <td>{plant.Garden}</td>
                 <td>
                   <button
                     onClick={() => handleDelete(plant.id)}

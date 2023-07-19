@@ -14,7 +14,8 @@ function JournalForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createJournal({ title, description, picture });
+      const created_on = new Date().toISOString();
+      await createJournal({ title, description, picture, created_on });
       navigate("/journals");
     } catch (error) {
       setError(error.message);

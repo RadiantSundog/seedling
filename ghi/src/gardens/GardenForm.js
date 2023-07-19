@@ -7,14 +7,20 @@ function GardenForm() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [type, setType] = useState("");
+  const [inside, setInside] = useState("");
+  const [outside, setOutside] = useState("");
   const [error, setError] = useState("");
   const [createGarden, result] = useCreateGardensMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createGarden({ name, location, type });
+      await createGarden({
+        name,
+        location,
+        inside: inside === "inside",
+        outside: outside === "outside",
+      });
       navigate("/gardens");
     } catch (error) {
       setError(error.message);
@@ -59,26 +65,26 @@ function GardenForm() {
                 <li>
                   <input
                     type="radio"
-                    name="type"
-                    id="indoor"
-                    value="indoor"
-                    checked={type === "indoor"}
-                    onChange={(e) => setType(e.target.value)}
+                    name="inside"
+                    id="inside"
+                    value="inside"
+                    checked={inside === "inside"}
+                    onChange={(e) => setInside(e.target.value)}
                   />
-                  <label htmlFor="indoor" className="ms-2">
+                  <label htmlFor="inside" className="ms-2">
                     Indoor
                   </label>
                 </li>
                 <li>
                   <input
                     type="radio"
-                    name="type"
-                    id="outdoor"
-                    value="outdoor"
-                    checked={type === "outdoor"}
-                    onChange={(e) => setType(e.target.value)}
+                    name="outside"
+                    id="outside"
+                    value="outside"
+                    checked={outside === "outside"}
+                    onChange={(e) => setOutside(e.target.value)}
                   />
-                  <label htmlFor="outdoor" className="ms-2">
+                  <label htmlFor="outside" className="ms-2">
                     Outdoor
                   </label>
                 </li>

@@ -39,17 +39,6 @@ function LogIn() {
     [dispatch]
   );
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await logIn({ username, password });
-    if (response.error) {
-      console.log(response.error);
-    } else {
-      console.log(response.data);
-      navigate("/");
-    }
-  };
-
   return (
     <div className={modalClass} key="login-modal">
       <div className="modal-background"></div>
@@ -102,12 +91,14 @@ function LogIn() {
           <div className="row">
             <p>
               Don't have an account? <br></br>
-              <a href="#" onClick={() => navigate("/accounts/signup/")}>Register Here</a>
+              <a href="#" onClick={() => navigate("/accounts/signup/")}>
+                Register Here
+              </a>
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
