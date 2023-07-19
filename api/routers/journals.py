@@ -50,3 +50,13 @@ def delete_journal(
     # account: dict = Depends(get_current_user),
 ):
     return repo.delete(journal_id)
+
+
+@router.put("/journals/{journal_id}", response_model=JournalOut)
+def update_journal(
+    journal_id: str,
+    journal: JournalIn,
+    repo: JournalQueries = Depends(),
+):
+    journal_update = repo.update_one(journal_id, journal)
+    return journal_update

@@ -9,7 +9,6 @@ class PlantIn(BaseModel):
     plant_picture: HttpUrl
     description: Optional[str]
     garden_id: str
-    Garden: Optional[list]
 
 
 class PlantOut(BaseModel):
@@ -18,7 +17,6 @@ class PlantOut(BaseModel):
     description: Optional[str]
     plant_picture: HttpUrl
     garden_id: str
-    Garden: list
 
 
 class PlantRepository:
@@ -50,28 +48,3 @@ class PlantRepository:
     def delete(self, plant_id: str) -> bool:
         plant = self.plants_collection.delete_one({"_id": ObjectId(plant_id)})
         return plant.deleted_count == 1
-
-
-# {
-# "_id": ObjectId('64b1c54d4fd9d17f50b2e745')
-# }
-
-# {
-#   from: "gardens",
-#   localField: "garden.id",
-#   foreignField: "garden_id",
-#   as: "Garden",
-# }
-
-# {
-#   Garden: {
-#     $map: {
-#       input: "$Garden",
-#       as: "garden",
-#       in: {
-#         id: "$$garden._id",
-#         name: "$$garden.name",
-#       },
-#     },
-#   },
-# }
