@@ -90,6 +90,14 @@ export const authApiSlice = createApi({
       }),
       invalidatesTags: ["Journals"],
     }),
+    // updateJournals: builder.mutation({
+    //   query: (updatedJournal) => ({
+    //     url: `/journals/${updatedJournal.id}`,
+    //     method: "put",
+    //     body: updatedJournal,
+    //   }),
+    //   invalidatesTags: ["Journals"],
+    // }),
     deleteJournal: builder.mutation({
       query: (journalId) => ({
         url: `/journals/${journalId}`,
@@ -167,6 +175,7 @@ export const {
   useSignUpMutation,
   useGetJournalsQuery,
   useCreateJournalsMutation,
+  useUpdateJournalsMutation,
   useDeleteJournalMutation,
   useGetGardensQuery,
   useCreateGardensMutation,

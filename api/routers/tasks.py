@@ -46,6 +46,6 @@ def get_one_task(
 def delete_task(
     task_id: str,
     repo: TasksQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
-    return repo.delete(task_id)
+    repo.delete(task_id=task_id)
+    return True

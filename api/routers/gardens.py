@@ -44,10 +44,19 @@ def get_one_garden(
     return garden
 
 
+# @router.delete("/gardens/{garden_id}", response_model=bool)
+# def delete_garden(
+#     garden_id: str,
+#     repo: GardenQueries = Depends(),
+#     # account: dict = Depends(get_current_user),
+# ):
+#     return repo.delete(garden_id)
+
+
 @router.delete("/gardens/{garden_id}", response_model=bool)
 def delete_garden(
     garden_id: str,
     repo: GardenQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
-    return repo.delete(garden_id)
+    repo.delete(garden_id=garden_id)
+    return True

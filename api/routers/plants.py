@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Response
 from typing import List
 from queries.plants import (
     PlantIn,
-    PlantRepository,
+    PlantQueries,
     PlantOut,
 )
 
@@ -19,7 +19,7 @@ router = APIRouter()
 @router.post("/plants", response_model=PlantOut)
 def create_plant(
     plant: PlantIn,
-    repo: PlantRepository = Depends(),
+    repo: PlantQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.create(plant)
@@ -27,7 +27,7 @@ def create_plant(
 
 @router.get("/plants", response_model=List[PlantOut])
 def get_all_plants(
-    repo: PlantRepository = Depends(),
+    repo: PlantQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
@@ -37,7 +37,7 @@ def get_all_plants(
 def get_one_plant(
     plant_id: str,
     response: Response,
-    repo: PlantRepository = Depends(),
+    repo: PlantQueries = Depends(),
     # account: dict = Depends(get_current_user),
 ):
     plant = repo.get_one(plant_id)
@@ -46,17 +46,19 @@ def get_one_plant(
     return plant
 
 
+# @router.delete("/plants/{plant_id}", response_model=bool)
+# def delete_plant(
+#     plant_id: str,
+#     repo: PlantQueries = Depends(),
+#     # account: dict = Depends(get_current_user),
+# ):
+#     return repo.delete(plant_id)
+
+
 @router.delete("/plants/{plant_id}", response_model=bool)
 def delete_plant(
     plant_id: str,
-    repo: PlantRepository = Depends(),
-    # account: dict = Depends(get_current_user),
+    repo: PlantQueries = Depends(),
 ):
-    return repo.delete(plant_id)
-
-
-# @router.update_plant("/plants/{plant_id}", response_model=TaskOut)
-# def update_plant(
-#     plant_id: str,
-#     repo: PlantsRepository = Depends(),
-# ):
+    repo.delete(plant_id=plant_id)
+    return True

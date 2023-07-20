@@ -4,7 +4,7 @@ from queries.client import Queries, db
 from models import PlantIn, PlantOut
 
 
-class PlantRepository(Queries):
+class PlantQueries(Queries):
     DB_NAME = "db-seedling-db"
     COLLECTION = "plants"
     gardens_collection = db.gardens
@@ -31,6 +31,13 @@ class PlantRepository(Queries):
         plant["id"] = str(plant["_id"])
         return PlantOut(**plant)
 
-    def delete(self, plant_id: str) -> bool:
-        plant = self.collection.delete_one({"_id": ObjectId(plant_id)})
-        return plant.deleted_count == 1
+    # def delete(self, plant_id: str) -> bool:
+    #     plant = self.collection.delete_one({"_id": ObjectId(plant_id)})
+    #     return plant.deleted_count == 1
+
+    def delete(self, plant_id: str):
+        self.collection.delete_one(
+            {
+                "_id": ObjectId(plant_id),
+            }
+        )
