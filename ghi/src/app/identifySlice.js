@@ -1,25 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { authApiSlice } from "./authApi";
 
-const initialState = {
-  identifiedPlant: null,
-  error: null,
-};
-
-export const plantIdentificationSlice = createSlice({
-  name: "plantIdentification",
-  initialState,
-  reducers: {
-    setIdentifiedPlant: (state, action) => {
-      state.identifiedPlant = action.payload;
+export const plantIdentificationSlice = createApi({
+  reducerPath: "identify_plants",
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_AUTH_API_HOST,
+    prepareHeaders: (headers, { getState }) => {
+      const selector = authApiSlice.endpoints.getToken.select();
+      const { data: tokenData } = selector(getState());
+      if (tokenData && tokenData.access_token) {
+        headers.set("Authorization", `Bearer ${tokenData.access_token}`);
+      }
+      return headers;
     },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
-  },
+  }),
+  tagTypes: [
+    "Account",
+    "Garden",
+    "Plant",
+    "Token",
+    "Journals",
+    "Task",
+    "Identify",
+  ],
+  endpoints: (builder) => ({
+    addIdentify: builder.mutation({
+      query: (image) => {
+        const formData = new FormData();
+        formData.append("file", image, image.name);
+        return {
+          method: "POST",
+          url: "/identify-plant",
+          body: formData,
+        };
+      },
+    }),
+  }),
 });
 
-export const { setIdentifiedPlant, setError, clearError } =
-  plantIdentificationSlice.actions;
+export const { useAddIdentifyMutation } = plantIdentificationSlice;

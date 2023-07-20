@@ -18,6 +18,7 @@ import TaskLists from "./gardens/TaskLists";
 import TaskForm from "./gardens/TaskForm";
 import TaskDetails from "./gardens/TaskDetails";
 import IdenfityPlants from "./identify/IdentifyPlants";
+import JournalUpdateForm from "./journals/JournalUpdate";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="" element={<JournalLists />} />
           <Route path=":journal_id" element={<JournalDetails />} />
           <Route path="create" element={<JournalForm />} />
+          <Route path=":journal_id/update" element={<JournalUpdateForm />} />
         </Route>
         <Route path="gardens">
           <Route path="" element={<GardenLists />} />
