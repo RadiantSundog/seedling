@@ -1,8 +1,12 @@
 from fastapi import APIRouter, UploadFile, File
-from queries.identify import send_image_for_identification, process_identification_response
+from queries.identify import (
+    send_image_for_identification,
+    process_identification_response,
+)
 import base64
 
 router = APIRouter()
+
 
 @router.post("/identify-plant")
 async def identify_plant(file: UploadFile = File(...)):

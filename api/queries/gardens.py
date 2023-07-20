@@ -53,6 +53,13 @@ class GardenQueries(Queries):
                 del plant["_id"]
             return GardenOut(**garden)
 
-    def delete(self, garden_id: str) -> bool:
-        garden = self.collection.delete_one({"_id": ObjectId(garden_id)})
-        return garden.deleted_count == 1
+    # def delete(self, garden_id: str) -> bool:
+    #     garden = self.collection.delete_one({"_id": ObjectId(garden_id)})
+    #     return garden.deleted_count == 1
+
+    def delete(self, garden_id: str):
+        self.collection.delete_one(
+            {
+                "_id": ObjectId(garden_id),
+            }
+        )

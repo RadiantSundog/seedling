@@ -1,5 +1,10 @@
 import "./main-page.css";
 import OrangePot from "./OrangePot.svg";
+import LindaQian from "./LindaQian.jpg";
+import JohnnyBelknap from "./JohnnyBelknap.jpg";
+import KyrstinJones from "./KyrstinJones.jpg";
+import AlexLevero from "./AlexLevero.jpg";
+
 
 function MainPage() {
   return (
@@ -204,56 +209,55 @@ function MainPage() {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
-              src="https://st4.depositphotos.com/9998432/23741/v/600/depositphotos_237418842-stock-illustration-person-gray-photo-placeholder-woman.jpg"
-              className="d-block team-pic mx-auto"
-              alt="Linda"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://st4.depositphotos.com/9998432/22597/v/450/depositphotos_225976914-stock-illustration-person-gray-photo-placeholder-man.jpg"
-              className="d-block team-pic mx-auto"
-              alt="Johnny"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://st4.depositphotos.com/9998432/23741/v/600/depositphotos_237418842-stock-illustration-person-gray-photo-placeholder-woman.jpg"
-              className="d-block team-pic mx-auto"
-              alt="Krystin"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://st4.depositphotos.com/9998432/22597/v/450/depositphotos_225976914-stock-illustration-person-gray-photo-placeholder-man.jpg"
-              className="d-block team-pic mx-auto"
-              alt="Alex"
-            />
-          </div>
+          <img
+            src={LindaQian}
+            className="d-block team-pic mx-auto"
+            alt="Linda"
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            src={JohnnyBelknap}
+            className="d-block team-pic mx-auto"
+            alt="Johnny"
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            src={KyrstinJones}
+            className="d-block team-pic mx-auto"
+            alt="Kyrstin"
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            src={AlexLevero}
+            className="d-block team-pic mx-auto"
+            alt="Alex"
+          />
+        </div>
         </div>
         <button
           className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="prev"
-        >
+>
           <span
             className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
+            aria-hidden="true">
+          </span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
           className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
+          data-bs-slide="next">
           <span
             className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
+            aria-hidden="true">
+          </span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
@@ -367,7 +371,7 @@ function MainPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              List of horticulture and gardening books
+              List of books
             </a>
             <br></br>
             <a

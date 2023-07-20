@@ -26,6 +26,9 @@ class TasksQueries(Queries):
         tasks["id"] = str(tasks["_id"])
         return TaskOut(**tasks)
 
-    def delete(self, tasks_id: str) -> bool:
-        tasks = self.collection.delete_one({"_id": ObjectId(tasks_id)})
-        return tasks.deleted_count == 1
+    def delete(self, tasks_id: str):
+        self.collection.delete_one(
+            {
+                "_id": ObjectId(tasks_id),
+            }
+        )

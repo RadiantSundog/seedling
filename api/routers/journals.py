@@ -44,12 +44,12 @@ def get_one_journal(
 
 
 @router.delete("/journals/{journal_id}", response_model=bool)
-def delete_journal(
+def delete_task(
     journal_id: str,
     repo: JournalQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
-    return repo.delete(journal_id)
+    repo.delete(journal_id=journal_id)
+    return True
 
 
 @router.put("/journals/{journal_id}", response_model=JournalOut)
