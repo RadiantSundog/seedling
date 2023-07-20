@@ -22,13 +22,13 @@ class TasksQueries(Queries):
         return [TaskOut(**task) for task in tasksPropsList]
 
     def get_one(self, task_id: str) -> TaskOut:
-        tasks = self.collection.find_one({"_id": ObjectId(task_id)})
-        tasks["id"] = str(tasks["_id"])
-        return TaskOut(**tasks)
+        task = self.collection.find_one({"_id": ObjectId(task_id)})
+        task["id"] = str(task["_id"])
+        return TaskOut(**task)
 
-    def delete(self, tasks_id: str):
+    def delete(self, task_id: str):
         self.collection.delete_one(
             {
-                "_id": ObjectId(tasks_id),
+                "_id": ObjectId(task_id),
             }
         )

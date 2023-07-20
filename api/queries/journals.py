@@ -34,12 +34,12 @@ class JournalQueries(Queries):
         )
 
     def update_one(self, journal_id: str, journal: JournalIn) -> JournalOut:
-        props = journal.dict()
+        update = journal.dict()
         self.collection.find_one_and_update(
             {
                 "_id": ObjectId(journal_id),
             },
-            {"$set": {**props}},
+            {"$set": {**update}},
         )
-        props["id"] = str(ObjectId(journal_id))
-        return JournalOut(**props)
+        update["id"] = str(ObjectId(journal_id))
+        return JournalOut(**update)
