@@ -18,7 +18,7 @@ function Nav() {
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/" style={{ fontFamily: "'Work Sans', sans-serif" }}>
           SEEDLING
         </NavLink>
         <button
@@ -35,23 +35,23 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav nav justify-content-center">
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/">
+              <NavLink className="nav-link active" aria-current="page" to="/" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 Home
               </NavLink>
             </li>
             {/* {currentUser ? ( */}
             <>
-              <li className="nav-item">
+              <li className="nav-item" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink className="nav-link" to="/identify">
                   Identify a Plant
                 </NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink className="nav-link" onClick={logout}>
                   Log Out
                 </NavLink>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -79,7 +79,7 @@ function Nav() {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -102,7 +102,7 @@ function Nav() {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink
                   className="nav-link active"
                   aria-current="page"
@@ -114,12 +114,12 @@ function Nav() {
             </>
             {/* ) : ( */}
             <>
-              <li className="nav-item">
+              <li className="nav-item" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink className="nav-link" to="/accounts/login">
                   Login
                 </NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 <NavLink className="nav-link" to="/accounts/signup">
                   Sign Up
                 </NavLink>

@@ -28,28 +28,30 @@ const PlantDetails = () => {
   };
 
   return (
-    <div>
-      <h2>My Plants</h2>
-      {plant ? (
-        <div>
-          <h3>{plant.name}</h3>
-          <p>{plant.Garden}</p>
-          <img
-            src={plant.plant_picture}
-            style={{ width: "120px", height: "100px" }}
-          />
-          <p>{plant.description}</p>
-          <button onClick={handleDelete} disabled={isLoading}>
-            Delete
-          </button>
-          {isError && <div>Error: {error.message}</div>}
-          <Link to="/plants" className="btn btn-primary">
-            Back to Plants
-          </Link>
-        </div>
-      ) : (
-        <div>Loading Plant...</div>
-      )}
+    <div className="container">
+      <div className="card shadow p-4 mt-4">
+        <h2>My Plants</h2>
+        {plant ? (
+          <div>
+            <h3>{plant.name}</h3>
+            <p>{plant.Garden}</p>
+            <img
+              src={plant.plant_picture}
+              style={{ width: "120px", height: "100px" }}
+            />
+            <p>{plant.description}</p>
+            <button onClick={handleDelete} disabled={isLoading}>
+              Delete
+            </button>
+            {isError && <div>Error: {error.message}</div>}
+            <Link to="/plants" className="btn btn-primary">
+              Back to Plants
+            </Link>
+          </div>
+        ) : (
+          <div>Loading Plant...</div>
+        )}
+      </div>
     </div>
   );
 };

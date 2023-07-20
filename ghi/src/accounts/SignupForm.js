@@ -1,3 +1,4 @@
+import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSignUpMutation } from "../app/authApi";
@@ -6,6 +7,9 @@ import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
 import PinkPot from "./PinkPot.svg";
+import wave1 from "./wave1.svg";
+
+
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -46,10 +50,10 @@ function SignUp() {
   };
 
   return (
-    <section className="vh-100">
+    <section className="vh-100 signup-background">
       <div className="container-fluid h-custom">
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-4 offset-lg-1">
+          <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form onSubmit={handleSubmit}>
               <div className="divider d-flex align-items-center my-4">
                 <p className="text-center fw-bold mx-3 mb-0">Sign Up</p>
@@ -87,7 +91,6 @@ function SignUp() {
                   Password
                 </label>
               </div>
-
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button
                   type="submit"
