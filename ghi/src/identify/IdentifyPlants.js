@@ -31,10 +31,7 @@ function IdentifyPlants() {
         throw new Error("An error occurred while identifying the plant");
       }
     } catch (error) {
-<<<<<<< HEAD
-=======
       console.error(error);
->>>>>>> fc209e29ffd0f24592771e4c62d0bf91f584adec
       dispatch(setError("An error occurred while identifying the plant"));
     }
   };
