@@ -114,3 +114,15 @@ Today, I worked on:
 
 I worked on getting the journal update form working and added a button to the detail page.
 Took out commented code.
+decided against an update page
+updated create
+
+## July 24, 2023
+Today, I worked on:
+-test/test_journal.py
+
+Accidentally pushed Linda's create test that she had me test to see if I got the same error.
+Made my test which is for get_all with Johnny and Alex.
+Looked through code and front end for bugs.
+Double checked everything we have to do before Friday.
+Abandoned plans for journal update, already use update elsewhere without having to make another page.

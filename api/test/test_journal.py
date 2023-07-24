@@ -3,12 +3,24 @@ from main import app
 from models import JournalIn, JournalOut
 from queries.journals import JournalQueries
 
+
 client = TestClient(app)
 
 
 class MockJournalsQuery:
     def create(self, journal: JournalIn) -> JournalOut:
         return JournalOut(**journal.dict(), id="mocked_journal_id")
+
+    def get_all(self):
+        return [
+            JournalOut(
+                id=1,
+                title="title",
+                description="description",
+                created_on="2023-07-10T16:56:35.525+00:00",
+                picture="picture",
+            )
+        ]
 
 
 def test_create_journal_test():
@@ -26,3 +38,23 @@ def test_create_journal_test():
     assert created_journal["title"] == journal_data["title"]
     assert created_journal["description"] == journal_data["description"]
     assert created_journal["picture"] == journal_data["picture"]
+
+
+def test_get_all_journals():
+    # Arrange
+    app.dependency_overrides[JournalQueries] = MockJournalsQuery
+    # Act
+    response = client.get("/journals")
+    # Clean up
+    app.dependency_overrides = {}
+    # Assert
+    assert response.status_code == 200
+    assert response.json() == [
+        {
+            "id": "1",
+            "created_on": "2023-07-10T16:56:35.525000+00:00",
+            "title": "title",
+            "description": "description",
+            "picture": "picture",
+        }
+    ]
