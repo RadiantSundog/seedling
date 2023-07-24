@@ -4,6 +4,7 @@ import { authApiSlice } from "./authApi";
 import { accountSlice } from "./accountSlice";
 import { plantIdentificationSlice } from "./identifySlice";
 
+
 const store = configureStore({
   reducer: {
     [authApiSlice.reducerPath]: authApiSlice.reducer,

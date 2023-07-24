@@ -5,18 +5,12 @@ from models import TaskIn, TaskOut
 
 
 router = APIRouter()
-# not_authorized = HTTPException(
-#     status_code=status.HTTP_401_UNAUTHORIZED,
-#     detail="Invalid authentication credentials",
-#     headers={"WWW-Authenticate": "Bearer"},
-# )
 
 
 @router.post("/tasks", response_model=TaskOut)
 def create_task(
     task: TaskIn,
     repo: TasksQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     return repo.create(task)
 
@@ -24,7 +18,6 @@ def create_task(
 @router.get("/tasks", response_model=List[TaskOut])
 def get_all_tasks(
     repo: TasksQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
 
@@ -34,7 +27,6 @@ def get_one_task(
     task_id: str,
     response: Response,
     repo: TasksQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     task = repo.get_one(task_id)
     if task is None:

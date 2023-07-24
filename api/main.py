@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
 from routers import accounts, gardens, journals, plants, tasks, identify
 import os
-from fastapi import FastAPI
 
 
 app = FastAPI()

@@ -9,18 +9,11 @@ from queries.plants import (
 
 router = APIRouter()
 
-# not_authorized = HTTPException(
-#     status_code=status.HTTP_401_UNAUTHORIZED,
-#     detail="Invalid authentication credentials",
-#     headers={"WWW-Authenticate": "Bearer"},
-# )
-
 
 @router.post("/plants", response_model=PlantOut)
 def create_plant(
     plant: PlantIn,
     repo: PlantQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     return repo.create(plant)
 
@@ -28,7 +21,6 @@ def create_plant(
 @router.get("/plants", response_model=List[PlantOut])
 def get_all_plants(
     repo: PlantQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
 
@@ -38,21 +30,11 @@ def get_one_plant(
     plant_id: str,
     response: Response,
     repo: PlantQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     plant = repo.get_one(plant_id)
     if plant is None:
         response.status_code = 404
     return plant
-
-
-# @router.delete("/plants/{plant_id}", response_model=bool)
-# def delete_plant(
-#     plant_id: str,
-#     repo: PlantQueries = Depends(),
-#     # account: dict = Depends(get_current_user),
-# ):
-#     return repo.delete(plant_id)
 
 
 @router.delete("/plants/{plant_id}", response_model=bool)

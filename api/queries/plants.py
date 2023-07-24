@@ -8,16 +8,21 @@ class PlantQueries(Queries):
     DB_NAME = "db-seedling-db"
     COLLECTION = "plants"
     gardens_collection = db.gardens
+    identified_collection = db.identified
 
     def create(self, plant: PlantIn) -> PlantOut:
-        props = plant.dict()
-        self.collection.insert_one(props)
-        props["id"] = str(props["_id"])
+        plant_data_to_insert = plant.dict()
+        plant_data_to_insert["_id"] = self.collection.insert_one(
+            plant_data_to_insert
+        ).inserted_id
+        plant_data_to_insert["id"] = str(plant_data_to_insert["_id"])
+        garden_id = ObjectId(plant.garden_id)
         self.gardens_collection.update_one(
-            {"_id": ObjectId(plant.garden_id)},
-            {"$push": {"plant_ids": props["_id"]}},
+            {"_id": garden_id},
+            {"$push": {"plant_ids": plant_data_to_insert["_id"]}},
+            upsert=True,
         )
-        return PlantOut(**props)
+        return PlantOut(**plant_data_to_insert)
 
     def get_all(self) -> List[PlantOut]:
         plants = self.collection.find()
@@ -30,10 +35,6 @@ class PlantQueries(Queries):
         plant = self.collection.find_one({"_id": ObjectId(plant_id)})
         plant["id"] = str(plant["_id"])
         return PlantOut(**plant)
-
-    # def delete(self, plant_id: str) -> bool:
-    #     plant = self.collection.delete_one({"_id": ObjectId(plant_id)})
-    #     return plant.deleted_count == 1
 
     def delete(self, plant_id: str):
         self.collection.delete_one(

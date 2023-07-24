@@ -17,7 +17,6 @@ router = APIRouter()
 def create_journal(
     journal: JournalIn,
     repo: JournalQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     return repo.create(journal)
 
@@ -25,7 +24,6 @@ def create_journal(
 @router.get("/journals", response_model=List[JournalOut])
 def get_all_journals(
     repo: JournalQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     return repo.get_all()
 
@@ -35,7 +33,6 @@ def get_one_journal(
     journal_id: str,
     response: Response,
     repo: JournalQueries = Depends(),
-    # account: dict = Depends(get_current_user),
 ):
     journal = repo.get_one(journal_id)
     if journal is None:
@@ -44,7 +41,7 @@ def get_one_journal(
 
 
 @router.delete("/journals/{journal_id}", response_model=bool)
-def delete_task(
+def delete_journal(
     journal_id: str,
     repo: JournalQueries = Depends(),
 ):
