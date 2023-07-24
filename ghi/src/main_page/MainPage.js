@@ -4,28 +4,40 @@ import LindaQian from "./LindaQian.jpg";
 import JohnnyBelknap from "./JohnnyBelknap.jpg";
 import KyrstinJones from "./KyrstinJones.jpg";
 import AlexLevero from "./AlexLevero.jpg";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function MainPage() {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/accounts/login/");
+  };
+
+  const handleSignUpClick = () => {
+    navigate("/accounts/signup/");
+  };
+
   return (
     <div className="main-page">
+    <link
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+  rel="stylesheet"/>
       <div className="text-center page-info">
         <div className="row row-cols-2">
           <div className="col">
             <h1 className="page-title">Welcome to Seedling</h1>
             <h4 className="page-description">
               Whether you're tending to a small balcony garden or transforming
-              acres of land, Seedling is your go-to resource for all things
-              gardening, planting, and planning. Join our community of
-              passionate gardeners and embark on a rewarding journey of
-              cultivating beauty and tranquility in your indoor or outdoor
-              spaces.
+              acres of land, Seedling is your resource for all things
+              gardening, planting, and planning.
             </h4>
-            <h6>
-              Start exploring today and let your gardening aspirations bloom
-              with GreenThumb Gardening!
-            </h6>
-          </div>
+            <button className="btn btn-success" onClick={handleLoginClick}>
+              Login
+            </button>
+            <button className="btn btn-success" onClick={handleSignUpClick}>
+              Sign Up
+            </button>          </div>
           <div className="col">
             <img
               src={OrangePot}
@@ -36,8 +48,6 @@ function MainPage() {
             />
           </div>
         </div>
-        <br></br>
-        <br></br>
       </div>
 
       <div className="page-problem">
@@ -241,8 +251,7 @@ function MainPage() {
           className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
->
+          data-bs-slide="prev">
           <span
             className="carousel-control-prev-icon"
             aria-hidden="true">
@@ -397,10 +406,7 @@ function MainPage() {
             >
               No-dig gardening
             </a>
-            <br></br>
-            <br></br>
           </div>
-          <div></div>
         </div>
       </div>
     </div>

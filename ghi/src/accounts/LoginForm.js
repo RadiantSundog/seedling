@@ -11,6 +11,8 @@ import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
 import BluePot from "./BluePot.svg";
+import wave2 from "./wave2.svg";
+
 
 function LogIn() {
   const dispatch = useDispatch();
@@ -49,8 +51,9 @@ function LogIn() {
     [dispatch]
   );
 
+
   return (
-    <section className="vh-100">
+    <section className="vh-100 login-background">
       <div className="container-fluid h-custom">
         <div className="row d-flex align-items-center h-100">
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
