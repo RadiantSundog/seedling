@@ -1,7 +1,8 @@
 from fastapi.testclient import TestClient
 from main import app
-from models import JournalIn, JournalOut
+from models import JournalIn, JournalOut, TaskOut
 from queries.journals import JournalQueries
+from queries.tasks import TasksQueries
 
 
 client = TestClient(app)
@@ -19,6 +20,18 @@ class MockJournalsQuery:
                 description="description",
                 created_on="2023-07-10T16:56:35.525+00:00",
                 picture="picture",
+            )
+        ]
+
+
+class MockTasksQuery:
+    def get_all(self):
+        return [
+            TaskOut(
+                id=1,
+                title="title",
+                description="description",
+                due_date="2023-07-10T16:56:35.525+00:00",
             )
         ]
 
@@ -56,5 +69,24 @@ def test_get_all_journals():
             "title": "title",
             "description": "description",
             "picture": "picture",
+        }
+    ]
+
+
+def test_get__all_tasks():
+    # Arrange
+    app.dependency_overrides[TasksQueries] = MockTasksQuery
+    # Act
+    response = client.get("/tasks")
+    # Clean up
+    app.dependency_overrides = {}
+    # Assert
+    assert response.status_code == 200
+    assert response.json() == [
+        {
+            "id": "1",
+            "title": "title",
+            "description": "description",
+            "due_date": "2023-07-10T16:56:35.525000+00:00",
         }
     ]
