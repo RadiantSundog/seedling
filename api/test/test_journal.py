@@ -52,8 +52,7 @@ def test_create_journal_test():
         "created_on": "2023-07-10T16:56:35.525+00:00",
         "title": "Test Journal",
         "description": "This is a test journal.",
-        "picture": "https://upload.wikimedia.org/wikipedia/"
-            "commons/2/28/Red_rose.jpg",
+        "picture": "https://tinyurl.com/ykv3jaw6",
     }
     response = client.post("/journals", json.dumps(journal_data))
     print(response)
