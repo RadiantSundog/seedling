@@ -4,7 +4,7 @@ from queries.identify import (
     process_identification_response,
 )
 import base64
-from queries.client import client, Queries, db
+from queries.client import Queries
 from bson.objectid import ObjectId
 import os
 import pymongo
@@ -40,6 +40,7 @@ async def identify_plant(file: UploadFile = File(...)):
         return plant_info
     except Exception as inst:
         return inst
+
 
 @router.get("/identify-plant")
 def get_all_identified_plants():

@@ -33,8 +33,7 @@ const PlantDetails = () => {
         <h2>My Plants</h2>
         {plant ? (
           <div>
-            <h3>{plant.name}</h3>
-            <p>{plant.Garden}</p>
+            <h3>{plant.name_id}</h3>
             <img
               src={plant.plant_picture}
               style={{ width: "120px", height: "100px" }}

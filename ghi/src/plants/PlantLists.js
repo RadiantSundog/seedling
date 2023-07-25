@@ -41,7 +41,6 @@ function PlantLists() {
               <tr>
                 <th>Picture</th>
                 <th>Name</th>
-                <th>Location</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -56,11 +55,13 @@ function PlantLists() {
                       />
                     </td>
                     <td>
-                      <Link to={`/plants/${plant.id}`} className="btn btn-primary">
-                        {plant.name}
+                      <Link
+                        to={`/plants/${plant.id}`}
+                        className="btn btn-primary"
+                      >
+                        {plant.name_id}
                       </Link>
                     </td>
-                    <td>{plant.garden.name}</td>
                     <td>
                       <button
                         onClick={() => handleDelete(plant.id)}
