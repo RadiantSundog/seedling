@@ -14,7 +14,7 @@ class PydanticObjectId(ObjectId):
         if value:
             try:
                 ObjectId(value)
-            except:
+            except ValueError:
                 raise ValueError(f"Not a valid object id: {value}")
         return value
 
@@ -65,7 +65,7 @@ class GardenOut(BaseModel):
 
 
 class PlantIn(BaseModel):
-    name: str
+    name_id: str
     plant_picture: HttpUrl
     description: Optional[str]
     garden_id: str
@@ -73,7 +73,7 @@ class PlantIn(BaseModel):
 
 class PlantOut(BaseModel):
     id: str
-    name: str
+    name_id: str
     description: Optional[str]
     plant_picture: HttpUrl
     garden_id: str

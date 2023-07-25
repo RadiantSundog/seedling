@@ -14,7 +14,15 @@ export const authApiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Account", "Garden", "Plant", "Token", "Journals", "Task"],
+  tagTypes: [
+    "Account",
+    "Garden",
+    "Plant",
+    "Token",
+    "Journals",
+    "Task",
+    "Identified",
+  ],
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (data) => ({
@@ -165,6 +173,10 @@ export const authApiSlice = createApi({
       }),
       invalidatesTags: ["Task"],
     }),
+    GetIdentified: builder.query({
+      query: () => "/identify-plant",
+      providesTags: ["Identified"],
+    }),
   }),
 });
 
@@ -186,4 +198,5 @@ export const {
   useGetTasksQuery,
   useCreateTasksMutation,
   useDeleteTaskMutation,
+  useGetIdentifiedQuery,
 } = authApiSlice;

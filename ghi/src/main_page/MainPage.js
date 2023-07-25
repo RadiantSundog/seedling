@@ -5,9 +5,10 @@ import JohnnyBelknap from "./JohnnyBelknap.jpg";
 import KyrstinJones from "./KyrstinJones.jpg";
 import AlexLevero from "./AlexLevero.jpg";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useGetTokenQuery } from "../app/authApi";
 
 function MainPage() {
+  const { data: currentUser } = useGetTokenQuery();
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -20,24 +21,32 @@ function MainPage() {
 
   return (
     <div className="main-page">
-    <link
-  href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
-  rel="stylesheet"/>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
       <div className="text-center page-info">
         <div className="row row-cols-2">
           <div className="col">
             <h1 className="page-title">Welcome to Seedling</h1>
             <h4 className="page-description">
               Whether you're tending to a small balcony garden or transforming
-              acres of land, Seedling is your resource for all things
-              gardening, planting, and planning.
+              acres of land, Seedling is your resource for all things gardening,
+              planting, and planning.
             </h4>
-            <button className="btn btn-success" onClick={handleLoginClick}>
-              Login
-            </button>
-            <button className="btn btn-success" onClick={handleSignUpClick}>
-              Sign Up
-            </button>          </div>
+            {currentUser ? (
+              <></>
+            ) : (
+              <>
+                <button className="btn btn-success" onClick={handleLoginClick}>
+                  Login
+                </button>
+                <button className="btn btn-success" onClick={handleSignUpClick}>
+                  Sign Up
+                </button>
+              </>
+            )}
+          </div>
           <div className="col">
             <img
               src={OrangePot}
@@ -251,22 +260,24 @@ function MainPage() {
           className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev">
+          data-bs-slide="prev"
+        >
           <span
             className="carousel-control-prev-icon"
-            aria-hidden="true">
-          </span>
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
           className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next">
+          data-bs-slide="next"
+        >
           <span
             className="carousel-control-next-icon"
-            aria-hidden="true">
-          </span>
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>

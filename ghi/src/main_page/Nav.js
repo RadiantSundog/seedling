@@ -31,9 +31,12 @@ function Nav() {
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/" style={{ fontFamily: "'Work Sans', sans-serif" }}>
+        <NavLink
+          className="navbar-brand"
+          to="/"
+          style={{ fontFamily: "'Work Sans', sans-serif" }}
+        />
           <img src={leaf} alt="SEEDLING Logo" style={{ height: '90px', marginRight: '30px' }} />
-        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -49,6 +52,12 @@ function Nav() {
           <ul className="navbar-nav nav">
             {/* Left-side navigation items */}
             <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/"
+                style={{ fontFamily: "'Work Sans', sans-serif" }}
+              />
               <NavLink
                 className="nav-link active"
                 aria-current="page"
