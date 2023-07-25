@@ -14,7 +14,7 @@ class PydanticObjectId(ObjectId):
         if value:
             try:
                 ObjectId(value)
-            except:
+            except ValueError:
                 raise ValueError(f"Not a valid object id: {value}")
         return value
 
