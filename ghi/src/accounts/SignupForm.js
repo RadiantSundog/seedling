@@ -1,4 +1,3 @@
-import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSignUpMutation } from "../app/authApi";
@@ -8,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
 import PinkPot from "./PinkPot.svg";
 import wave1 from "./wave1.svg";
-
-
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -50,9 +47,9 @@ function SignUp() {
   };
 
   return (
-    <section className="vh-100 signup-background">
+    <section className="vh-100 login-background">
       <div className="container-fluid h-custom">
-        <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="row d-flex align-items-center h-100">
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form onSubmit={handleSubmit}>
               <div className="divider d-flex align-items-center my-4">
@@ -67,7 +64,7 @@ function SignUp() {
                 <input
                   type="text"
                   id="form3Example3"
-                  className="form-control form-control-lg"
+                  className="form-control form-control-lg form__input" // Updated className here
                   placeholder="Enter a username"
                   onChange={field}
                   value={username}
@@ -81,7 +78,7 @@ function SignUp() {
                 <input
                   type="password"
                   id="form3Example4"
-                  className="form-control form-control-lg"
+                  className="form-control form-control-lg form__input" // Updated className here
                   placeholder="Enter password"
                   onChange={field}
                   value={password}
@@ -106,20 +103,22 @@ function SignUp() {
                     className="link-danger"
                     onClick={() => navigate("/accounts/login/")}
                   >
-                    Log Here
+                    Login Here
                   </a>
                 </p>
               </div>
             </form>
           </div>
           <div className="col-lg-6">
-            <img
-              src={PinkPot}
-              alt="seedling-logo"
-              height={windowWidth > 768 ? "500" : "250"}
-              width={windowWidth > 768 ? "500" : "250"}
-              className="title-pic"
-            />
+            <div className="image-container">
+              <img
+                src={PinkPot}
+                alt="seedling-logo"
+                height={windowWidth > 768 ? "500" : "0"}
+                width={windowWidth > 768 ? "500" : "0"}
+                className="title-pic"
+              />
+            </div>
           </div>
         </div>
       </div>

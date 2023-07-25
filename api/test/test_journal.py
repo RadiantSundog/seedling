@@ -24,6 +24,15 @@ class MockJournalsQuery:
             )
         ]
 
+    def delete(self, journal_id):
+        return JournalOut(
+            id=1,
+            title="title",
+            description="description",
+            created_on="2023-07-10T16:56:35.525+00:00",
+            picture="picture",
+        )
+
 
 class MockTasksQuery:
     def get_all(self):
@@ -43,8 +52,7 @@ def test_create_journal_test():
         "created_on": "2023-07-10T16:56:35.525+00:00",
         "title": "Test Journal",
         "description": "This is a test journal.",
-        "picture":
-        "https://upload.wikimedia.org/wikipedia/commons/2/28/Red_rose.jpg",
+        "picture": "https://upload.wikimedia.org/wikipedia/commons/2/28/Red_rose.jpg",
     }
     response = client.post("/journals", json.dumps(journal_data))
     print(response)
@@ -93,3 +101,15 @@ def test_get__all_tasks():
             "due_date": "2023-07-10T16:56:35.525000+00:00",
         }
     ]
+
+
+def test_delete_journal():
+    # Arrange
+    app.dependency_overrides[JournalQueries] = MockJournalsQuery
+    # Act
+    response = client.delete("/journals/1")
+    # Clean up
+    app.dependency_overrides = {}
+    # Assert
+    assert response.status_code == 200
+    assert response.json() is True

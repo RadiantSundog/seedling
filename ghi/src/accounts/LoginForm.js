@@ -123,8 +123,8 @@ function LogIn() {
               <img
                 src={BluePot}
                 alt="seedling-logo"
-                height={windowWidth > 768 ? "500" : "250"}
-                width={windowWidth > 768 ? "500" : "250"}
+                height={windowWidth > 768 ? "500" : "0"}
+                width={windowWidth > 768 ? "500" : "0"}
                 className="title-pic"
               />
             </div>
