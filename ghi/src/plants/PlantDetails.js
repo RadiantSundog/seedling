@@ -45,7 +45,7 @@ const PlantDetails = () => {
             </button>
             {isError && <div>Error: {error.message}</div>}
             <Link to="/plants" className="btn btn-primary">
-              Back to Plants
+              Back to My Plants
             </Link>
           </div>
         ) : (
