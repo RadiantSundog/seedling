@@ -19,7 +19,7 @@ class PlantQueries(Queries):
         garden_id = ObjectId(plant.garden_id)
         self.gardens_collection.update_one(
             {"_id": garden_id},
-            {"$push": {"plant_ids": plant_data_to_insert["_id"]}},
+            {"$push": {"name_id": [plant_data_to_insert["_id"]]}},
             upsert=True,
         )
         return PlantOut(**plant_data_to_insert)
