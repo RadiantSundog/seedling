@@ -132,3 +132,5 @@ Today, I worked on:
 -test/test_journal.py
 
 Helped others make more tests.
+Fixed some linter errors.
+Helped with data modeling for docs.
