@@ -14,7 +14,7 @@ function TaskLists() {
 
   const { task_id } = useParams();
 
-  const task = useSelector((state) =>
+  useSelector((state) =>
     tasks ? tasks.find((task) => task.id === task_id) : null
   );
 

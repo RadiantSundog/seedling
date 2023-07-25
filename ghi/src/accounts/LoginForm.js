@@ -1,12 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogInMutation } from "../app/authApi";
-import {
-  updateField,
-  LOG_IN_MODAL,
-  updateToken,
-  showModal,
-} from "../app/accountSlice";
+import { updateField, updateToken, showModal } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
@@ -16,8 +11,8 @@ import wave2 from "./wave2.svg";
 function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { show, username, password } = useSelector((state) => state.account);
-  const [logIn, { isLoading: logInLoading }] = useLogInMutation();
+  const { username, password } = useSelector((state) => state.account);
+  const [logIn] = useLogInMutation();
   const [error, setError] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
