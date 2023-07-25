@@ -43,8 +43,6 @@ def process_identification_response(result):
         "similar_image2": result["result"]["classification"]["suggestions"][0][
             "similar_images"
         ][1]["url"],
-        # "profile_page": result["result"]["classification"]["suggestions"][0]["details"]["url"],
-        # "description": result["result"]["classification"]["suggestions"][0]["details"]["description"]["value"],
         "watering_max": result["result"]["classification"]["suggestions"][0][
             "details"
         ]["watering"]["max"],

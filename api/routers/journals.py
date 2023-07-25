@@ -6,12 +6,6 @@ from models import JournalIn, JournalOut
 
 router = APIRouter()
 
-# not_authorized = HTTPException(
-#     status_code=status.HTTP_401_UNAUTHORIZED,
-#     detail="Invalid authentication credentials",
-#     headers={"WWW-Authenticate": "Bearer"},
-# )
-
 
 @router.post("/journals", response_model=JournalOut)
 def create_journal(

@@ -12,14 +12,14 @@ class PlantQueries(Queries):
 
     def create(self, plant: PlantIn) -> PlantOut:
         plant_data_to_insert = plant.dict()
-        plant_data_to_insert["_id"] = self.collection.insert_one(
+        plant_data_to_insert["name"] = self.collection.insert_one(
             plant_data_to_insert
         ).inserted_id
-        plant_data_to_insert["id"] = str(plant_data_to_insert["_id"])
-        garden_id = ObjectId(plant.garden_id)
+        plant_data_to_insert["id"] = str(plant_data_to_insert["name"])
+        garden_id = plant.garden_id
         self.gardens_collection.update_one(
             {"_id": garden_id},
-            {"$push": {"plant_ids": plant_data_to_insert["_id"]}},
+            {"$push": {"name_id": [plant_data_to_insert["name"]]}},
             upsert=True,
         )
         return PlantOut(**plant_data_to_insert)

@@ -37,15 +37,16 @@ class MockTasksQuery:
 
 
 def test_create_journal_test():
-    app.dependency_overrides[JournalQueries] = MockJournalsQuery()
+    app.dependency_overrides[JournalQueries] = MockJournalsQuery
     journal_data = {
         "title": "Test Journal",
         "description": "This is a test journal.",
-        "picture": "https://upload.wikimedia.org/wikipedia/commons/2/28/Red_rose.jpg",
+        "picture":
+        "https://upload.wikimedia.org/wikipedia/commons/2/28/Red_rose.jpg",
     }
-    response = client.post("/journals")
-    data = response.json()
-    assert data.status_code == 200
+    response = client.post("/journals", json=journal_data)
+    print(response)
+    assert response.status_code == 200
     created_journal = response.json()
     assert "id" in created_journal
     assert created_journal["title"] == journal_data["title"]
