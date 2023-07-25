@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLogInMutation } from "../app/authApi";
 import { updateField, updateToken, showModal } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./AccountsForm.css";
 import BluePot from "./BluePot.svg";
 
@@ -101,13 +101,13 @@ function LogIn() {
                 </button>
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account?{" "}
-                  <a
+                  <Link
                     to="/accounts/signup"
                     className="link-danger"
                     onClick={() => navigate("/accounts/signup/")}
                   >
                     Register Here
-                  </a>
+                  </Link>
                 </p>
               </div>
             </form>

@@ -37,7 +37,7 @@ const PlantDetails = () => {
             <img
               src={plant.plant_picture}
               style={{ width: "120px", height: "100px" }}
-              alt="plant-picture"
+              alt="plant-photo"
             />
             <p>{plant.description}</p>
             <button onClick={handleDelete} disabled={isLoading}>

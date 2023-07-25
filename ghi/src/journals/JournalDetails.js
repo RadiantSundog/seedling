@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetJournalsQuery, useDeleteJournalMutation } from "../app/authApi";
 import { useSelector } from "react-redux";
-import ErrorNotification from "../ErrorNotification";
 
 const JournalDetails = () => {
   const { journal_id } = useParams();
@@ -29,7 +28,10 @@ const JournalDetails = () => {
   };
 
   const imageRef = useRef(null);
-  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
     if (imageRef.current && imageRef.current.complete) {
@@ -67,12 +69,19 @@ const JournalDetails = () => {
         <img
           ref={imageRef}
           src={journal?.picture}
-          style={{ width: imageDimensions.width, height: imageDimensions.height }}
+          style={{
+            width: imageDimensions.width,
+            height: imageDimensions.height,
+          }}
           alt="journal_picture"
         />
 
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <button className="btn btn-primary" onClick={handleDelete} disabled={isLoading}>
+          <button
+            className="btn btn-primary"
+            onClick={handleDelete}
+            disabled={isLoading}
+          >
             Delete
           </button>
           <Link to="/journals" className="btn btn-primary">

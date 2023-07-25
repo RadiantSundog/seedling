@@ -2,7 +2,6 @@ import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetTasksQuery, useDeleteTaskMutation } from "../app/authApi";
 import { useSelector } from "react-redux";
-import ErrorNotification from "../ErrorNotification";
 
 const TaskDetails = () => {
   const { task_id } = useParams();
@@ -64,8 +63,14 @@ const TaskDetails = () => {
             <p style={descriptionStyle}>{task.description}</p>
             <p>Date: {formattedDate}</p>
             <p>Time: {formattedTime}</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <button className="btn btn-primary" onClick={handleDelete} disabled={isLoading}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
+              <button
+                className="btn btn-primary"
+                onClick={handleDelete}
+                disabled={isLoading}
+              >
                 Delete
               </button>
             </div>
