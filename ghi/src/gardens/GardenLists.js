@@ -25,7 +25,7 @@ function GardenLists() {
               <h5 className="card-title">{garden.name}</h5>
               <p className="card-text">{garden.location}</p>
               <Link to={`/gardens/${garden.id}`} className="btn btn-primary">
-                Go to my garden
+                See My Gardens
               </Link>
             </div>
           </div>

@@ -82,7 +82,7 @@ function PlantLists() {
               to="/plants/create"
               className="btn btn-secondary btn-lg px-4 gap-3"
             >
-              Plant A Plant
+              Plant-A-Plant
             </Link>
           </div>
         </div>

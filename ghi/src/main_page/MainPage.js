@@ -61,7 +61,7 @@ function MainPage() {
 
       <div className="page-problem">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
-          PROBLEMS
+          Problems
         </p>
         <div className="row">
           <div className="col-sm-4 mb-3 mb-sm-0">
@@ -121,7 +121,7 @@ function MainPage() {
 
       <div className="page-solution">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
-          SOLUTIONS
+          Solutions
         </p>
         <div className="row">
           <div className="col-sm-4 mb-3 mb-sm-0">
@@ -196,7 +196,7 @@ function MainPage() {
 
       <div id="carouselExampleIndicators" className="carousel slide bg-transparent">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
-          MEET OUR TEAM
+          Meet Our Team
         </p>
         <div className="carousel-indicators">
           <button
@@ -288,19 +288,19 @@ function MainPage() {
             className="col text-center direction-subtitle"
             style={{ color: "#F0EBCE" }}
           >
-            ABOUT US
+            About Us
           </div>
           <div
             className="col text-center direction-subtitle"
             style={{ color: "#F0EBCE" }}
           >
-            CONTACTS
+            Contacts
           </div>
           <div
             className="col text-center direction-subtitle"
             style={{ color: "#F0EBCE" }}
           >
-            USEFUL LINKS
+            Useful Links
           </div>
           <div className="col text-center" style={{ color: "#F0EBCE" }}>
             At Seedling, our mission is to empower and inspire plant enthusiasts

@@ -46,7 +46,7 @@ function PlantForm() {
     <div className="row">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-          <h1>Plant A Plant</h1>
+          <h1>Plant-A-Plant</h1>
           <ErrorNotification error={error} />
           <form onSubmit={handleSubmit}>
             <div className="mb-3">

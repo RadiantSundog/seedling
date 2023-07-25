@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetJournalsQuery, useDeleteJournalMutation } from "../app/authApi";
 import { useSelector } from "react-redux";
+import ErrorNotification from "../ErrorNotification";
 
 const JournalDetails = () => {
   const { journal_id } = useParams();
@@ -27,29 +28,59 @@ const JournalDetails = () => {
     }
   };
 
+  const imageRef = useRef(null);
+  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (imageRef.current && imageRef.current.complete) {
+      const { naturalWidth, naturalHeight } = imageRef.current;
+      const aspectRatio = naturalWidth / naturalHeight;
+      const newWidth = Math.floor(naturalWidth * 0.25);
+      const newHeight = Math.floor(newWidth / aspectRatio);
+      setImageDimensions({ width: newWidth, height: newHeight });
+    }
+  }, []);
+
+  const cardStyle = {
+    fontFamily: "'Work Sans', sans-serif",
+    padding: "1rem",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    border: "1px solid rgba(0, 0, 0, 0.1)",
+    borderRadius: "4px",
+  };
+
+  const titleStyle = {
+    fontSize: "1.5rem",
+    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.1)",
+  };
+
+  const descriptionStyle = {
+    fontSize: "1rem",
+    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.1)",
+  };
+
   return (
-    <div>
-      <h2>Journal Detail</h2>
-      {journal ? (
-        <div>
-          <h3>{journal.title}</h3>
-          <p>{journal.description}</p>
-          <img
-            src={journal.picture}
-            style={{ width: "120px", height: "100px" }}
-            alt="journal_picture"
-          />
-          <button onClick={handleDelete} disabled={isLoading}>
+    <div className="container">
+      <div className="card shadow p-4 mt-4" style={cardStyle}>
+        <h2 style={titleStyle}>{journal?.title}</h2>
+        <p style={descriptionStyle}>{journal?.description}</p>
+        <img
+          ref={imageRef}
+          src={journal?.picture}
+          style={{ width: imageDimensions.width, height: imageDimensions.height }}
+          alt="journal_picture"
+        />
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <button className="btn btn-primary" onClick={handleDelete} disabled={isLoading}>
             Delete
           </button>
-          {isError && <div>Error: {error.message}</div>}
           <Link to="/journals" className="btn btn-primary">
             Back to Journals
           </Link>
         </div>
-      ) : (
-        <div>Loading journal...</div>
-      )}
+        {isError && <div>Error: {error.message}</div>}
+      </div>
     </div>
   );
 };
