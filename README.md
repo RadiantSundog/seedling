@@ -11,9 +11,8 @@ At Seedling, our mission is to empower and inspire plant enthusiasts like you to
 
 ## Design
 
-- [API design](docs/apis.md)
-- [Data model](docs/data-model.md)
-- [GHI](docs/ghi.md)
+- [Backend API](docs/apis.md)
+- [Frontend GHI](docs/ghi.md)
 - [Integrations](docs/integrations.md)
 
 ## Intended market
