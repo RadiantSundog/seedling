@@ -9,7 +9,7 @@ function JournalForm() {
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
   const [error, setError] = useState("");
-  const [createJournal, result] = useCreateJournalsMutation();
+  const [createJournal] = useCreateJournalsMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();

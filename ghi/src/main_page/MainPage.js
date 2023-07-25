@@ -4,7 +4,7 @@ import LindaQian from "./LindaQian.jpg";
 import JohnnyBelknap from "./JohnnyBelknap.jpg";
 import KyrstinJones from "./KyrstinJones.jpg";
 import AlexLevero from "./AlexLevero.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGetTokenQuery } from "../app/authApi";
 
 function MainPage() {

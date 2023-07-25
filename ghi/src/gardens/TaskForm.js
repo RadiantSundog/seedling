@@ -9,7 +9,7 @@ function TaskForm() {
   const [description, setDescription] = useState("");
   const [due_date, setDueDate] = useState("");
   const [error, setError] = useState("");
-  const [createTask, result] = useCreateTasksMutation();
+  const [createTask] = useCreateTasksMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();

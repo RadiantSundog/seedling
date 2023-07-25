@@ -1,12 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogInMutation } from "../app/authApi";
-import {
-  updateField,
-  LOG_IN_MODAL,
-  updateToken,
-  showModal,
-} from "../app/accountSlice";
+import { updateField, updateToken, showModal } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
@@ -15,8 +10,8 @@ import BluePot from "./BluePot.svg";
 function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { show, username, password } = useSelector((state) => state.account);
-  const [logIn, { isLoading: logInLoading }] = useLogInMutation();
+  const { username, password } = useSelector((state) => state.account);
+  const [logIn] = useLogInMutation();
   const [error, setError] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -107,7 +102,7 @@ function LogIn() {
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account?{" "}
                   <a
-                    href="#"
+                    to="/accounts/signup"
                     className="link-danger"
                     onClick={() => navigate("/accounts/signup/")}
                   >

@@ -14,7 +14,7 @@ function PlantForm() {
   const [description, setDescription] = useState("");
   const [garden_id, setGardenId] = useState("");
   const [error, setError] = useState("");
-  const [createPlant, result] = useCreatePlantsMutation();
+  const [createPlant] = useCreatePlantsMutation();
   const { data: gardens, isError: gardenError } = useGetGardensQuery();
   const { data: identified, isError: identifiedError } =
     useGetIdentifiedQuery();
@@ -72,19 +72,6 @@ function PlantForm() {
                   })}
               </select>
             </div>
-            {/* <div className="form-floating mb-3">
-              <input
-                placeholder="Plant's Name"
-                required
-                type="text"
-                name="name"
-                id="name"
-                value={name || ""}
-                onChange={(e) => setName(e.target.value)}
-                className="form-control"
-              />
-              <label htmlFor="name">Name</label>
-            </div> */}
             <div className="form-floating mb-3">
               <input
                 placeholder="Plant's Picture Link"

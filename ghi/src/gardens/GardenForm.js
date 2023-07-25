@@ -10,7 +10,7 @@ function GardenForm() {
   const [inside, setInside] = useState("");
   const [outside, setOutside] = useState("");
   const [error, setError] = useState("");
-  const [createGarden, result] = useCreateGardensMutation();
+  const [createGarden] = useCreateGardensMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();

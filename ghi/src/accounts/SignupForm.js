@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSignUpMutation } from "../app/authApi";
-import { updateField, SIGN_UP_MODAL } from "../app/accountSlice";
+import { updateField } from "../app/accountSlice";
 import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
@@ -10,11 +10,8 @@ import PinkPot from "./PinkPot.svg";
 function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { show, username, password, email } = useSelector(
-    (state) => state.account
-  );
-  const modalClass = `my-modal ${show === SIGN_UP_MODAL ? "is-active" : ""}`;
-  const [signUp, { error, isLoading: signUpLoading }] = useSignUpMutation();
+  const { username, password, email } = useSelector((state) => state.account);
+  const [signUp, { error }] = useSignUpMutation();
   const field = useCallback(
     (e) =>
       dispatch(updateField({ field: e.target.name, value: e.target.value })),

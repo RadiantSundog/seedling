@@ -37,6 +37,7 @@ const JournalDetails = () => {
           <img
             src={journal.picture}
             style={{ width: "120px", height: "100px" }}
+            alt="journal_picture"
           />
           <button onClick={handleDelete} disabled={isLoading}>
             Delete
