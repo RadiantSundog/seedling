@@ -1,6 +1,5 @@
-from fastapi import APIRouter, Depends, Response, HTTPException, status
+from fastapi import APIRouter, Depends, Response
 from typing import List
-from token_auth import get_current_user
 from queries.gardens import GardenQueries
 from models import GardenIn, GardenOut
 

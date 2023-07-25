@@ -1,12 +1,8 @@
 from .client import Queries
 from pymongo.errors import DuplicateKeyError
-from pymongo import ASCENDING
 from models import (
-    PydanticObjectId,
     DuplicateAccountError,
     AccountIn,
-    AccountOut,
-    Account,
     AccountOutWithPassword,
 )
 
