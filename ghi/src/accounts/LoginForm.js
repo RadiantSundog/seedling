@@ -13,7 +13,6 @@ import "./AccountsForm.css";
 import BluePot from "./BluePot.svg";
 import wave2 from "./wave2.svg";
 
-
 function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +49,6 @@ function LogIn() {
       dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch]
   );
-
 
   return (
     <section className="vh-100 login-background">
@@ -125,8 +123,8 @@ function LogIn() {
               <img
                 src={BluePot}
                 alt="seedling-logo"
-                height={windowWidth > 768 ? "500" : "250"}
-                width={windowWidth > 768 ? "500" : "250"}
+                height={windowWidth > 768 ? "500" : "0"}
+                width={windowWidth > 768 ? "500" : "0"}
                 className="title-pic"
               />
             </div>

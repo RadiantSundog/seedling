@@ -90,3 +90,25 @@ def test_get__all_tasks():
             "due_date": "2023-07-10T16:56:35.525000+00:00",
         }
     ]
+
+
+def delete(self, journal_id):
+    return JournalOut(
+        id=1,
+        title="title",
+        description="description",
+        created_on="2023-07-10T16:56:35.525+00:00",
+        picture="picture",
+    )
+
+
+def test_delete_journal():
+    # Arrange
+    app.dependency_overrides[JournalQueries] = MockJournalsQuery
+    # Act
+    response = client.delete("/journals/1")
+    # Clean up
+    app.dependency_overrides = {}
+    # Assert
+    assert response.status_code == 200
+    assert response.json() is True

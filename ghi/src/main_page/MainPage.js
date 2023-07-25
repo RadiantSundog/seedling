@@ -185,7 +185,7 @@ function MainPage() {
         </div>
       </div>
 
-      <div id="carouselExampleIndicators" className="carousel slide">
+      <div id="carouselExampleIndicators" className="carousel slide bg-transparent">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
           MEET OUR TEAM
         </p>
@@ -222,29 +222,29 @@ function MainPage() {
           <img
             src={LindaQian}
             className="d-block team-pic mx-auto"
-            alt="Linda"
-          />
+            alt="Linda"/>
+            <div className="staff-name">Linda Qian</div>
         </div>
         <div className="carousel-item">
           <img
             src={JohnnyBelknap}
             className="d-block team-pic mx-auto"
-            alt="Johnny"
-          />
+            alt="Johnny"/>
+          <div className="staff-name">Johnny Belknap</div>
         </div>
         <div className="carousel-item">
           <img
             src={KyrstinJones}
             className="d-block team-pic mx-auto"
-            alt="Kyrstin"
-          />
+            alt="Kyrstin"/>
+          <div className="staff-name">Kyrstin Jones</div>
         </div>
         <div className="carousel-item">
           <img
             src={AlexLevero}
             className="d-block team-pic mx-auto"
-            alt="Alex"
-          />
+            alt="Alex"/>
+        <div className="staff-name">Alex Levero</div>
         </div>
         </div>
         <button
@@ -277,19 +277,19 @@ function MainPage() {
             className="col text-center direction-subtitle"
             style={{ color: "#F0EBCE" }}
           >
-            About Us
+            ABOUT US
           </div>
           <div
             className="col text-center direction-subtitle"
             style={{ color: "#F0EBCE" }}
           >
-            Contacts
+            CONTACTS
           </div>
           <div
             className="col text-center direction-subtitle"
             style={{ color: "#F0EBCE" }}
           >
-            Useful Links
+            USEFUL LINKS
           </div>
           <div className="col text-center" style={{ color: "#F0EBCE" }}>
             At Seedling, our mission is to empower and inspire plant enthusiasts
