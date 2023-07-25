@@ -126,3 +126,9 @@ Made my test which is for get_all with Johnny and Alex.
 Looked through code and front end for bugs.
 Double checked everything we have to do before Friday.
 Abandoned plans for journal update, already use update elsewhere without having to make another page.
+
+## July 24, 2023
+Today, I worked on:
+-test/test_journal.py
+
+Helped others make more tests.
