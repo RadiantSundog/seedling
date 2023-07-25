@@ -7,7 +7,6 @@ import LogIn from "./accounts/LoginForm";
 import JournalLists from "./journals/JournalLists";
 import JournalDetails from "./journals/JournalDetails";
 import JournalForm from "./journals/JournalForm";
-import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 import GardenLists from "./gardens/GardenLists";
 import GardenDetails from "./gardens/GardenDetails";
 import GardenForm from "./gardens/GardenForm";
@@ -18,7 +17,6 @@ import TaskLists from "./gardens/TaskLists";
 import TaskForm from "./gardens/TaskForm";
 import TaskDetails from "./gardens/TaskDetails";
 import IdenfityPlants from "./identify/IdentifyPlants";
-import JournalUpdateForm from "./journals/JournalUpdate";
 
 function App() {
   return (
@@ -34,7 +32,6 @@ function App() {
           <Route path="" element={<JournalLists />} />
           <Route path=":journal_id" element={<JournalDetails />} />
           <Route path="create" element={<JournalForm />} />
-          <Route path=":journal_id/update" element={<JournalUpdateForm />} />
         </Route>
         <Route path="gardens">
           <Route path="" element={<GardenLists />} />
