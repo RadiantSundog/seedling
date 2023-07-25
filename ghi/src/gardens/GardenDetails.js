@@ -61,10 +61,10 @@ const GardenDetails = () => {
                         to={`/plants/${plant.id}`}
                         className="btn btn-primary"
                       >
-                        {plant.name}
+                        {plant.name_id}
                       </Link>
                     </td>
-                    <td>{garden.name}</td>
+                    {/* <td>{garden.name}</td> */}
                   </tr>
                 ))}
               </tbody>
@@ -72,9 +72,11 @@ const GardenDetails = () => {
           ) : (
             <div>No plants found.</div>
           )}
-          <button onClick={handleDelete} disabled={isLoading}>
-            Delete
-          </button>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <button className="btn btn-primary" onClick={handleDelete} disabled={isLoading}>
+              Delete
+            </button>
+            </div>
           {isError && <div>Error: {error.message}</div>}
           <Link to="/gardens" className="btn btn-primary">
             Back to Gardens

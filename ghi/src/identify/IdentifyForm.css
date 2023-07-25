@@ -1,7 +1,17 @@
+
+.small-card {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.small-form {
+  padding: 1rem;
+}
+
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
 }

@@ -7,7 +7,7 @@ function PlantLists() {
   const { data: plants, error, isLoading } = useGetPlantsQuery();
 
   const { plant_id } = useParams();
-  const plant = useSelector((state) =>
+  useSelector((state) =>
     plants ? plants.find((plant) => plant.id === plant_id) : null
   );
 
@@ -52,6 +52,7 @@ function PlantLists() {
                       <img
                         src={plant.plant_picture}
                         style={{ width: "80px", height: "60px" }}
+                        alt="plant-images"
                       />
                     </td>
                     <td>
@@ -81,7 +82,7 @@ function PlantLists() {
               to="/plants/create"
               className="btn btn-secondary btn-lg px-4 gap-3"
             >
-              Plant A Plant
+              Plant-A-Plant
             </Link>
           </div>
         </div>

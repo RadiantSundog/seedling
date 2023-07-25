@@ -4,7 +4,7 @@ import LindaQian from "./LindaQian.jpg";
 import JohnnyBelknap from "./JohnnyBelknap.jpg";
 import KyrstinJones from "./KyrstinJones.jpg";
 import AlexLevero from "./AlexLevero.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGetTokenQuery } from "../app/authApi";
 
 function MainPage() {
@@ -61,7 +61,7 @@ function MainPage() {
 
       <div className="page-problem">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
-          PROBLEMS
+          Problems
         </p>
         <div className="row">
           <div className="col-sm-4 mb-3 mb-sm-0">
@@ -121,7 +121,7 @@ function MainPage() {
 
       <div className="page-solution">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
-          SOLUTIONS
+          Solutions
         </p>
         <div className="row">
           <div className="col-sm-4 mb-3 mb-sm-0">
@@ -194,9 +194,9 @@ function MainPage() {
         </div>
       </div>
 
-      <div id="carouselExampleIndicators" className="carousel slide">
+      <div id="carouselExampleIndicators" className="carousel slide bg-transparent">
         <p className="direction-title" style={{ color: "#F0EBCE" }}>
-          MEET OUR TEAM
+          Meet Our Team
         </p>
         <div className="carousel-indicators">
           <button
@@ -228,33 +228,33 @@ function MainPage() {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
-              src={LindaQian}
-              className="d-block team-pic mx-auto"
-              alt="Linda"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src={JohnnyBelknap}
-              className="d-block team-pic mx-auto"
-              alt="Johnny"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src={KyrstinJones}
-              className="d-block team-pic mx-auto"
-              alt="Kyrstin"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src={AlexLevero}
-              className="d-block team-pic mx-auto"
-              alt="Alex"
-            />
-          </div>
+          <img
+            src={LindaQian}
+            className="d-block team-pic mx-auto"
+            alt="Linda"/>
+            <div className="staff-name">Linda Qian</div>
+        </div>
+        <div className="carousel-item">
+          <img
+            src={JohnnyBelknap}
+            className="d-block team-pic mx-auto"
+            alt="Johnny"/>
+          <div className="staff-name">Johnny Belknap</div>
+        </div>
+        <div className="carousel-item">
+          <img
+            src={KyrstinJones}
+            className="d-block team-pic mx-auto"
+            alt="Kyrstin"/>
+          <div className="staff-name">Kyrstin Jones</div>
+        </div>
+        <div className="carousel-item">
+          <img
+            src={AlexLevero}
+            className="d-block team-pic mx-auto"
+            alt="Alex"/>
+        <div className="staff-name">Alex Levero</div>
+        </div>
         </div>
         <button
           className="carousel-control-prev"

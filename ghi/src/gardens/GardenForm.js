@@ -10,7 +10,7 @@ function GardenForm() {
   const [inside, setInside] = useState("");
   const [outside, setOutside] = useState("");
   const [error, setError] = useState("");
-  const [createGarden, result] = useCreateGardensMutation();
+  const [createGarden] = useCreateGardensMutation();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -58,7 +58,7 @@ function GardenForm() {
                 onChange={(e) => setLocation(e.target.value)}
                 className="form-control"
               ></textarea>
-              <label htmlFor="location">Location Zipcode</label>
+              <label htmlFor="location">Location Zip Code</label>
             </div>
             <div className="form-floating mb-3">
               <ul className="list-unstyled">
