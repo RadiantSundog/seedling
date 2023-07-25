@@ -3,6 +3,7 @@ from main import app
 from models import JournalIn, JournalOut, TaskOut
 from queries.journals import JournalQueries
 from queries.tasks import TasksQueries
+import json
 
 
 client = TestClient(app)
@@ -39,12 +40,13 @@ class MockTasksQuery:
 def test_create_journal_test():
     app.dependency_overrides[JournalQueries] = MockJournalsQuery
     journal_data = {
+        "created_on": "2023-07-10T16:56:35.525+00:00",
         "title": "Test Journal",
         "description": "This is a test journal.",
         "picture":
         "https://upload.wikimedia.org/wikipedia/commons/2/28/Red_rose.jpg",
     }
-    response = client.post("/journals", json=journal_data)
+    response = client.post("/journals", json.dumps(journal_data))
     print(response)
     assert response.status_code == 200
     created_journal = response.json()

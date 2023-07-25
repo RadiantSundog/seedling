@@ -61,10 +61,10 @@ const GardenDetails = () => {
                         to={`/plants/${plant.id}`}
                         className="btn btn-primary"
                       >
-                        {plant.name}
+                        {plant.name_id}
                       </Link>
                     </td>
-                    <td>{garden.name}</td>
+                    {/* <td>{garden.name}</td> */}
                   </tr>
                 ))}
               </tbody>

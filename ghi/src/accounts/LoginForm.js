@@ -13,7 +13,6 @@ import "./AccountsForm.css";
 import BluePot from "./BluePot.svg";
 import wave2 from "./wave2.svg";
 
-
 function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +49,6 @@ function LogIn() {
       dispatch(updateField({ field: e.target.name, value: e.target.value })),
     [dispatch]
   );
-
 
   return (
     <section className="vh-100 login-background">
@@ -110,7 +108,7 @@ function LogIn() {
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account?{" "}
                   <a
-                    href="#"
+                    to="/accounts/signup"
                     className="link-danger"
                     onClick={() => navigate("/accounts/signup/")}
                   >
