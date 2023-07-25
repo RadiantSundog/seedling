@@ -10,7 +10,6 @@ function Nav() {
   const navigate = useNavigate();
 
   const [isGardenDropdownOpen, setIsGardenDropdownOpen] = useState(false);
-
   const [isPlantsDropdownOpen, setIsPlantsDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -35,8 +34,9 @@ function Nav() {
           className="navbar-brand"
           to="/"
           style={{ fontFamily: "'Work Sans', sans-serif" }}
-        />
+        >
           <img src={leaf} alt="SEEDLING Logo" style={{ height: '90px', marginRight: '30px' }} />
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -50,14 +50,7 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav nav">
-            {/* Left-side navigation items */}
             <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
-                to="/"
-                style={{ fontFamily: "'Work Sans', sans-serif" }}
-              />
               <NavLink
                 className="nav-link active"
                 aria-current="page"
@@ -163,7 +156,6 @@ function Nav() {
               </>
             )}
           </ul>
-          {/* Right-side authentication items */}
           <ul className="navbar-nav ms-auto">
             {currentUser ? (
               <li className="nav-item" style={{ fontFamily: "'Work Sans', sans-serif" }}>

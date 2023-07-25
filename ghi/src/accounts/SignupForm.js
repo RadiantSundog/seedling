@@ -6,7 +6,6 @@ import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
 import PinkPot from "./PinkPot.svg";
-import wave1 from "./wave1.svg";
 
 function SignUp() {
   const dispatch = useDispatch();

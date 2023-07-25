@@ -11,7 +11,6 @@ import ErrorNotification from "../ErrorNotification";
 import { useNavigate } from "react-router-dom";
 import "./AccountsForm.css";
 import BluePot from "./BluePot.svg";
-import wave2 from "./wave2.svg";
 
 function LogIn() {
   const dispatch = useDispatch();
