@@ -1,6 +1,6 @@
 import ErrorNotification from "../ErrorNotification";
-import { useGetPlantsQuery, useDeletePlantMutation } from "../app/authApi";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useGetPlantsQuery } from "../app/authApi";
+import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function PlantLists() {
@@ -10,21 +10,6 @@ function PlantLists() {
   useSelector((state) =>
     plants ? plants.find((plant) => plant.id === plant_id) : null
   );
-
-  const [deletePlant, { isError }] = useDeletePlantMutation();
-  const navigate = useNavigate();
-  const handleDelete = async (plantId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete your garden?"
-    );
-    if (confirmed) {
-      deletePlant(plantId)
-        .then(() => {
-          navigate("/plants");
-        })
-        .catch((error) => {});
-    }
-  };
 
   if (isLoading) {
     return <progress className="progress is-primary" max="100"></progress>;
@@ -41,7 +26,6 @@ function PlantLists() {
               <tr>
                 <th>Picture</th>
                 <th>Name</th>
-                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -63,15 +47,7 @@ function PlantLists() {
                         {plant.name_id}
                       </Link>
                     </td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(plant.id)}
-                        disabled={isLoading}
-                      >
-                        Delete
-                      </button>
-                      {isError && <div>Error: {error.message}</div>}
-                    </td>
+
                   </tr>
                 );
               })}

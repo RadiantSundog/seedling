@@ -67,10 +67,9 @@ const JournalDetails = () => {
         <img
           ref={imageRef}
           src={journal?.picture}
-          style={{ width: imageDimensions.width, height: imageDimensions.height }}
+          style={{ width: "25%", height: "25%" }}
           alt="journal_picture"
         />
-
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <button className="btn btn-primary" onClick={handleDelete} disabled={isLoading}>
             Delete
