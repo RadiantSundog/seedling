@@ -43,7 +43,7 @@ build-front-end-job:
     - lint-test-job
   variables:
     PUBLIC_URL: https://push-the-buttons.gitlab.io/seedling/
-    REACT_APP_API_HOST: https://DEPLOYED_API_SERVICE.mod3projects.com
+    REACT_APP_API_HOST: ${REACT_APP_API_HOST}
   script:
     - cd ghi
     - npm install
