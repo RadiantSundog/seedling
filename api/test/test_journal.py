@@ -21,7 +21,14 @@ class MockJournalsQuery:
                 description="description",
                 created_on="2023-07-10T16:56:35.525+00:00",
                 picture="picture",
-            )
+            ),
+            JournalOut(
+                id=2,
+                title="title",
+                description="description",
+                created_on="2023-07-10T16:56:35.525+00:00",
+                picture="picture",
+            ),
         ]
 
     def delete(self, journal_id):
@@ -65,13 +72,9 @@ def test_create_journal_test():
 
 
 def test_get_all_journals():
-    # Arrange
     app.dependency_overrides[JournalQueries] = MockJournalsQuery
-    # Act
     response = client.get("/journals")
-    # Clean up
     app.dependency_overrides = {}
-    # Assert
     assert response.status_code == 200
     assert response.json() == [
         {
@@ -80,7 +83,14 @@ def test_get_all_journals():
             "title": "title",
             "description": "description",
             "picture": "picture",
-        }
+        },
+        {
+            "id": "2",
+            "created_on": "2023-07-10T16:56:35.525000+00:00",
+            "title": "title",
+            "description": "description",
+            "picture": "picture",
+        },
     ]
 
 
