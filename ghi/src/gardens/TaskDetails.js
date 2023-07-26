@@ -2,7 +2,6 @@ import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetTasksQuery, useDeleteTaskMutation } from "../app/authApi";
 import { useSelector } from "react-redux";
-import ErrorNotification from "../ErrorNotification";
 
 const TaskDetails = () => {
   const { task_id } = useParams();
