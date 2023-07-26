@@ -37,3 +37,46 @@ July 13, 2023
 Today, I worked on:
 
 - Frontend Task List, Task Detail page, and Task form created and worked successfully
+
+July 14, 2023
+Today, I worked on:
+
+- Backend third party API.
+
+July 17, 2023
+Today, I worked on:
+
+- Backend third party API.
+
+July 18, 2023
+Today, I worked on:
+
+- Frontend third party API.
+- Frontend identified plants.
+
+July 19, 2023
+Today, I worked on:
+
+- Frontend third party API.
+- Frontend identified plants.
+
+July 20, 2023
+Today, I worked on:
+
+- Backend creating plants.
+
+July 24, 2023
+Today, I worked on:
+
+- Backend creating plants.
+- Frontend creating plants.
+
+July 25, 2023
+Today, I worked on:
+
+- Code clean up.
+
+July 26, 2023
+Today, I worked on:
+
+- Deployment.
