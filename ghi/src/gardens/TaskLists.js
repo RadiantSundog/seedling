@@ -11,7 +11,6 @@ const localizer = momentLocalizer(moment);
 
 function TaskLists() {
   const { data: tasks, error, isLoading } = useGetTasksQuery();
-
   const { task_id } = useParams();
 
   useSelector((state) =>
@@ -53,14 +52,14 @@ function TaskLists() {
         <div className="card mt-4">
           <h5 className="card-header">Task Details</h5>
           <div className="card-body">
-            {/* Add task-specific information you want to display here */}
             <ul className="list-group list-group-flush">
               {tasks.map((task) => (
                 <li key={task.id} className="list-group-item">
                   <h5>{task.title}</h5>
                   <p>{task.description}</p>
-                  <p>Due Date: {moment(task.due_date).format("MMMM Do YYYY")}</p>
-                  {/* Add any other task-specific information you want to display */}
+                  <p>
+                    Due Date: {moment(task.due_date).format("MMMM Do YYYY")}
+                  </p>
                   <Link to={`/tasks/${task.id}`} className="btn btn-primary">
                     See Task Details
                   </Link>

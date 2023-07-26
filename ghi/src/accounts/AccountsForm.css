@@ -85,7 +85,7 @@
 }
 
 .form__input:focus {
-  border-bottom-color: #4E6C50;
+  border-bottom-color: #4e6c50;
   box-shadow: 0 0 5px rgba(0, 80, 80, 0.4);
   border-radius: 4px;
 }
@@ -94,16 +94,16 @@
   transition: all 0.5s ease;
   width: 70%;
   border-radius: 30px;
-  color: #4E6C50;
+  color: #4e6c50;
   font-weight: 600;
   background-color: #fff;
-  border: 1px solid #4E6C50;
+  border: 1px solid #4e6c50;
   margin-top: 1.5em;
   margin-bottom: 1em;
 }
 
 .btn:hover,
 .btn:focus {
-  background-color: #4E6C50;
+  background-color: #4e6c50;
   color: #fff;
 }

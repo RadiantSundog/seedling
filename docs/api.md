@@ -2,7 +2,7 @@
 
 ## Garden
 
-- **Method**: `POST`, `GET`, `PUT`, `DELETE`,
+- **Method**: `POST`, `GET`, `DELETE`,
 - **Path**: `/gardens`, `/gardens/{garden_id}`
 
 Input:
@@ -34,7 +34,7 @@ Creating a new Garden saves the name, location, whether the garden is located in
 
 ## Plants
 
-- **Method**: `GET`, `PUT`, `DELETE`,
+- **Method**: `POST`, `GET`, `DELETE`,
 - **Path**: `/plants`, `/plants/{plant_id}`,
 
 Input:
@@ -64,7 +64,7 @@ Creating a new plant saves the name, picture, description, and associated garden
 
 ## Accounts
 
-- Method: `GET`, `POST`, `PUT`, `DELETE`
+- Method: `POST`, `GET`, `DELETE`,
 - Path: `/api/protected`, `/token`, `/queries/accounts`
 
 Input:
@@ -91,7 +91,7 @@ Accounts will create, update, or delete an account for a user on the Seedling we
 
 ## Journals
 
-- Method: `GET`, `POST`, `PUT`, `DELETE`
+- Method: `POST`, `GET`, `DELETE`,
 - Path: `/journals`, `/journals/{journal_id}`
 
 Input:
@@ -121,7 +121,7 @@ Journal allows signed in users to create, update, or delete their journal which 
 
 ## Tasks
 
-- Method: `POST`, `GET`, `PUT`, `DELETE`
+- Method: `POST`, `GET`, `DELETE`,
 - Path: `/tasks`, `/tasks/{task_id}`
 
 Input:
@@ -165,9 +165,10 @@ Output:
 ```json
 {
   "name": str,
-  "similar_images": HttpUrl,
-  "water_max": str,
-  "water_recommend": str,
+  "similar_image1": HttpUrl,
+  "similar_image2": HttpUrl,
+  "watering_max": str,
+  "watering_min": str,
 }
 ```
 

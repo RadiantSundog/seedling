@@ -62,7 +62,6 @@ def test_create_journal_test():
         "picture": "https://tinyurl.com/ykv3jaw6",
     }
     response = client.post("/journals", json.dumps(journal_data))
-    print(response)
     assert response.status_code == 200
     created_journal = response.json()
     assert "id" in created_journal
@@ -95,13 +94,9 @@ def test_get_all_journals():
 
 
 def test_get__all_tasks():
-    # Arrange
     app.dependency_overrides[TasksQueries] = MockTasksQuery
-    # Act
     response = client.get("/tasks")
-    # Clean up
     app.dependency_overrides = {}
-    # Assert
     assert response.status_code == 200
     assert response.json() == [
         {
@@ -114,12 +109,8 @@ def test_get__all_tasks():
 
 
 def test_delete_journal():
-    # Arrange
     app.dependency_overrides[JournalQueries] = MockJournalsQuery
-    # Act
     response = client.delete("/journals/1")
-    # Clean up
     app.dependency_overrides = {}
-    # Assert
     assert response.status_code == 200
     assert response.json() is True

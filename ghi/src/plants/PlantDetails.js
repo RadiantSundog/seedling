@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 const PlantDetails = () => {
   const { plant_id } = useParams();
-
   const { data: plants } = useGetPlantsQuery();
 
   const plant = useSelector((state) =>
@@ -16,7 +15,7 @@ const PlantDetails = () => {
   const navigate = useNavigate();
   const handleDelete = async () => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete your garden?"
+      "Are you sure you want to delete your plant?"
     );
     if (confirmed) {
       deletePlant(plant.id)

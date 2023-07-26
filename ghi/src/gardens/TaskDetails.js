@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 const TaskDetails = () => {
   const { task_id } = useParams();
-
   const { data: tasks } = useGetTasksQuery();
   const task = useSelector((state) =>
     tasks ? tasks.find((task) => task.id === task_id) : null

@@ -20,11 +20,9 @@ function IdentifyPlants() {
 
   return (
     <div className="container">
-      {/* Apply the custom 'small-card' class to the card */}
       <div className="card shadow p-4 mt-4 small-card">
         <h1>Identify a plant</h1>
         {error && <div>Error: {error.message}</div>}
-        {/* Apply the custom 'small-form' class to the form */}
         <form onSubmit={handleSubmit} className="small-form">
           <div className="form-floating mb-3">
             <input

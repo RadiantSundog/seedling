@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 const GardenDetails = () => {
   const { garden_id } = useParams();
-
   const { data: gardens } = useGetGardensQuery();
   const { data: plants } = useGetPlantsQuery();
 

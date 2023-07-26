@@ -36,7 +36,6 @@ function SignUp() {
     e.preventDefault();
     const response = await signUp({ username, password, email });
     if (response.error) {
-      console.log(response.error);
     } else {
       navigate("/");
     }
@@ -60,7 +59,7 @@ function SignUp() {
                 <input
                   type="text"
                   id="form3Example3"
-                  className="form-control form-control-lg form__input" // Updated className here
+                  className="form-control form-control-lg form__input"
                   placeholder="Enter a username"
                   onChange={field}
                   value={username}
@@ -74,7 +73,7 @@ function SignUp() {
                 <input
                   type="password"
                   id="form3Example4"
-                  className="form-control form-control-lg form__input" // Updated className here
+                  className="form-control form-control-lg form__input"
                   placeholder="Enter password"
                   onChange={field}
                   value={password}

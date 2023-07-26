@@ -2,7 +2,6 @@ import ErrorNotification from "../ErrorNotification";
 import { useGetGardensQuery } from "../app/authApi";
 import { Link } from "react-router-dom";
 
-
 function GardenLists() {
   const { data, error, isLoading } = useGetGardensQuery();
 
