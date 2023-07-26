@@ -44,7 +44,7 @@ build-front-end-job:
   needs:
     - lint-test-job
   variables:
-    PUBLIC_URL: https://push-the-buttons.gitlab.io/seedling/
+    PUBLIC_URL: https://push-the-buttons.gitlab.io/seedling
     REACT_APP_AUTH_API_HOST: http://localhost:8000
   script:
     - cd ghi
