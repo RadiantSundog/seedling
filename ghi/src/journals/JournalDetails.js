@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetJournalsQuery, useDeleteJournalMutation } from "../app/authApi";
 import { useSelector } from "react-redux";
@@ -27,22 +27,6 @@ const JournalDetails = () => {
     }
   };
 
-  const imageRef = useRef(null);
-  const [imageDimensions, setImageDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
-
-  useEffect(() => {
-    if (imageRef.current && imageRef.current.complete) {
-      const { naturalWidth, naturalHeight } = imageRef.current;
-      const aspectRatio = naturalWidth / naturalHeight;
-      const newWidth = Math.floor(naturalWidth * 0.25);
-      const newHeight = Math.floor(newWidth / aspectRatio);
-      setImageDimensions({ width: newWidth, height: newHeight });
-    }
-  }, []);
-
   const cardStyle = {
     fontFamily: "'Work Sans', sans-serif",
     padding: "1rem",
@@ -67,10 +51,9 @@ const JournalDetails = () => {
         <h2 style={titleStyle}>{journal?.title}</h2>
         <p style={descriptionStyle}>{journal?.description}</p>
         <img
-          ref={imageRef}
           src={journal?.picture}
           style={{ width: "25%", height: "25%" }}
-          alt="journal_picture"
+          alt="journal"
         />
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <button

@@ -39,7 +39,7 @@ const PlantDetails = () => {
               <img
                 src={plant.plant_picture}
                 style={{ width: "120px", height: "100px" }}
-                alt="plant-picture"
+                alt="plant"
               />
               <p>{plant.description}</p>
               <div
