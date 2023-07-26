@@ -36,52 +36,43 @@ const TaskDetails = () => {
       })
     : "";
 
-  const cardStyle = {
-    fontFamily: "'Work Sans', sans-serif",
-    padding: "1rem",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    border: "1px solid rgba(0, 0, 0, 0.1)",
-    borderRadius: "4px",
-  };
-
-  const titleStyle = {
-    fontSize: "1.5rem",
-    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.1)",
-  };
-
-  const descriptionStyle = {
-    fontSize: "1rem",
-    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.1)",
-  };
-
   return (
     <div className="container">
-      <div className="card shadow p-4 mt-4" style={cardStyle}>
-        {task ? (
-          <div>
-            <h2 style={titleStyle}>{task.title}</h2>
-            <p style={descriptionStyle}>{task.description}</p>
-            <p>Date: {formattedDate}</p>
-            <p>Time: {formattedTime}</p>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            >
-              <button
-                className="btn btn-primary"
-                onClick={handleDelete}
-                disabled={isLoading}
+      <div className="card shadow p-4 mt-4">
+        <div className="card-header">
+          <h2>My Tasks</h2>
+        </div>
+        <div className="card-body">
+          {task ? (
+            <div>
+              <h2>{task.title}</h2>
+              <p>{task.description}</p>
+              <p>Date: {formattedDate}</p>
+              <p>Time: {formattedTime}</p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
               >
-                Delete
-              </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleDelete}
+                  disabled={isLoading}
+                >
+                  Delete
+                </button>
+              </div>
+              {isError && <div>Error: {error.message}</div>}
+              <Link to="/tasks" className="btn btn-primary">
+                Back to Tasks
+              </Link>
             </div>
-            {isError && <div>Error: {error.message}</div>}
-            <Link to="/tasks" className="btn btn-primary">
-              Back to Tasks
-            </Link>
-          </div>
-        ) : (
-          <div>Loading task...</div>
-        )}
+          ) : (
+            <div>Loading task...</div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -6,5 +6,12 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "wolf.disableHotModeWarning": true
+  "wolf.disableHotModeWarning": true,
+  "cSpell.words": [
+    "Authapi",
+    "bson",
+    "fastapi",
+    "Pydantic",
+    "reduxjs"
+  ]
 }
