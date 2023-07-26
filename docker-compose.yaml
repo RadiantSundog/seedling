@@ -18,7 +18,7 @@ services:
   fastapi:
     environment:
       SIGNING_KEY: ${SIGNING_KEY}
-      DATABASE_URL: mongodb://PTB:seedling@mongo:27017/
+      DATABASE_URL: mongodb://PTB:seedling@mongo/admin
       DB_NAME: db-seedling-db
       WAIT_HOSTS: mongo:27017
       API_KEY: ${API_KEY}
