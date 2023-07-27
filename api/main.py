@@ -14,16 +14,15 @@ app.include_router(plants.router)
 app.include_router(tasks.router)
 app.include_router(identify.router)
 
+origins = [
+    "http://localhost:3000",
+    "https://push-the-buttons.gitlab.io/seedling",
+    os.environ.get("CORS_HOST", None),
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        os.environ.get(
-            "CORS_HOST",
-            "http://localhost:3000",
-            "https://push-the-buttons.gitlab.io",
-        )
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
