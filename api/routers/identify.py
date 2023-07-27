@@ -21,7 +21,6 @@ identified_collection = db.identified
 
 @router.post("/identify-plant")
 async def identify_plant(file: UploadFile = File(...)):
-    print("////", file)
     try:
         contents = await file.read()
         image_64_encode = base64.b64encode(contents).decode("utf8")
@@ -38,7 +37,7 @@ async def identify_plant(file: UploadFile = File(...)):
 
         collection = client.get_database("db-seedling-db")["identified"]
         collection.insert_one(plant_info)
-        return plant_info
+        return plant_info, file
     except Exception as inst:
         return inst
 
