@@ -37,7 +37,7 @@ async def identify_plant(file: UploadFile = File(...)):
 
         collection = client.get_database("db-seedling-db")["identified"]
         collection.insert_one(plant_info)
-        return plant_info, file
+        return plant_info
     except Exception as inst:
         return inst
 
