@@ -21,6 +21,7 @@ identified_collection = db.identified
 
 @router.post("/identify-plant")
 async def identify_plant(file: UploadFile = File(...)):
+    print("////", file)
     try:
         contents = await file.read()
         image_64_encode = base64.b64encode(contents).decode("utf8")
