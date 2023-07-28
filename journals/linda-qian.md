@@ -80,3 +80,13 @@ July 26, 2023
 Today, I worked on:
 
 - Deployment.
+
+July 27, 2023
+Today, I worked on:
+
+- Deployment.
+
+July 28, 2023
+Today, I worked on:
+
+- Code clean up.
