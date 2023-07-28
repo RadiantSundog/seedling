@@ -1,7 +1,7 @@
 {
   "name": "ghi",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@galvanize-inc/jwtdown-for-react": "^0.2.2",
     "@reduxjs/toolkit": "^1.9.5",

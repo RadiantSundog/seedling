@@ -16,17 +16,23 @@ import PlantDetails from "./plants/PlantDetails";
 import TaskLists from "./gardens/TaskLists";
 import TaskForm from "./gardens/TaskForm";
 import TaskDetails from "./gardens/TaskDetails";
-import IdenfityPlants from "./identify/IdentifyPlants";
+import IdentifyPlants from "./identify/IdentifyPlants";
+import { useGetTokenQuery } from "./app/authApi";
 
 function App() {
+  const { data: tokenData } = useGetTokenQuery();
+  const accountId = tokenData && tokenData.account && tokenData.account.id;
+  useGetTokenQuery();
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Nav />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="accounts">
           <Route path="signup" element={<SignUp />} />
-          <Route path="login" element={<LogIn />} />
+          <Route path="login" element={<LogIn accountId={accountId} />} />
         </Route>
         <Route path="journals">
           <Route path="" element={<JournalLists />} />
@@ -48,7 +54,7 @@ function App() {
           <Route path=":task_id" element={<TaskDetails />} />
           <Route path="create" element={<TaskForm />} />
         </Route>
-        <Route path="identify" element={<IdenfityPlants />} />
+        <Route path="identify" element={<IdentifyPlants />} />
       </Routes>
     </BrowserRouter>
   );
