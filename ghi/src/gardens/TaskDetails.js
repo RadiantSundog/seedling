@@ -14,7 +14,7 @@ const TaskDetails = () => {
   const navigate = useNavigate();
   const handleDelete = async () => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete your garden?"
+      "Are you sure you want to delete your task?"
     );
     if (confirmed) {
       deleteTask(task.id)
