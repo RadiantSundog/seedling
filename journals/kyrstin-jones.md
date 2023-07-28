@@ -137,3 +137,13 @@ Helped with data modeling for docs.
 Made personal branch.
 Went back to try and fix journal update page.
 Update backend working, frontend push goal.
+
+## July 26, 2023
+Today, I worked on:
+
+We worked together on code clean up and deployment.
+
+## July 27, 2023
+Today, I worked on:
+
+We worked together on code clean up and deployment.

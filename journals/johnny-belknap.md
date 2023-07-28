@@ -65,3 +65,13 @@ Identify a Plant
 Garden
 Plants
 Garden Journals
+
+## 26 JUL 2023
+Today, I worked on:
+
+Image sizing issues so I resized them to make them percentage fit rather than pixel fit. Worked on Deployment with teammates.
+
+## 27-29 JUL 2023
+I worked on:
+
+Checked functionality of website on all three days. Checked functionality on local as well as GitLab. Worked on Deployment with teammates. Shared website to instructors. Research animations. Adding to stretch goals. Researched having a sort of intro landing page that's maybe video. Also add to stretch goals.
