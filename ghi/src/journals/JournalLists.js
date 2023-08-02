@@ -23,7 +23,6 @@ function JournalLists() {
         </Link>
         {sortedData.map((journal) => (
           <div className="card mt-4" key={journal.id}>
-            <h5 className="card-header">Journals</h5>
             <div className="card-body">
               <h5 className="card-title">{journal.title}</h5>
               <p className="card-text">{journal.description}</p>
