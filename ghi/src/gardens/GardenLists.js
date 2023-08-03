@@ -19,7 +19,6 @@ function GardenLists() {
         </Link>
         {data.map((garden) => (
           <div className="card mt-4" key={garden.id}>
-            <h5 className="card-header">My Gardens</h5>
             <div className="card-body">
               <h5 className="card-title">{garden.name}</h5>
               <p className="card-text">{garden.location}</p>
